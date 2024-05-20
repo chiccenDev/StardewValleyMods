@@ -16,9 +16,9 @@ namespace WaterYourCrops
         [HarmonyPatch(typeof(HoeDirt), nameof(HoeDirt.DrawOptimized))]
         public class HoeDirt_DrawOptimized_Patch
         {
-            public static void Postfix(HoeDirt __instance, SpriteBatch dirt_batch, SpriteBatch fert_batch, SpriteBatch crop_batch)
+            public static void Postfix(HoeDirt __instance, SpriteBatch dirt_batch)
             {
-                if (!Config.EnableMod || __instance.state.Value != 1 || __instance.crop is null || (!Game1.player.CurrentItem.Name.Contains("Watering Can") && Config.OnlyWaterCan))
+                if (!Config.EnableMod || __instance.state.Value != 0 || __instance.crop is null || (!HasCan() && Config.OnlyWaterCan))
                     return;
 
                 Vector2 tile = __instance.Tile;
@@ -43,7 +43,18 @@ namespace WaterYourCrops
 
                 int sourceRectPosition = HoeDirt.drawGuide[drawSum];
 
-                dirt_batch?.Draw(waterTexture, drawPos, new Rectangle(sourceRectPosition % 4 * 16, sourceRectPosition / 4 * 16, 16, 16), color * Config.IndicatorOpacity, 0f, Vector2.Zero, 4f, SpriteEffects.None, 1.9E-09f);
+                dirt_batch?.Draw(
+                    waterTexture, 
+                    drawPos, 
+                    //new Rectangle(sourceRectPosition % 4 * 16, sourceRectPosition / 4 * 16, 16, 16),
+                    null,
+                    Config.IndicatorColor * Config.IndicatorOpacity,
+                    0f,
+                    Vector2.Zero,
+                    4f,
+                    SpriteEffects.None,
+                    (tile.Y * 64f + 32f + (tile.Y * 11f + tile.X * 7f) % 10f - 5f) / 100f
+                );
             }
         }
 

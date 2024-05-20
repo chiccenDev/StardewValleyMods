@@ -1,37 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using StardewValley;
 
 namespace WaterYourCrops
 {
     partial class ModEntry
     {
-        private static void GetColor(string field = "none")
+        public static bool HasCan()
         {
-            if (field != "color") return;
-
-            switch (Config.IndicatorColor)
+            Item item = Game1.player.CurrentItem;
+            if (item is not null)
             {
-                case "Blue":
-                    color = Color.Blue;
-                    break;
-                case "Red":
-                    color = Color.Red;
-                    break;
-                case "Pink":
-                    color = Color.LightPink;
-                    break;
-                case "Gray":
-                    color = Color.LightGray;
-                    break;
-                case "Black":
-                    color = Color.Black;
-                    break;
-                default:
-                    color = Color.White;
-                    break;
-
+                return (item.Name.Contains("Watering Can"));
             }
-
-            Log($"Set color to {Config.IndicatorColor}");
+            return false;
         }
     }
 }
