@@ -92,7 +92,6 @@ namespace WaterYourCrops
                 },
                 save: SaveConfig
             );
-            Log("GMCM Registered.");
 
             configMenu.OnFieldChanged(
                 mod: ModManifest,
@@ -139,6 +138,7 @@ namespace WaterYourCrops
             else
             {
                 Config.IndicatorColor = Color.LightPink;
+                Log("GMCM Options was not loaded. Defaulting color to pink. Please install or verify that GMCM Options is installed to change the indicator color.", LogLevel.Alert);
             }
 
             configMenu.AddNumberOption(
