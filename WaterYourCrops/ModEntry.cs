@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
 
 namespace WaterYourCrops
 {
@@ -12,13 +13,14 @@ namespace WaterYourCrops
         public static IMonitor SMonitor;
         public static IModHelper SHelper;
         public static ModConfig Config;
+        public static ModConfig extConfig;
         public static ModEntry context;
         public static Texture2D waterTexture;
-        public static Color color;
 
         public override void Entry(IModHelper helper)
         {
             Config = Helper.ReadConfig<ModConfig>();
+            extConfig = Helper.ReadConfig<ModConfig>();
             I18n.Init(helper.Translation);
             context = this;
             SMonitor = Monitor;
@@ -67,18 +69,44 @@ namespace WaterYourCrops
             else return;
         }
 
+        private void SaveConfig()
+        {
+            Helper.WriteConfig(Config);
+            Log("GMCM Config saved.");
+        }
+
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
         {
-            Log("{Launching with Debug mode enabled.", debugOnly: true);
+            Log("Launching with Debug mode enabled.", debugOnly: true);
 
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
-            if (configMenu is null)
+            var configMenuExt = Helper.ModRegistry.GetApi<IGMCMOptionsAPI>("jltaylor-us.GMCMOptions");
+            if (configMenu is null || configMenuExt is null)
                 return;
 
             configMenu.Register(
                 mod: ModManifest,
-                reset: () => Config = new ModConfig(),
-                save: () => Helper.WriteConfig(Config)
+                reset: () => {
+                    Config = new ModConfig();
+                    extConfig = new ModConfig();
+                },
+                save: SaveConfig
+            );
+            Log("GMCM Registered.");
+
+            configMenu.OnFieldChanged(
+                mod: ModManifest,
+                onChange: (string str, object obj) =>
+                {
+                    switch (str)
+                    {
+                        case "color":
+                            extConfig.IndicatorColor = (Color) obj;
+                            break;
+
+                        default: break;
+                    }
+                }
             );
 
             configMenu.AddBoolOption(
@@ -95,16 +123,23 @@ namespace WaterYourCrops
                 getValue: () => Config.Debug,
                 setValue: value => Config.Debug = value
             );
-
-            configMenu.AddTextOption(
-                mod: ModManifest,
-                name: () => I18n.IndicatorColor(),
-                tooltip: () => I18n.IndicatorColorTip(),
-                getValue: () => Config.IndicatorColor,
-                setValue: value => Config.IndicatorColor = value,
-                allowedValues: new string[] { "White", "Blue", "Red", "Pink", "Gray", "Black" }
-                fieldId: "color"
-            );
+            if (configMenuExt is not null)
+            {
+                configMenuExt.AddColorOption(
+                    mod: ModManifest,
+                    name: () => I18n.IndicatorColor(),
+                    tooltip: () => I18n.IndicatorColorTip(),
+                    getValue: () => Config.IndicatorColor,
+                    setValue: value => Config.IndicatorColor = value,
+                    showAlpha: false,
+                    colorPickerStyle: (uint)(IGMCMOptionsAPI.ColorPickerStyle.AllStyles | IGMCMOptionsAPI.ColorPickerStyle.RadioChooser),
+                    fieldId: "color"
+                );
+            }
+            else
+            {
+                Config.IndicatorColor = Color.LightPink;
+            }
 
             configMenu.AddNumberOption(
                 mod: ModManifest,
@@ -114,8 +149,13 @@ namespace WaterYourCrops
                 tooltip: () => I18n.IndicatorOpacityTip(),
                 min: 0f,
                 max: 1f,
-                interval: 0.1f,
+                interval: 0.1f
                 );
+
+            configMenuExt.AddHorizontalSeparator(
+                mod: ModManifest,
+                getColor: () => Utility.GetPrismaticColor(speedMultiplier: 2)
+            );
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
@@ -125,16 +165,9 @@ namespace WaterYourCrops
                 setValue: value => Config.Debug = value
             );
 
-            configMenu.OnFieldChanged(
-                mod: ModManifest,
-                onChange: (string FieldId, object value) => GetColor()
-            );
-
             waterTexture = Helper.ModContent.Load<Texture2D>("assets/waterTexture.png");
             if (waterTexture != null) Log("Successfully loaded texture.", debugOnly: true);
             else Log("Couldn't load indicator texture.", LogLevel.Error);
-
-            GetColor("color");
         }
 
     }
