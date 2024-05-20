@@ -4,8 +4,10 @@ namespace WaterYourCrops
 {
     partial class ModEntry
     {
-        private static void GetColor()
+        private static void GetColor(string field = "none")
         {
+            if (field != "color") return;
+
             switch (Config.IndicatorColor)
             {
                 case "Blue":
@@ -28,6 +30,8 @@ namespace WaterYourCrops
                     break;
 
             }
+
+            Log($"Set color to {Config.IndicatorColor}");
         }
     }
 }

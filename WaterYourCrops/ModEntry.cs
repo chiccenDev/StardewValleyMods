@@ -103,6 +103,7 @@ namespace WaterYourCrops
                 getValue: () => Config.IndicatorColor,
                 setValue: value => Config.IndicatorColor = value,
                 allowedValues: new string[] { "White", "Blue", "Red", "Pink", "Gray", "Black" }
+                fieldId: "color"
             );
 
             configMenu.AddNumberOption(
@@ -114,7 +115,6 @@ namespace WaterYourCrops
                 min: 0f,
                 max: 1f,
                 interval: 0.1f,
-                fieldId: "opacity"
                 );
 
             configMenu.AddBoolOption(
@@ -131,8 +131,10 @@ namespace WaterYourCrops
             );
 
             waterTexture = Helper.ModContent.Load<Texture2D>("assets/waterTexture.png");
+            if (waterTexture != null) Log("Successfully loaded texture.", debugOnly: true);
+            else Log("Couldn't load indicator texture.", LogLevel.Error);
 
-            GetColor();
+            GetColor("color");
         }
 
     }
