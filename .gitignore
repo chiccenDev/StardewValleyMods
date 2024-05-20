@@ -1,0 +1,6 @@
+# ignore folders
+Properties
+.vs
+obj
+bin
+*.txt

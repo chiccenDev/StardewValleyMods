@@ -1,0 +1,22 @@
+{
+  "Name": "My Mod",
+  "Author": "chiccen",
+  "Version": "1.0.0",
+  "Description": "Standard SMAPI mod template. Includes GMCM API, Harmony, i18n, and SMAPI.",
+  "UniqueID": "chiccen.MyMod",
+  "EntryDll": "MyMod.dll",
+  "MinimumApiVersion": "3.15.0",
+  "ModUpdater": {
+    "Repository": "StardewValleyMods",
+    "User": "chiccen",
+    "Directory": "_releases",
+    "ModFolder": "MyMod" // remove this line for most cases, only needed if repository is overarching "Stardew Valley Mods" repo or otherwise not its own repo
+  },
+  "UpdateKeys": [ "Nexus:????" ],
+  "Dependencies": [
+    {
+      "UniqueID": "Platonymous.ModUpdater",
+      "IsRequired": false
+    }
+  ]
+}
