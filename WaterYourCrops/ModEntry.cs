@@ -1,4 +1,6 @@
 ﻿using HarmonyLib;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
@@ -11,6 +13,8 @@ namespace WaterYourCrops
         public static IModHelper SHelper;
         public static ModConfig Config;
         public static ModEntry context;
+        public static Texture2D waterTexture;
+        public static Color color;
 
         public override void Entry(IModHelper helper)
         {
@@ -79,27 +83,56 @@ namespace WaterYourCrops
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
-                name: () => I18n.TestBool(),
-                tooltip: () => I18n.TestBool_1(),
-                getValue: () => Config.ExampleBool,
-                setValue: value => Config.ExampleBool = value
-                );
+                name: () => I18n.EnableMod(),
+                getValue: () => Config.EnableMod,
+                setValue: value => Config.EnableMod = value
+            );
+
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.OnlyWaterCan(),
+                tooltip: () => I18n.OnlyWaterCanTip(),
+                getValue: () => Config.Debug,
+                setValue: value => Config.Debug = value
+            );
+
+            configMenu.AddTextOption(
+                mod: ModManifest,
+                name: () => I18n.IndicatorColor(),
+                tooltip: () => I18n.IndicatorColorTip(),
+                getValue: () => Config.IndicatorColor,
+                setValue: value => Config.IndicatorColor = value,
+                allowedValues: new string[] { "White", "Blue", "Red", "Pink", "Gray", "Black" }
+            );
 
             configMenu.AddNumberOption(
                 mod: ModManifest,
-                name: () => I18n.TestInt(),
-                tooltip: () => I18n.TestInt_1(),
-                getValue: () => Config.ExampleInt,
-                setValue: value => Config.ExampleInt = value
+                getValue: () => Config.IndicatorOpacity,
+                setValue: value => Config.IndicatorOpacity = value,
+                name: () => I18n.IndicatorOpacity(),
+                tooltip: () => I18n.IndicatorOpacityTip(),
+                min: 0f,
+                max: 1f,
+                interval: 0.1f,
+                fieldId: "opacity"
                 );
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.Debug(),
-                tooltip: () => I18n.Debug_1(),
+                tooltip: () => I18n.DebugTip(),
                 getValue: () => Config.Debug,
                 setValue: value => Config.Debug = value
             );
+
+            configMenu.OnFieldChanged(
+                mod: ModManifest,
+                onChange: (string FieldId, object value) => GetColor()
+            );
+
+            waterTexture = Helper.ModContent.Load<Texture2D>("assets/waterTexture.png");
+
+            GetColor();
         }
 
     }

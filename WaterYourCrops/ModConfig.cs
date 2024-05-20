@@ -2,9 +2,10 @@
 {
     public class ModConfig
     {
-
-        public bool ExampleBool { get; set; } = true;
-        public int ExampleInt { get; set; } = 16;
+        public bool EnableMod { get; set; } = true;
+        public bool OnlyWaterCan { get; set; } = true;
+        public string IndicatorColor { get; set; } = "White";
+        public float IndicatorOpacity { get; set; } = 1f;
         public bool Debug { get; set; } = false;
 
     }

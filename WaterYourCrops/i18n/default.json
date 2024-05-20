@@ -1,8 +1,11 @@
 {
-  "TestBool": "Example Bool",
-  "TestBool.1": "Example of a GMCM config option storing a boolean.",
-  "TestInt": "Example Int",
-  "TestInt.1": "Example of a GMCM config option storing an integer.",
+  "EnableMod": "Enable Mod",
+  "OnlyWaterCan": "Only With Watering Can",
+  "OnlyWaterCanTip": "Only show overlay when holding a watering can.",
+  "IndicatorColor": "Indicator Color",
+  "IndicatorColorTip": "Choose the color of the indicator on each crop when it needs to be watered.",
+  "IndicatorOpacity": "Indicator Opacity",
+  "IndicatorOpacityTip": "How visible the indicator is. 1 = fully visible, 2 = fully invisible.",
   "Debug": "Debug Logs",
-  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
+  "DebugTip": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
 }
