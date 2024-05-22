@@ -12,7 +12,7 @@
     "Directory": "_releases",
     "ModFolder": "WildTreeTweaks"
   },
-  "UpdateKeys": [ "Nexus:????" ],
+  "UpdateKeys": [ "Nexus:24349" ],
   "Dependencies": [
     {
       "UniqueID": "Platonymous.ModUpdater",

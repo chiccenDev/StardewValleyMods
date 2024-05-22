@@ -2,8 +2,8 @@
 
 
 This mod aims to offer some functionality from [Fruit Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/21449/) to basic wild, non-fruit trees! 
-If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/WildTreeTweaks).  
-If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/1/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
+If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/tree/main/WildTreeTweaks).  
+If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/24349/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating Wild Tree Tweaks
 <!--
