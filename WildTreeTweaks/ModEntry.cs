@@ -2,6 +2,7 @@
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Delegates;
 
 namespace WildTreeTweaks
 {
@@ -33,6 +34,7 @@ namespace WildTreeTweaks
             SHelper = helper;
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
+            helper.Events.GameLoop.ReturnedToTitle += GameLoop_ReturnedToTile;
             helper.Events.Player.Warped += Player_Warped;
 
             var harmony = new Harmony(ModManifest.UniqueID);
@@ -82,6 +84,11 @@ namespace WildTreeTweaks
             Log("Saved GMCM config.");
             updateLocations.Clear();
             updateTrees = true;
+        }
+
+        private void GameLoop_ReturnedToTile(object sender, ReturnedToTitleEventArgs e)
+        {
+            leaves.Clear();
         }
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
@@ -142,6 +149,45 @@ namespace WildTreeTweaks
                 setValue: value => Config.Health = value,
                 min: 1f,
                 fieldId: "Health"
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.WoodMulti(),
+                tooltip: () => I18n.WoodMulti_1(),
+                getValue: () => Config.WoodMultiplier,
+                setValue: value => Config.WoodMultiplier = value,
+                min: 0f
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.MysterChance(),
+                tooltip: () => I18n.MysteryChance_1(),
+                getValue: () => Config.MysteryBoxChance,
+                setValue: value => Config.MysteryBoxChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.005f
+            );
+
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.BookChanceBool(),
+                tooltip: () => I18n.BookChanceBool_1(),
+                getValue: () => Config.BookChanceBool,
+                setValue: value => Config.BookChanceBool = value
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.BookChance(),
+                tooltip: () => I18n.BookChanceBool_1(),
+                getValue: () => Config.BookChance,
+                setValue: value => Config.BookChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.0005f
             );
 
             configMenu.AddNumberOption(
