@@ -1,5 +1,6 @@
 # ignore folders
-__releases
+*.dll
+*.deps.json
 Properties
 .vs
 obj

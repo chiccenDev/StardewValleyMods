@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMod", "Template\MyMod.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterYourCrops", "WaterYourCrops\WaterYourCrops.csproj", "{D6FA0163-8839-480F-AE63-13BAAEFA0C09}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WildTreeTweaks", "WildTreeTweaks\WildTreeTweaks.csproj", "{5BA7E853-1A6A-43FF-8B0D-DF1FCFE3D92E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D6FA0163-8839-480F-AE63-13BAAEFA0C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6FA0163-8839-480F-AE63-13BAAEFA0C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6FA0163-8839-480F-AE63-13BAAEFA0C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA7E853-1A6A-43FF-8B0D-DF1FCFE3D92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA7E853-1A6A-43FF-8B0D-DF1FCFE3D92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA7E853-1A6A-43FF-8B0D-DF1FCFE3D92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA7E853-1A6A-43FF-8B0D-DF1FCFE3D92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
