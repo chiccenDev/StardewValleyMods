@@ -1,6 +1,6 @@
 # chiccen's Stardew Valley Mod List
 
-## A complete list of every original mod, or mod update I have undertaken
+#### A complete list of every original mod, or mod update I have undertaken
 
 **[Fruit Tree Tweaks by aednthorn](https://www.nexusmods.com/stardewvalley/mods/21449)**
 
