@@ -12,7 +12,7 @@
     "Directory": "_releases",
     "ModFolder": "GarbageCanTweaks" // remove this line for most cases, only needed if repository is overarching "Stardew Valley Mods" repo or otherwise not its own repo
   },
-  "UpdateKeys": [ "Nexus:????" ],
+  "UpdateKeys": [ "Nexus:24410" ],
   "Dependencies": [
     {
       "UniqueID": "Platonymous.ModUpdater",
