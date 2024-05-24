@@ -1,40 +1,11 @@
-﻿using GarbageCanTweaks;
-using HarmonyLib;
+﻿using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
+using System.Reflection.Metadata.Ecma335;
 
-namespace GarbagecanTweaks
+namespace GarbageCanTweaks
 {
-    /// <summary>
-    /// 
-    /// !!!IMPORTANT!!!
-    /// BEFORE USING THIS TEMPLATE:
-    /// Change "MyMod" to your mod's name/namespace in the following locations:
-    ///     (1) ModEntry.cs namespace
-    ///     (2) IGenericModConfigMenuApi.cs namespace
-    ///     (3) ModConfig.cs namespace
-    ///     (4) Manifest.json
-    ///         - Name
-    ///         - Description (optional)
-    ///         - UniqueID
-    ///         - EntryDll
-    ///         - UpdateKeys (semi-optional. update this before uploading to Nexus)
-    ///         - Repository (optional)
-    ///         - ModFolder
-    ///     (5) README.md
-    ///         - Line 1 ("MyMod by chiccen")
-    ///         - Line 4 -- insert a brief description of the mod
-    ///         - Line 5 -- add Github folder to end of link (optional)
-    ///         - Line 6 -- replace "{{MyMod}}" in Nexus link to your mod code
-    ///         - Line 8 -- "Translating MyMod"
-    ///         - Line 15
-    ///         - Line 24 -- right side header of translation chart
-    ///         
-    /// It is also recommended you update "Description" and Nexus update key in manifest.json
-    /// You can delete this entire comment summary once these tasks are completed.
-    /// 
-    /// </summary>
-
 
     public partial class ModEntry : Mod
     {
@@ -52,6 +23,7 @@ namespace GarbagecanTweaks
             SHelper = helper;
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
+            helper.Events.GameLoop.DayStarted += GameLoop_DayStarted;
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
@@ -94,6 +66,30 @@ namespace GarbagecanTweaks
             else return;
         }
 
+        private static string getCan(string name)
+        {
+            
+            if (noGift.Contains(name) || Game1.getCharacterFromName(name) is null)
+            {
+                Log($"check for {name} failed, or was a non-gifting NPC", debugOnly: true);
+                return "";
+            }
+            Log($"Finding can for {name}", debugOnly: true);
+            
+            if (name.Equals("Jodi") || name.Equals("Kent") || name.Equals("Sam") || name.Equals("Vincent"))
+                return "JodiAndKent";
+            if (name.Equals("Evelyn") || name.Equals("George") || name.Equals("Alex"))
+                return "Evelyn";
+            if (name.Equals("Haley") || name.Equals("Emily"))
+                return "EmilyAndHaley";
+            if (name.Equals("Gus"))
+                return "Saloon";
+            if (name.Equals("Clint"))
+                return "Blacksmith";
+            else return "Mayor";
+            
+        }
+
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
         {
             Log("{Launching with Debug mode enabled.", debugOnly: true);
@@ -110,19 +106,40 @@ namespace GarbagecanTweaks
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
-                name: () => I18n.TestBool(),
-                tooltip: () => I18n.TestBool_1(),
-                getValue: () => Config.ExampleBool,
-                setValue: value => Config.ExampleBool = value
-                );
+                name: () => I18n.EnableMod(),
+                getValue: () => Config.EnableMod,
+                setValue: value => Config.EnableMod = value
+            );
+
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.EnableBirthday(),
+                tooltip: () => I18n.EnableBirthday_1(),
+                getValue: () => Config.EnableBirthday,
+                setValue: value => Config.EnableBirthday = value
+            );
 
             configMenu.AddNumberOption(
                 mod: ModManifest,
-                name: () => I18n.TestInt(),
-                tooltip: () => I18n.TestInt_1(),
-                getValue: () => Config.ExampleInt,
-                setValue: value => Config.ExampleInt = value
-                );
+                name: () => I18n.BirthdayChance(),
+                tooltip: () => I18n.BirthdayChance_1(),
+                getValue: () => Config.BirthdayChance,
+                setValue: value => Config.BirthdayChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.05f
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.LootChance(),
+                tooltip: () => I18n.LootChance_1(),
+                getValue: () => Config.LootChance,
+                setValue: value => Config.LootChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.05f
+            );
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
@@ -131,6 +148,17 @@ namespace GarbagecanTweaks
                 getValue: () => Config.Debug,
                 setValue: value => Config.Debug = value
             );
+
+            Log("loaded GMCM options. mod is ready!");
+        }
+
+        private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
+        {
+            birthday = Utility.getTodaysBirthdayNPC();
+            bCan = (birthday is not null) ? getCan(birthday.Name) : "";
+            string bday = (birthday is not null) ? $"Today is {birthday.Name}'s birthday!" : "No birthday today.";
+            Log(bday, debugOnly: true);
+            Log("loaded NPC birthday cans");
         }
 
     }

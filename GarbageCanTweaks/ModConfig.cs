@@ -3,8 +3,10 @@
     public class ModConfig
     {
 
-        public bool ExampleBool { get; set; } = true;
-        public int ExampleInt { get; set; } = 16;
+        public bool EnableMod { get; set; } = true;
+        public bool EnableBirthday { get; set; } = true;
+        public float BirthdayChance { get; set; } = 0.75f;
+        public float LootChance { get; set; } = 0.2f;
         public bool Debug { get; set; } = false;
 
     }
