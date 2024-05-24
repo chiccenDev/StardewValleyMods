@@ -176,7 +176,7 @@ namespace GarbageCanTweaks
                 setValue: value => Config.Debug = value
             );
 
-            dataFile = $"assets/{dataFile}.json";
+            dataFile = $"assets/{Config.LootTable}.json";
 
             Log("loaded GMCM options. mod is ready!");
         }
