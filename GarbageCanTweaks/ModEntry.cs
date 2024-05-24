@@ -13,6 +13,7 @@ namespace GarbageCanTweaks
         public static IModHelper SHelper;
         public static ModConfig Config;
         public static ModEntry context;
+        public static string dataFile;
 
         public override void Entry(IModHelper helper)
         {
@@ -92,7 +93,9 @@ namespace GarbageCanTweaks
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
         {
-            Log("{Launching with Debug mode enabled.", debugOnly: true);
+            Log("Launching with Debug mode enabled.", debugOnly: true);
+
+            Load();
 
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
             if (configMenu is null)
@@ -104,11 +107,37 @@ namespace GarbageCanTweaks
                 save: () => Helper.WriteConfig(Config)
             );
 
+            configMenu.OnFieldChanged(
+                mod: ModManifest,
+                onChange: (str, obj) =>
+                {
+                    switch (str)
+                    {
+                        case "table":
+                            dataFile = (string)obj;
+                            dataFile = $"assets/{dataFile}.json";
+                            Log($"Garbage data change to {dataFile}", debugOnly: true);
+                            break;
+                        default: break;
+                    }
+                }
+            );
+
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.EnableMod(),
                 getValue: () => Config.EnableMod,
                 setValue: value => Config.EnableMod = value
+            );
+
+            configMenu.AddTextOption(
+                mod: ModManifest,
+                name: () => I18n.Table(),
+                tooltip: () => I18n.Table_1(),
+                getValue: () => Config.LootTable,
+                setValue: value => Config.LootTable = value,
+                allowedValues: packs.ToArray(),
+                fieldId: "table"
             );
 
             configMenu.AddBoolOption(
@@ -136,9 +165,7 @@ namespace GarbageCanTweaks
                 tooltip: () => I18n.LootChance_1(),
                 getValue: () => Config.LootChance,
                 setValue: value => Config.LootChance = value,
-                min: 0f,
-                max: 1f,
-                interval: 0.05f
+                min: 0f
             );
 
             configMenu.AddBoolOption(
@@ -149,11 +176,14 @@ namespace GarbageCanTweaks
                 setValue: value => Config.Debug = value
             );
 
+            dataFile = $"assets/{dataFile}.json";
+
             Log("loaded GMCM options. mod is ready!");
         }
 
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
+            Reload();
             birthday = Utility.getTodaysBirthdayNPC();
             bCan = (birthday is not null) ? getCan(birthday.Name) : "";
             string bday = (birthday is not null) ? $"Today is {birthday.Name}'s birthday!" : "No birthday today.";

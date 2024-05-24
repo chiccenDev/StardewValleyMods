@@ -1,11 +1,14 @@
 {
   "EnableMod": "Enable Mod",
+  "Table": "Loot Table",
+  "Table.1": "Which Garbage Can Data .json you would like to calculate loot drops and loot tables. All loot tables are stored in GarbageCanTweaks/assets/. The default value is the base game loot table.",
   "EnableBirthday": "Allow Birthday Items",
-  "EnableBirthday.1": "When enabled, there is a chance for an NPCs loved gift to spawn in their respective trash can on thier birthday, or the Mayor's if they have no trash can.",
+  "EnableBirthday.1": "When enabled, there is a configurable chance for an NPCs loved gift to spawn in their respective trash can on thier birthday, or the Mayor's if they have no trash can or are a custom NPC.",
   "BirthdayChance": "Chance For Birthday Item",
   "BirthdayChance.1": "Chance for trash can to produce a loved item on an NPCs birthday.",
-  "LootChance": "Chance For Item",
-  "LootChance.1": "Chance for items in general to be produced from trash cans, before individual item chance checks. Each producable item has it's own chance to be produced independent of this chance. This is the chance that those items are even checked in the first place.'",
+  "LootChance": "Item Chance Multiplier",
+  "LootChance.1": "Multiplies chance for items in general to be produced from trash cans. If you set this too high, you'll just get endless Garbage Hats.",
   "Debug": "Debug Logs",
-  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
+  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report.",
+  "Found": "You found a birthday item for "
 }
