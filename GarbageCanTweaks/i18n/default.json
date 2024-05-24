@@ -9,6 +9,6 @@
   "LootChance": "Item Chance Multiplier",
   "LootChance.1": "Multiplies chance for items in general to be produced from trash cans. If you set this too high, you'll just get endless Garbage Hats.",
   "Debug": "Debug Logs",
-  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report.",
+  "Debug.1": "For SMAPI debugging logs. Useful for bug reports, or testing custom garbage loot tables.",
   "Found": "You found a birthday item for "
 }
