@@ -160,7 +160,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": null,
+          "Condition": "RANDOM 0.2 @addDailyLuck",
           "Id": "Base_Ore",
           "ItemId": null,
           "RandomItemId": [
@@ -201,7 +201,33 @@
     },
     "EmilyAndHaley": {
       "BaseChance": -1.0,
-      "Items": [],
+      "Items": [
+        {
+          "IgnoreBaseChance": true,
+          "IsMegaSuccess": false,
+          "IsDoubleMegaSuccess": true,
+          "AddToInventoryDirectly": true,
+          "CreateMultipleDebris": false,
+          "Condition": "SEASON_DAY summer 7, RANDOM .05 @addDailyLuck",
+          "Id": "Base_ChickenMask",
+          "ItemId": "(H)10",
+          "RandomItemId": null,
+          "MaxItems": null,
+          "MinStack": -1,
+          "MaxStack": -1,
+          "Quality": -1,
+          "ObjectInternalName": null,
+          "ObjectDisplayName": null,
+          "ToolUpgradeLevel": -1,
+          "IsRecipe": false,
+          "StackModifiers": null,
+          "StackModifierMode": "Stack",
+          "QualityModifiers": null,
+          "QualityModifierMode": "Stack",
+          "ModData": null,
+          "PerItemCondition": null
+        }
+      ],
       "CustomFields": null
     },
     "Evelyn": {
@@ -213,7 +239,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": null,
+          "Condition": "RANDOM 0.2 @addDailyLuck",
           "Id": "Base_Cookie",
           "ItemId": "(O)223",
           "RandomItemId": null,
@@ -237,7 +263,46 @@
     },
     "JodiAndKent": {
       "BaseChance": -1.0,
-      "Items": [],
+      "Items": [
+        {
+          "IgnoreBaseChance": false,
+          "IsMegaSuccess": false,
+          "IsDoubleMegaSuccess": false,
+          "AddToInventoryDirectly": false,
+          "CreateMultipleDebris": false,
+          "Condition": "MINE_LOWEST_LEVEL_REACHED 100, PLAYER_HEARTS Current Kent 2, RANDOM 0.4 @addDailyLuck",
+          "Id": "Base_Ore",
+          "ItemId": "(O)288",
+          "RandomItemId": null,
+          "MaxItems": null,
+          "MinStack": -1,
+          "MaxStack": -1,
+          "Quality": -1,
+          "ObjectInternalName": null,
+          "ObjectDisplayName": null,
+          "ToolUpgradeLevel": -1,
+          "IsRecipe": false,
+          "StackModifiers": [
+            {
+              "Id": "DefaultMultiplier",
+              "Condition": null,
+              "Modification": "Multiply",
+              "Amount": 0.0,
+              "RandomAmount": [
+                1.0,
+                2.0,
+                3.0,
+                4.0
+              ]
+            }
+          ],
+          "StackModifierMode": "Stack",
+          "QualityModifiers": null,
+          "QualityModifierMode": "Stack",
+          "ModData": null,
+          "PerItemCondition": null
+        }
+      ],
       "CustomFields": null
     },
     "JojaMart": {
@@ -249,7 +314,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": "PLAYER_HAS_MAIL Host ccMovieTheater, !PLAYER_HAS_MAIL Host ccMovieTheaterJoja",
+          "Condition": "SYNCED_RANDOM day garbage_joja 0.2, PLAYER_HAS_MAIL Host ccMovieTheater, !PLAYER_HAS_MAIL Host ccMovieTheaterJoja",
           "Id": "Base_MovieTicketOrCorn",
           "ItemId": null,
           "RandomItemId": [
@@ -279,7 +344,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": "!PLAYER_HAS_SEEN_EVENT Any 191393",
+          "Condition": "SYNCED_RANDOM day garbage_joja 0.2, !PLAYER_HAS_SEEN_EVENT Any 191393",
           "Id": "Base_JojaCola",
           "ItemId": "(O)167",
           "RandomItemId": null,
@@ -315,7 +380,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": null,
+          "Condition": "SYNCED_RANDOM day garbage_museum_535 0.2 @addDailyLuck, SYNCED_RANDOM day garbage_museum_749 0.05",
           "Id": "Base_OmniGeode",
           "ItemId": "(O)749",
           "RandomItemId": null,
@@ -340,7 +405,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": null,
+          "Condition": "SYNCED_RANDOM day garbage_museum_535 0.2 @addDailyLuck",
           "Id": "Base_Geode",
           "ItemId": "(O)535",
           "RandomItemId": null,
@@ -371,7 +436,7 @@
           "IsDoubleMegaSuccess": false,
           "AddToInventoryDirectly": false,
           "CreateMultipleDebris": false,
-          "Condition": null,
+          "Condition": "SYNCED_RANDOM day garbage_saloon_dish 0.2 @addDailyLuck",
           "Id": "Base_DishOfTheDay",
           "ItemId": "DISH_OF_THE_DAY",
           "RandomItemId": null,
