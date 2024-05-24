@@ -11,7 +11,7 @@ namespace GarbageCanTweaks
 
         public static NPC birthday;
 
-        public static string bCan;
+        public static string bCan; //b(irthday)can if it wasnt obvious
 
         public static List<string> noGift = new List<string>()
         {
@@ -44,7 +44,8 @@ namespace GarbageCanTweaks
                     return true;
                 }
 
-                GarbageCanData allData = DataLoader.GarbageCans(Game1.content);
+                bool getItem = false;
+                GarbageCanData allData = SHelper.Data.ReadJsonFile<GarbageCanData>(dataFile);
                 IDictionary<string, CharacterData> npcs = Game1.characterData;
                 if (!allData.GarbageCans.TryGetValue(id, out var data))
                     data = null;
@@ -65,7 +66,7 @@ namespace GarbageCanTweaks
                 {
                     if (id.Equals(bCan))
                     {
-                        Game1.showGlobalMessage($"You found a birthday item for {birthday.displayName}!");
+                        Game1.showGlobalMessage($"{I18n.Found()}{birthday.displayName}!");
                         __instance.localSound("cluck");
                         Log($"Happy birthday, {birthday.Name}!");
                         item = birthday.getFavoriteItem();
@@ -79,7 +80,7 @@ namespace GarbageCanTweaks
                 Log($"Didn't find a birthday!", debugOnly: true);
 
                 item = null;
-                bool baseChancePassed = garbageRandom.NextDouble() < (double)Config.LootChance;
+                bool baseChancePassed = garbageRandom.NextDouble() < ((baseChance > 0) ? (double)baseChance * Config.LootChance : (double)baseChance / Config.LootChance);
                 ItemQueryContext itemQueryContext = new ItemQueryContext(__instance, Game1.player, garbageRandom);
                 List<GarbageCanItemData>[] array = new List<GarbageCanItemData>[3]
                 {
@@ -87,6 +88,8 @@ namespace GarbageCanTweaks
                     data?.Items,
                     allData.AfterAll
                 };
+                if (!foundPacks || Config.LootChance == 1f)
+                    return true; // if default loot table & no bday, we might as well just use vanilla logic
                 for (int i = 0; i < array.Count(); i++)
                 {
                     List<GarbageCanItemData> itemList = array[i];
@@ -99,20 +102,25 @@ namespace GarbageCanTweaks
                         if (string.IsNullOrWhiteSpace(entry.Id))
                         {
                             logError("ignored item entry with no Id field.");
+                            break;
                         }
-                        else if ((baseChancePassed || entry.IgnoreBaseChance) && i != 0 && i != 2 && GameStateQuery.CheckConditions(entry.Condition, __instance, null, null, null, garbageRandom))
+                        else if (baseChancePassed || entry.IgnoreBaseChance)
                         {
-                            bool error = false;
-                            Item result = ItemQueryResolver.TryResolveRandomItem(entry, itemQueryContext, avoidRepeat: false, null, null, null, delegate (string query, string message)
-                            {
-                                error = true;
-                                logError("failed parsing item query '" + query + "': " + message);
-                            });
-                            if (!error)
-                            {
-                                selected = entry;
-                                item = result;
-                                break;
+                            string condition = (entry.Condition is not null) ? ApplyLootChance(entry.Condition) : entry.Condition;
+                            if ((!string.IsNullOrWhiteSpace(condition) && condition.Contains("RANDOM")) && Config.LootChance != 1f && GameStateQuery.CheckConditions(condition, __instance, null, null, null, garbageRandom))
+                            { // basically if we wanna multiply chance, do it. otherwise, use base logic
+                                bool error = false;
+                                Item result = ItemQueryResolver.TryResolveRandomItem(entry, itemQueryContext, avoidRepeat: false, null, null, null, delegate (string query, string message)
+                                {
+                                    error = true;
+                                    logError("failed parsing item query '" + query + "': " + message);
+                                });
+                                if (!error)
+                                {
+                                    selected = entry;
+                                    item = result;
+                                    break;
+                                }
                             }
                         }
                     }
