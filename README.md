@@ -6,6 +6,8 @@
 
 **[Wild Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/24349)**
 
+**[Garbage Can Tweaks](https://www.nexusmods.com/stardewvalley/mods/24410)**
+
 **[Skateboard by aedenthorn](https://www.nexusmods.com/stardewvalley/mods/24074)**
 
 **[\[CP\] Ali's Overgrown Fairy Buildings Shipping Bin by EraserCat](https://www.nexusmods.com/stardewvalley/mods/24074)**
