@@ -95,7 +95,7 @@ namespace MyMod
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
         {
-            Log("{Launching with Debug mode enabled.", debugOnly: true);
+            Log("Launching with Debug mode enabled.", debugOnly: true);
 
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
             if (configMenu is null)
