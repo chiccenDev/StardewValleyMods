@@ -131,6 +131,15 @@ namespace WildTreeTweaks
                 setValue: value => Config.GrowInWinter = value,
                 fieldId: "GrowInWinter"
             );
+
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.GrowNearTrees(),
+                tooltip: () => I18n.GrowNearTrees_1(),
+                getValue: () => Config.GrowNearTrees,
+                setValue: value => Config.GrowNearTrees = value,
+                fieldId: "GrowNearTrees"
+            );
             /* not working atm
             configMenu.AddBoolOption(
                 mod: ModManifest,
