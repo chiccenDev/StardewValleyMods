@@ -121,7 +121,12 @@ namespace WildTreeTweaks
                 if (!Config.EnableMod || !Object.isWildTreeSeed(__instance.ItemId) || __result || (!l.IsFarm && Config.OnlyOnFarm) || (!l.IsOutdoors && (!l.treatAsOutdoors.Value && !l.IsGreenhouse)))
                     return;
 
-                if (!canPlaceWildTreeSeed(__instance, l, tile, out var deniedMessage)) return;
+                if (!canPlaceWildTreeSeed(__instance, l, tile, out var deniedMessage))
+                {
+                    if (showError && deniedMessage is not null)
+                        Game1.showRedMessage(deniedMessage);
+                    return;
+                }
                 if (!l.isTileOnMap(tile)) return;
                 if (l.GetHoeDirtAtTile(tile)?.crop is not null) return;
 
