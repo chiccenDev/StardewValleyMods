@@ -277,8 +277,9 @@ namespace WildTreeTweaks
         {
             if (!Context.IsPlayerFree)
             {
-                Log($"Cannot run command unless player is free. Try again when game is loaded and player is not in any cutscene or dialogue.", LogLevel.Error);
+                Log("Cannot run command unless player is free. Try again when game is loaded and player is not in any cutscene or dialogue.", LogLevel.Warn);
             }
+            Log("Read command \"fix_stumps\". Resetting stumps back to false. Warning: this may potentially cause some performance drop until this action is completed.", LogLevel.Alert);
             foreach (GameLocation l in Game1.locations)
             {
                 foreach (TerrainFeature feature in l._activeTerrainFeatures)
@@ -289,6 +290,7 @@ namespace WildTreeTweaks
                         tree.stump.Value = false;
                 }
             }
+            Log("Stump fix completed!", LogLevel.Alert);
         }
     }
 }
