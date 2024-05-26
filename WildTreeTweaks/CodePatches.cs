@@ -75,7 +75,7 @@ namespace WildTreeTweaks
 
                 // TileIndexProperties((Type: Dirt), (Water: T)) for beach farm beach water
 
-                if (!Config.EnableMod || !__instance.IsWildTreeSapling() || (!location.IsFarm && Config.OnlyOnFarm)) return true;
+                if (!Config.EnableMod || !__instance.IsWildTreeSapling() || ((!location.IsFarm || !location.IsGreenhouse) && Config.OnlyOnFarm)) return true;
 
                 Vector2 placementTile = new Vector2(x / 64, y / 64);
                 
@@ -108,7 +108,7 @@ namespace WildTreeTweaks
         {
             public static void Postfix(Object __instance, GameLocation l, Vector2 tile, ref bool __result, bool showError = false)
             {
-                if (!Config.EnableMod || !Object.isWildTreeSeed(__instance.ItemId) || __result || (!l.IsFarm && Config.OnlyOnFarm) || (!l.IsOutdoors && !l.treatAsOutdoors.Value))
+                if (!Config.EnableMod || !Object.isWildTreeSeed(__instance.ItemId) || __result || (!l.IsFarm && Config.OnlyOnFarm) || (!l.IsOutdoors && (!l.treatAsOutdoors.Value && !l.IsGreenhouse)))
                     return;
 
                 if (!canPlaceWildTreeSeed(__instance, l, tile, out var deniedMessage)) return;

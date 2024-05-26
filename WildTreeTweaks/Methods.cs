@@ -51,7 +51,7 @@ namespace WildTreeTweaks
                 deniedMessage = "Tile is occupied by an object.";
                 return false;
             }
-            if(!location.IsOutdoors && !location.treatAsOutdoors.Value)
+            if(!location.IsOutdoors && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
             {
                 deniedMessage = "Cannot place indoors.";
                 return false;
@@ -59,6 +59,11 @@ namespace WildTreeTweaks
             if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null)
             {
                 deniedMessage = "Cannot plant in water";
+                return false;
+            }
+            if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
+            {
+                deniedMessage = "Invalid plant location.";
                 return false;
             }
             if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
