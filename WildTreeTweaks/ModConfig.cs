@@ -7,14 +7,14 @@
         public bool OnlyOnFarm { get; set; } = false; // only overwrite farm trees
         public bool GrowInWinter { get; set; } = true; // just like FTT, grow in winter DONE?
         public bool MossFromMature { get; set; } = true; // whether they can grow moss from maturity (growthStage 4) or default (growthStage 14)
-        public float Health { get; set; } = 10f; // starting health DONE?
-        public float WoodMultiplier { get; set; } = 1f; // multiply wood output
-        public float MysteryBoxChance { get; set; } = 0.005f; // multiply myster box roll chance
+        public float Health { get; set; } = 10f; // start health -- patched by Tree constructor
+        public float WoodMultiplier { get; set; } = 1f; // multiply wood output -- patched by Tree.tickUpdate && ModEntry.performTreeFall (in methods)
+        public float MysteryBoxChance { get; set; } = 0.005f; // mystery box roll chance -- patched by Tree.performToolAction
         public bool BookChanceBool { get; set; } = false; // does user want to change the logic
-        public float BookChance { get; set; } = 0.0005f; // chance to drop woodcutting book
-        public float GrowthChance { get; set; } = 0.2f; // DONE?
-        public float SeedChance { get; set; } = 0.05f; // chance for daily seed from shake DONE?
-        public float SeedSpreadChance { get; set; } = 0.15f; // DONE?
+        public float BookChance { get; set; } = 0.0005f; // chance to drop woodcutting book -- patched by Tree.performToolAction
+        public float GrowthChance { get; set; } = 0.2f; // DONE? -- patched by Tree.TryGetData
+        public float SeedChance { get; set; } = 0.05f; // chance for daily seed from shake -- patched by Tree.TryGetData
+        public float SeedSpreadChance { get; set; } = 0.15f; // chance for seed spread overnight -- patched by Tree.TryGetData
         public bool Debug { get; set; } = false;
 
     }
