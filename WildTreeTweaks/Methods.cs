@@ -248,8 +248,6 @@ namespace WildTreeTweaks
             return false;
         }
 
-        
-
         private void Player_Warped(object sender, WarpedEventArgs e)
         {
             GameLocation location = e.NewLocation;
