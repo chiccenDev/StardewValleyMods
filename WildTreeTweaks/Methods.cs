@@ -1,12 +1,13 @@
 ﻿using StardewValley;
 using StardewValley.TerrainFeatures;
 using Microsoft.Xna.Framework;
-using Object = StardewValley.Object;
+using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley.GameData.WildTrees;
 using StardewValley.Extensions;
 using StardewValley.Internal;
-using xTile.Tiles;
+using Object = StardewValley.Object;
+using Context = StardewModdingAPI.Context;
 
 namespace WildTreeTweaks
 {
@@ -263,10 +264,31 @@ namespace WildTreeTweaks
                 Tree tree = (Tree)feature;
                 tree.GetData();
                 tree.health.Value = Config.Health;
+
             }
 
             leaves.Clear();
         }
 
+        /// <summary>
+        /// Resets all stumps in a location to regular, fully grown trees. Should exclusively be used for debugging or bug fixing.
+        /// </summary>
+        private void FixStumps(string command, string[] args)
+        {
+            if (!Context.IsPlayerFree)
+            {
+                Log($"Cannot run command unless player is free. Try again when game is loaded and player is not in any cutscene or dialogue.", LogLevel.Error);
+            }
+            foreach (GameLocation l in Game1.locations)
+            {
+                foreach (TerrainFeature feature in l._activeTerrainFeatures)
+                {
+                    if (feature is not Tree) continue;
+                    Tree tree = (Tree)feature;
+                    if (tree.stump.Value)
+                        tree.stump.Value = false;
+                }
+            }
+        }
     }
 }

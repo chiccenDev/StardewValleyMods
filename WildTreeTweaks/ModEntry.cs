@@ -39,6 +39,8 @@ namespace WildTreeTweaks
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
+
+            helper.ConsoleCommands.Add("fix_stumps", "DEBUG ONLY. Reset all trees from stumps to not stumps. Does not accept any arguments.", this.FixStumps);
         }
 
         /// <summary>
