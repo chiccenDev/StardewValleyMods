@@ -160,17 +160,6 @@ namespace WildTreeTweaks
                 min: 0f
             );
 
-            configMenu.AddNumberOption(
-                mod: ModManifest,
-                name: () => I18n.MysterChance(),
-                tooltip: () => I18n.MysteryChance_1(),
-                getValue: () => Config.MysteryBoxChance,
-                setValue: value => Config.MysteryBoxChance = value,
-                min: 0f,
-                max: 1f,
-                interval: 0.005f
-            );
-
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.BookChanceBool(),
@@ -182,12 +171,23 @@ namespace WildTreeTweaks
             configMenu.AddNumberOption(
                 mod: ModManifest,
                 name: () => I18n.BookChance(),
-                tooltip: () => I18n.BookChanceBool_1(),
+                tooltip: () => I18n.BookChance_1(),
                 getValue: () => Config.BookChance,
                 setValue: value => Config.BookChance = value,
                 min: 0f,
                 max: 1f,
                 interval: 0.0005f
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.MysterChance(),
+                tooltip: () => I18n.MysteryChance_1(),
+                getValue: () => Config.MysteryBoxChance,
+                setValue: value => Config.MysteryBoxChance = value,
+                min: 0f,
+                max: 1f,
+                interval: 0.005f
             );
 
             configMenu.AddNumberOption(
