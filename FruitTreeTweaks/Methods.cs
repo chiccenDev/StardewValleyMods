@@ -1,16 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.TerrainFeatures;
 using StardewModdingAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using StardewValley.ItemTypeDefinitions;
 
 namespace FruitTreeTweaks
 {
     public partial class ModEntry
     {
         private static Dictionary<GameLocation, (List<Color> colors, List<float> sizes, List<Vector2> offsets)> fruitData = new();
+        private static Dictionary<string, (Texture2D texture, Rectangle sourceRect)> textures = new();
         private static int fruitToday;
 
         private static float GetTreeBottomOffset(FruitTree tree)
@@ -47,6 +51,17 @@ namespace FruitTreeTweaks
                     return Config.DaysUntilMature * 3 / 4;
             }
             return oldValue;
+        }
+        private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
+        {
+            if (!textures.TryGetValue(tree.fruit.Name, out var data))
+            {
+                ParsedItemData fruit = (((int)tree.struckByLightningCountdown.Value > 0) ? ItemRegistry.GetDataOrErrorItem("(O)382") : ItemRegistry.GetDataOrErrorItem(tree.fruit[0].QualifiedItemId));
+                textures.Add(tree.fruit.Name, (fruit.GetTexture(), fruit.GetSourceRect()));
+                textures.TryGetValue(tree.fruit.Name, out data);
+            }
+            sourceRect = data.sourceRect;
+            return data.texture;
         }
         private static Color GetFruitColor(FruitTree tree, int index)
         {

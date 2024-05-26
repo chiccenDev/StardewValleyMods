@@ -126,6 +126,7 @@ namespace FruitTreeTweaks
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitScale))));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldloc_S, 8));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0, null));
+                        which++;
                     }
                     if (found1 && which >= 2) // the which check is a little redundant since the condition checks ldc.i4.0 which only applies to the first 2 draws anyway, but ill allow it
                         break;
@@ -143,10 +144,7 @@ namespace FruitTreeTweaks
                     Vector2 tileLocation = __instance.Tile;
                     Color color = data.colors[i];
 
-                    ParsedItemData fruit = (((int)__instance.struckByLightningCountdown > 0) ? ItemRegistry.GetDataOrErrorItem("(O)382") : ItemRegistry.GetDataOrErrorItem(__instance.fruit[i].QualifiedItemId));
-                    Texture2D texture = fruit.GetTexture();
-                    Rectangle sourceRect = fruit.GetSourceRect();
-                    Log($"Drawing texture from {fruit.TextureName} for {fruit.InternalName}", debugOnly: true);
+                    Texture2D texture = GetTexture(__instance, out var sourceRect);
                     spriteBatch.Draw(texture, Game1.GlobalToLocal(Game1.viewport, tileLocation * 64f - new Vector2(16, 80) * 4 + offset), sourceRect, color, 0f, Vector2.Zero, GetFruitScale(__instance, i), SpriteEffects.None, (float)__instance.getBoundingBox().Bottom / 10000f + 0.002f - tileLocation.X / 1000000f + i / 100000f);
 
                 }
