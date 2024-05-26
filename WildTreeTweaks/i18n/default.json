@@ -6,7 +6,7 @@
   "GrowthChance.1": "The chance trees have to grow to the next stage overnight. 0 (will never grow) to 1 (will grow every night).",
   "GrowInWinter": "Trees Grow In Winter",
   "GrowInWinter.1": "Even without fertilizer!",
-  "GrowNearTrees": "Allow Tree Growth In Adjacent Tiles",
+  "GrowNearTrees": "Allow Growth Near Trees",
   "GrowNearTrees.1": "When enabled, allow trees to grow even if another fully grown tree is in an adjacent tile. Normal tree growth is blocked at growth stage 4.",
   "MossFromMature": "Moss When Mature",
   "MossfromMature.1": "Trees dont typically produce moss until they are quite old. Enable to have them able to produce moss as soon as they are grown.",
