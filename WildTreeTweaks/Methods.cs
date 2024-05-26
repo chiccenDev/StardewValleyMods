@@ -62,7 +62,7 @@ namespace WildTreeTweaks
                 deniedMessage = "Cannot plant in water";
                 return false;
             }
-            if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
+            if ((location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood")) || location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Stone"))
             {
                 deniedMessage = "Invalid plant location.";
                 return false;
