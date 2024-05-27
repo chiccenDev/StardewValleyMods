@@ -134,7 +134,7 @@ namespace FruitTreeTweaks
                 setValue: value => Config.PlantAnywhere = value
             );
             Log($"Plant Anywhere: {Config.PlantAnywhere}", debugOnly: true);
-            /* future feature
+            
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.PlantOnPaths(),
@@ -142,7 +142,7 @@ namespace FruitTreeTweaks
                 getValue: () => Config.PlantOnPaths,
                 setValue: value => Config.PlantOnPaths = value
             );
-            Log($"Plant On Paths: {Config.PlantOnPaths}", debugOnly: true);*/
+            Log($"Plant On Paths: {Config.PlantOnPaths}", debugOnly: true);
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
@@ -151,7 +151,7 @@ namespace FruitTreeTweaks
                 getValue: () => Config.FruitAllSeasons,
                 setValue: value => Config.FruitAllSeasons = value
             );
-            Log($"Fruit All Seasons: {Config.FruitAllSeasons}", debugOnly: true); // plant on paths currently not working, so comment this out if you can't get it working
+            Log($"Fruit All Seasons: {Config.FruitAllSeasons}", debugOnly: true);
 
             configMenu.AddBoolOption(
                 mod: ModManifest,

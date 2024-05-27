@@ -52,6 +52,55 @@ namespace FruitTreeTweaks
             }
             return oldValue;
         }
+        private static bool CanItemBePlacedHere(GameLocation location, Vector2 tile)
+        {
+            string deniedMessage = string.Empty;
+            if (location.getBuildingAt(tile) is not null)
+            {
+                deniedMessage = "Tile is occupied by a building.";
+            }
+            if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null }))
+            {
+                deniedMessage = "Tile is occupied by crops.";
+            }
+            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
+            {
+                deniedMessage = "Tile is occupied.";
+            }
+            if (terrainFeature is not null && !terrainFeature.isPassable())
+            {
+                deniedMessage = "Tile is blocked by terrain!";
+            }
+            if (!location.isTilePlaceable(tile, true))
+            {
+                deniedMessage = "Tile is not placeable.";
+            }
+            if (location.objects.ContainsKey(tile))
+            {
+                if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Paths") != -1)
+                    deniedMessage = "Tile is occupied by a floor path object, and I cannot get over that for some reason";
+                else deniedMessage = "Tile is occupied by an object.";
+            }
+            if (!location.IsOutdoors && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
+            {
+                deniedMessage = "Cannot place indoors.";
+            }
+            if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null)
+            {
+                deniedMessage = "Cannot plant in water";
+            }
+            if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
+            {
+                deniedMessage = "Invalid plant location.";
+            }
+            if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
+            {
+                deniedMessage = "Invalid plant location.";
+            }
+
+            Log($"{deniedMessage ?? "CanItemBePlacedHere passed!"}");
+            return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
+        }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
             if (!textures.TryGetValue(tree.fruit.Name, out var data))
