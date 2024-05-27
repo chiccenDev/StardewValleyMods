@@ -7,7 +7,6 @@
         public bool ObjectsBlock { get; set; } = false;
         public bool TreesBlock { get; set; } = false;
         public bool PlantAnywhere { get; set; } = false;
-        public bool PlantOnPaths { get; set; } = false;
         public bool FruitAllSeasons { get; set; } = true;
         public bool FruitInWinter { get; set; } = false;
         public int DaysUntilMature { get; set; } = 28;

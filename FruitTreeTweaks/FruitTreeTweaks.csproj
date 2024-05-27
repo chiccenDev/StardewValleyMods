@@ -9,6 +9,11 @@
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="__releases\**" />
+    <EmbeddedResource Remove="__releases\**" />
+    <None Remove="__releases\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="i18n\default.json" />
     <None Remove="PatchingNotes.txt" />
     <None Remove="Stardew-Valley.pdb" />
