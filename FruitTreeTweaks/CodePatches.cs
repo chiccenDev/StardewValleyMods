@@ -136,8 +136,11 @@ namespace FruitTreeTweaks
             }
             public static void Postfix(FruitTree __instance, SpriteBatch spriteBatch)
             {
-                if (!Config.EnableMod || __instance.fruit.Count <= 3 || __instance.growthStage.Value < 4 || !fruitData.TryGetValue(Game1.currentLocation, out var data))
+                if (!Config.EnableMod || __instance.fruit.Count <= 3 || __instance.growthStage.Value < 4)
                     return;
+                if (!fruitData.TryGetValue(Game1.currentLocation, out var dict) || !dict.TryGetValue(__instance.Tile, out var data))
+                    ReloadFruit(__instance.Location, __instance.Tile, __instance.fruit.Count);
+                dict.TryGetValue(__instance.Tile, out data);
                 for (int i = 3; i < __instance.fruit.Count; i++)
                 {
                     Vector2 offset = GetFruitOffset(__instance, i);

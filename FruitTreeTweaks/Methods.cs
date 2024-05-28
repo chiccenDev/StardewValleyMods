@@ -13,7 +13,7 @@ namespace FruitTreeTweaks
 {
     public partial class ModEntry
     {
-        private static Dictionary<GameLocation, (List<Color> colors, List<float> sizes, List<Vector2> offsets)> fruitData = new();
+        private static Dictionary<GameLocation, Dictionary<Vector2, (List<Color> colors, List<float> sizes, List<Vector2> offsets)>> fruitData = new();
         private static Dictionary<string, (Texture2D texture, Rectangle sourceRect)> textures = new();
         private static int fruitToday;
 
@@ -61,9 +61,9 @@ namespace FruitTreeTweaks
                 deniedMessage = "Tile is occupied by a building.";
             if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null }))
                 deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
-            //if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
-            //    deniedMessage = "Tile is occupied.";
-            if (terrainFeature is not null && !terrainFeature.isPassable())
+            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
+                deniedMessage = "Tile is occupied.";
+            if (terrainFeature is not null)
                 deniedMessage = "Tile is blocked by terrain!";
             if (!location.isTilePlaceable(tile, true))
                 deniedMessage = "Tile is not placeable.";
@@ -86,8 +86,8 @@ namespace FruitTreeTweaks
             {
                 ParsedItemData fruit = (((int)tree.struckByLightningCountdown.Value > 0) ? ItemRegistry.GetDataOrErrorItem("(O)382") : ItemRegistry.GetDataOrErrorItem(tree.fruit[0].QualifiedItemId));
                 textures.Add(tree.fruit.Name, (fruit.GetTexture(), fruit.GetSourceRect()));
-                textures.TryGetValue(tree.fruit.Name, out data);
             }
+            textures.TryGetValue(tree.fruit.Name, out data);
             sourceRect = data.sourceRect;
             return data.texture;
         }
@@ -95,22 +95,26 @@ namespace FruitTreeTweaks
         {
             if (!Config.EnableMod)
                 return Color.White;
-            if (!fruitData.TryGetValue(tree.Location, out var data) || data.colors.Count < tree.fruit.Count)
+            if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.colors?.Count < tree.fruit.Count)
             {
-                ReloadFruit(tree.Location, tree.fruit.Count);
-                fruitData.TryGetValue(tree.Location, out data);
+                Log("colors reloading fruit");
+                ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
-            return data.colors[index];
+            fruitData.TryGetValue(tree.Location, out dict);
+            dict.TryGetValue(tree.Tile, out data);
+            return data.colors[index]; // notes for tomorrow: this is reading null. find out why. and see if texture optimization will let us have 700+ unique draw configs again
         }
         private static float GetFruitScale(FruitTree tree, int index)
         {
             if (!Config.EnableMod)
                 return 4;
-            if (!fruitData.TryGetValue(tree.Location, out var data) || data.sizes.Count < tree.fruit.Count)
+            if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.sizes?.Count < tree.fruit.Count)
             {
-                ReloadFruit(tree.Location, tree.fruit.Count);
-                fruitData.TryGetValue(tree.Location, out data);
+                Log("scales reloading fruit");
+                ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
+            fruitData.TryGetValue(tree.Location, out dict);
+            dict.TryGetValue(tree.Tile, out data);
             return data.sizes[index];
         }
         private static Vector2 GetFruitOffsetForShake(FruitTree tree, int index)
@@ -122,22 +126,29 @@ namespace FruitTreeTweaks
 
         private static Vector2 GetFruitOffset(FruitTree tree, int index)
         {
-            if (!fruitData.TryGetValue(tree.Location, out var data) || data.offsets.Count < tree.fruit.Count)
+            if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.offsets?.Count < tree.fruit.Count)
             {
-                ReloadFruit(tree.Location, tree.fruit.Count);
-                fruitData.TryGetValue(tree.Location, out data);
+                Log("offsets reloading fruit");
+                ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
+            fruitData.TryGetValue(tree.Location, out dict);
+            dict.TryGetValue(tree.Tile, out data);
             return data.offsets[index];
         }
 
-        private static void ReloadFruit(GameLocation location, int max)
+        private static void ReloadFruit(GameLocation location, Vector2 tile, int max)
         {
+            
             // init fruit data
             if (!fruitData.ContainsKey(location))
+                fruitData.Add(location, new Dictionary<Vector2, (List<Color>, List<float>, List<Vector2>)>());
+            if (!fruitData[location].TryGetValue(tile, out var data))
             {
-                fruitData.Add(location, (new List<Color>(), new List<float>(), new List<Vector2>()));
+                data.colors = new List<Color>();
+                data.sizes = new List<float>();
+                data.offsets = new List<Vector2>();
+                fruitData[location][tile] = (data.colors, data.sizes, data.offsets);
             }
-            fruitData.TryGetValue(location, out var data);
 
             // fruit colors
             if (data.colors.Count < max)
@@ -201,6 +212,7 @@ namespace FruitTreeTweaks
                     }
                 }
             }
+            Log($"color count: {data.colors.Count}\nsize count: {data.sizes.Count}\noffset count: {data.offsets.Count}", LogLevel.Alert);
         }
     }
 }
