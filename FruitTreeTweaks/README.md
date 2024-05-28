@@ -24,7 +24,7 @@ Message @chiccen on Discord for details on how you would like to be credited, or
 
 &nbsp;     | Fruit Tree Tweaks
 :--------- | :----------------
-Chinese    | [❑](./i18n)
+Chinese    | [✓](./i18n)
 French     | [❑](./i18n)
 German     | [↻](./i18n)
 Hungarian  | [❑](./i18n)

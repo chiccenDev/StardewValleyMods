@@ -97,7 +97,6 @@ namespace FruitTreeTweaks
                 return Color.White;
             if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.colors?.Count < tree.fruit.Count)
             {
-                Log("colors reloading fruit");
                 ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
             fruitData.TryGetValue(tree.Location, out dict);
@@ -110,7 +109,6 @@ namespace FruitTreeTweaks
                 return 4;
             if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.sizes?.Count < tree.fruit.Count)
             {
-                Log("scales reloading fruit");
                 ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
             fruitData.TryGetValue(tree.Location, out dict);
@@ -128,7 +126,6 @@ namespace FruitTreeTweaks
         {
             if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.offsets?.Count < tree.fruit.Count)
             {
-                Log("offsets reloading fruit");
                 ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
             }
             fruitData.TryGetValue(tree.Location, out dict);
@@ -212,7 +209,6 @@ namespace FruitTreeTweaks
                     }
                 }
             }
-            Log($"color count: {data.colors.Count}\nsize count: {data.sizes.Count}\noffset count: {data.offsets.Count}", LogLevel.Alert);
         }
     }
 }
