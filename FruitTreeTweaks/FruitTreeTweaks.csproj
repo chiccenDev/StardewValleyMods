@@ -14,7 +14,6 @@
     <None Remove="__releases\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="i18n\default.json" />
     <None Remove="PatchingNotes.txt" />
     <None Remove="Stardew-Valley.pdb" />
     <None Remove="TO-DO.txt" />
@@ -31,12 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="assets\wall_pot.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="assets\wall_pot_wet.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="manifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

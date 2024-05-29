@@ -228,16 +228,15 @@ namespace FruitTreeTweaks
         [HarmonyPatch(typeof(Object), nameof(Object.placementAction))] // chiccen
         public class Object_placementAction_Patch
         {
-            public static bool Prefix(GameLocation location, int x, int y, ref bool __result, Farmer who = null)
+            public static bool Prefix(Object __instance, GameLocation location, int x, int y, ref bool __result, Farmer who = null)
             {
                 if (location is not Farm && !Config.PlantAnywhere) return true;
 
-                if (who?.CurrentItem?.GetItemTypeId() is not "(O)") return true;
+                if (!__instance.TypeDefinitionId.Equals("(O)")) return true;
 
-                Object obj = who?.CurrentItem as Object ?? null;
+                Object obj = __instance as Object ?? null;
                 if (Config.EnableMod && obj.IsFruitTreeSapling())
                 {
-
                     Vector2 placementTile = new Vector2(x / 64, y / 64);
                     string deniedMessage = string.Empty;
                     if ((location is Farm || CanPlantAnywhere()) && (CanItemBePlacedHere(location, placementTile, out deniedMessage) || Config.GodMode))
@@ -251,16 +250,16 @@ namespace FruitTreeTweaks
                         location.terrainFeatures.Remove(placementTile);
                         location.terrainFeatures.Add(placementTile, fruitTree);
                         __result = true;
-                        LogOnce($"{obj?.DisplayName} made it through all checks and should be good to place!", debugOnly: true);
+                        LogOnce($"{obj?.DisplayName} passed all checks and should be placed!", debugOnly: true);
                         return false;
                     }
                     else
                     {
                         //Game1.showRedMessage(deniedMessage); need to translate first
-                        Log($"{deniedMessage}"); // placeholder until we can translate
+                        Log($"{deniedMessage}", debugOnly: true); // placeholder until we can translate
                     }
                 }
-                LogOnce($"placementAction handling for {obj?.DisplayName} passed to original method.", debugOnly: true);
+                LogOnce($"placementAction for {obj?.DisplayName} passed to vanilla method.", debugOnly: true);
                 return true;
             }
         }

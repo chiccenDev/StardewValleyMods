@@ -2,11 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.TerrainFeatures;
-using StardewModdingAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using StardewValley.ItemTypeDefinitions;
 
 namespace FruitTreeTweaks
