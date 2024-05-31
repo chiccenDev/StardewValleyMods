@@ -12,6 +12,13 @@
 	"FromFile": "assets/{{season}}_bin.png",
 	"ToArea": { "X": 192, "Y": 224, "Width": 32, "Height": 32 },
 	},
+	{
+	"Action": "EditImage",
+	"Target": "Maps/island_tileSheet_1",
+	"FromFile": "assets/summer_bin.png",
+	"ToArea": { "X": 192, "Y": 720, "Width": 32, "Height": 32 },
+	"When": { "Island Shipping Bin": "enabled" }
+	},
 
 	{
 	"Action": "EditImage",
