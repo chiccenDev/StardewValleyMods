@@ -23,7 +23,7 @@ namespace WaterYourCrops
                 
                 Vector2 tile = __instance.Tile;
                 Vector2 drawPos = Game1.GlobalToLocal(Game1.viewport, tile * 64f);
-                /*
+                
                 byte drawSum = 0;
                 Vector2 tileLocation = tile;
                 tileLocation.X += 1f;
@@ -42,22 +42,21 @@ namespace WaterYourCrops
                 if (location.terrainFeatures.TryGetValue(tileLocation, out var upFeature) && upFeature is HoeDirt)
                     drawSum++;
 
-                int sourceRectPosition = HoeDirt.drawGuide[drawSum];*/
+                int sourceRectPosition = HoeDirt.drawGuide[drawSum];
 
                 float depthLayer = __instance.crop.layerDepth - 0.01f;
 
                 dirt_batch?.Draw(
                     waterTexture,
                     drawPos,
-                    //new Rectangle(sourceRectPosition % 4 * 16, sourceRectPosition / 4 * 16, 16, 16),
-                    null,
+                    new Rectangle(sourceRectPosition % 4 * 16, sourceRectPosition / 4 * 16, 16, 16),
                     Config.IndicatorColor * Config.IndicatorOpacity,
                     0f,
                     Vector2.Zero,
                     4f,
                     SpriteEffects.None,
                     depthLayer
-                    //(tile.Y * 64f + 32f + (tile.Y * 11f + tile.X * 7f) % 10f - 5f) / 10000f
+                    //(tile.Y * 64f + 32f + (tile.Y * 11f + tile.X * 7f) % 10f - 5f) / 10000f -- this was based on player position draw logic iirc. might still be useful in the future
                 );
             }
         }
