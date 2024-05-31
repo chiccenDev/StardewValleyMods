@@ -7,3 +7,5 @@ obj
 bin
 *.txt
 GCTJsonBuilder/*
+__releases
+__releases/*
