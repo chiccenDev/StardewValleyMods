@@ -12,7 +12,7 @@
     "Directory": "_releases",
     "ModFolder": "WaterYourCrops"
   },
-  "UpdateKeys": [ "Nexus:????" ],
+  "UpdateKeys": [ "Nexus:24710" ],
   "Dependencies": [
     {
       "UniqueID": "Platonymous.ModUpdater",
