@@ -7,5 +7,7 @@
   "IndicatorOpacity": "Indicator Opacity",
   "IndicatorOpacityTip": "How visible the indicator is. 1 = fully visible, 2 = fully invisible.",
   "Debug": "Debug Logs",
-  "DebugTip": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
+  "DebugTip": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report.",
+  "FarmNeedsWater": "You have crop(s) on your farm that need water today!",
+  "IslandNeedsWater": "You have crop(s) on Ginger Island that need water today!"
 }
