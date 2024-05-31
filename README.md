@@ -12,8 +12,8 @@
 
 **[\[CP\] Ali's Overgrown Fairy Buildings Shipping Bin by EraserCat](https://www.nexusmods.com/stardewvalley/mods/24074)**
 
-**Co-op Time Tweaks (In Development)**
+**[Water Your Crops](https://www.nexusmods.com/stardewvalley/mods/24710)**
 
-**Water Your Crops (In Development)**
+**Co-op Time Tweaks (In Development)**
 
 **Template/MyMod (Mod Template)**
