@@ -52,31 +52,48 @@ namespace FruitTreeTweaks
         }
         private static bool CanItemBePlacedHere(GameLocation location, Vector2 tile, out string deniedMessage)
         {
-            deniedMessage = string.Empty;
-            if (location is not Farm && !CanPlantAnywhere())
-                deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
-            if (location.getBuildingAt(tile) is not null)
-                deniedMessage = "Tile is occupied by a building.";
-            if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null }))
-                deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
-            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
-                deniedMessage = "Tile is occupied.";
-            if (terrainFeature is not null)
-                deniedMessage = "Tile is blocked by terrain!";
-            if (!location.isTilePlaceable(tile, true))
-                deniedMessage = "Tile is not placeable.";
-            if (location.objects.ContainsKey(tile))
-                deniedMessage = "Tile is occupied by an object.";
-            if (!location.IsOutdoors && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
-                deniedMessage = "Cannot place indoors.";
-            if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null)
-                deniedMessage = "Cannot plant in water";
-            if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
-                deniedMessage = "Invalid plant location.";
-            if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
-                deniedMessage = "Invalid plant location.";
+            if (location is null)
+            {
+                deniedMessage = "Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.";
+                return true;
+            }
 
-            return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
+            try
+            {
+                deniedMessage = string.Empty;
+                if (location is not Farm && !CanPlantAnywhere())
+                    deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
+                if (location.getBuildingAt(tile) is not null)
+                    deniedMessage = "Tile is occupied by a building.";
+                if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null }))
+                    deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
+                if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
+                    deniedMessage = "Tile is occupied.";
+                if (terrainFeature is not null)
+                    deniedMessage = "Tile is blocked by terrain!";
+                if (!location.isTilePlaceable(tile, true))
+                    deniedMessage = "Tile is not placeable.";
+                if (location.objects.ContainsKey(tile))
+                    deniedMessage = "Tile is occupied by an object.";
+                if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
+                    deniedMessage = "Cannot place indoors.";
+                if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null)
+                    deniedMessage = "Cannot plant in water";
+                if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
+                    deniedMessage = "Invalid plant location.";
+                if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
+                    deniedMessage = "Invalid plant location.";
+
+                return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
+            }
+            catch (Exception e)
+            {
+                deniedMessage = "Fruit Tree Tweaks encountered an error. Seen SMAPI log for details.";
+                Log($"Fruit Tree Tweaks encountered an error. Consider submitting a bug report with as much relevant detail as possible, including this SMAPI log via https://smapi.io/log/", StardewModdingAPI.LogLevel.Error);
+                Log($"{e.Message}: {e.StackTrace}", StardewModdingAPI.LogLevel.Error);
+                return true;
+            }
+            
         }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
