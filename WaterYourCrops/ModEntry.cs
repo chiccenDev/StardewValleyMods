@@ -152,8 +152,8 @@ namespace WaterYourCrops
                 mod: ModManifest,
                 name: () => I18n.OnlyWaterCan(),
                 tooltip: () => I18n.OnlyWaterCanTip(),
-                getValue: () => Config.Debug,
-                setValue: value => Config.Debug = value
+                getValue: () => Config.OnlyWaterCan,
+                setValue: value => Config.OnlyWaterCan = value
             );
             if (configMenuExt is not null)
             {
