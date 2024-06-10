@@ -73,6 +73,9 @@ namespace WaterYourCrops
 
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
+            if (!Config.EnableMod)
+                return;
+
             Farm farm = Game1.getFarm();
             GameLocation island = Game1.getLocationFromNameInLocationsList("IslandWest");
 
@@ -149,8 +152,8 @@ namespace WaterYourCrops
                 mod: ModManifest,
                 name: () => I18n.OnlyWaterCan(),
                 tooltip: () => I18n.OnlyWaterCanTip(),
-                getValue: () => Config.Debug,
-                setValue: value => Config.Debug = value
+                getValue: () => Config.OnlyWaterCan,
+                setValue: value => Config.OnlyWaterCan = value
             );
             if (configMenuExt is not null)
             {
