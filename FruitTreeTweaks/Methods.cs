@@ -23,14 +23,14 @@ namespace FruitTreeTweaks
         }
         private static bool CanPlantAnywhere()
         {
-            return Config.PlantAnywhere;
+            return Config.PlantAnywhere; // a bit redundant but I've used it a few times so I'll keep it, whatever
         }
         private static int GetMaxFruit()
         {
             return !Config.EnableMod ? 3 : Math.Max(1, Config.MaxFruitPerTree);
         }
         private static int GetFruitPerDay()
-        {
+        { // if config disbaled, return 1 fruit per day. otherwise, return random number between min and max with max +1 as end is not inclusive
             return !Config.EnableMod ? 1 : Game1.random.Next(Config.MinFruitPerDay, Math.Max(Config.MinFruitPerDay, Config.MaxFruitPerDay + 1));
         }
         private static int ChangeDaysToMatureCheck(int oldValue)
@@ -66,24 +66,24 @@ namespace FruitTreeTweaks
                     deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
                 if (location.getBuildingAt(tile) is not null)
                     deniedMessage = "Tile is occupied by a building.";
-                if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null }))
+                if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
                     deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
                 if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
                     deniedMessage = "Tile is occupied.";
                 if (terrainFeature is not null)
                     deniedMessage = "Tile is blocked by terrain!";
-                if (!location.isTilePlaceable(tile, true))
+                if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
                     deniedMessage = "Tile is not placeable.";
                 if (location.objects.ContainsKey(tile))
                     deniedMessage = "Tile is occupied by an object.";
-                if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
+                if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
                     deniedMessage = "Cannot place indoors.";
-                if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null)
+                if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
                     deniedMessage = "Cannot plant in water";
                 if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
-                    deniedMessage = "Invalid plant location.";
+                    deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
                 if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
-                    deniedMessage = "Invalid plant location.";
+                    deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
 
                 return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
             }
@@ -98,10 +98,10 @@ namespace FruitTreeTweaks
         }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
-            if (!textures.TryGetValue(tree.fruit.Name, out var data))
+            if (!textures.TryGetValue(tree.fruit.Name, out var data)) // if sprites haven't already been collected
             {
                 ParsedItemData fruit = (((int)tree.struckByLightningCountdown.Value > 0) ? ItemRegistry.GetDataOrErrorItem("(O)382") : ItemRegistry.GetDataOrErrorItem(tree.fruit[0].QualifiedItemId));
-                textures.Add(tree.fruit.Name, (fruit.GetTexture(), fruit.GetSourceRect()));
+                textures.Add(tree.fruit.Name, (fruit.GetTexture(), fruit.GetSourceRect())); // get the sprite and add it to the list, for optimization
             }
             textures.TryGetValue(tree.fruit.Name, out data);
             sourceRect = data.sourceRect;
@@ -111,13 +111,13 @@ namespace FruitTreeTweaks
         {
             if (!Config.EnableMod)
                 return Color.White;
-            if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.colors?.Count < tree.fruit.Count)
+            if (!fruitData.TryGetValue(tree.Location, out var dict) || !dict.TryGetValue(tree.Tile, out var data) || data.colors?.Count < tree.fruit.Count) // if the data hasn't already been loaded
             {
-                ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count);
+                ReloadFruit(tree.Location, tree.Tile, tree.fruit.Count); // reload ALL data to include color, offset, and sizes/scale
             }
             fruitData.TryGetValue(tree.Location, out dict);
             dict.TryGetValue(tree.Tile, out data);
-            return data.colors[index]; // notes for tomorrow: this is reading null. find out why. and see if texture optimization will let us have 700+ unique draw configs again
+            return data.colors[index];
         }
         private static float GetFruitScale(FruitTree tree, int index)
         {
