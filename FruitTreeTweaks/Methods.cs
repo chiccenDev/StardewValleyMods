@@ -55,6 +55,7 @@ namespace FruitTreeTweaks
             if (location is null)
             {
                 deniedMessage = "Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.";
+                Log($"Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.", StardewModdingAPI.LogLevel.Error);
                 return true;
             }
 
