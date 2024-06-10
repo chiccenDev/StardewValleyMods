@@ -73,6 +73,9 @@ namespace WaterYourCrops
 
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
+            if (!Config.EnableMod)
+                return;
+
             Farm farm = Game1.getFarm();
             GameLocation island = Game1.getLocationFromNameInLocationsList("IslandWest");
 
