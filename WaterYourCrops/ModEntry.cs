@@ -200,7 +200,12 @@ namespace WaterYourCrops
 
             waterTexture = Helper.ModContent.Load<Texture2D>("assets/waterTexture.png");
             if (waterTexture != null) Log("Successfully loaded texture.", debugOnly: true);
-            else Log("Couldn't load indicator texture.", LogLevel.Error);
+            else
+            {
+                Log("Couldn't load indicator texture! Please try re-installing the mod or posting a bug report on Nexus.", LogLevel.Error);
+                Config.EnableMod = false;
+                configMenu.Unregister(ModManifest);
+            }
         }
 
     }
