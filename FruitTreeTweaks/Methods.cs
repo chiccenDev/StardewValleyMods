@@ -54,9 +54,13 @@ namespace FruitTreeTweaks
         {
             if (location is null)
             {
-                deniedMessage = "Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.";
-                Log($"Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.", StardewModdingAPI.LogLevel.Error);
-                return true;
+                   deniedMessage = "Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.";
+                   LogOnce($"Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.", StardewModdingAPI.LogLevel.Error);
+                   return true;
+            }
+            else
+            {
+                LogOnce($"{location.Name} @ {tile.ToString}", debugOnly: true);
             }
 
             try
@@ -89,7 +93,7 @@ namespace FruitTreeTweaks
             }
             catch (Exception e)
             {
-                deniedMessage = "Fruit Tree Tweaks encountered an error. Seen SMAPI log for details.";
+                deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for details.";
                 Log($"Fruit Tree Tweaks encountered an error. Consider submitting a bug report with as much relevant detail as possible, including this SMAPI log via https://smapi.io/log/", StardewModdingAPI.LogLevel.Error);
                 Log($"{e.Message}: {e.StackTrace}", StardewModdingAPI.LogLevel.Error);
                 return true;
