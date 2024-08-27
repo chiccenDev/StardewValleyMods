@@ -16,11 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skateboard", "Skateboard\Skateboard\Skateboard.csproj", "{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarbageCanTweaks", "GarbageCanTweaks\GarbageCanTweaks.csproj", "{B51D4749-54D1-4C3A-83BC-9E5C5D1C9261}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoopTimeTweaks", "CoopTimeTweaks\CoopTimeTweaks.csproj", "{DC14A3D4-F988-4454-8980-B5BBF22A581A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skateboard", "Skateboard\Skateboard.csproj", "{C3331204-DE48-4B1F-A1CE-B3AD7B397634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,14 +58,6 @@ Global
 		{FBF80DEB-2ED6-4454-A294-36A96DCFEF13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBF80DEB-2ED6-4454-A294-36A96DCFEF13}.Release|x64.ActiveCfg = Release|x64
 		{FBF80DEB-2ED6-4454-A294-36A96DCFEF13}.Release|x64.Build.0 = Release|x64
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Debug|x64.Build.0 = Debug|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Release|x64.ActiveCfg = Release|Any CPU
-		{75F02CAC-927C-4B56-A6C0-77CBF7684EA9}.Release|x64.Build.0 = Release|Any CPU
 		{B51D4749-54D1-4C3A-83BC-9E5C5D1C9261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B51D4749-54D1-4C3A-83BC-9E5C5D1C9261}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51D4749-54D1-4C3A-83BC-9E5C5D1C9261}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -82,6 +74,14 @@ Global
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|x64.ActiveCfg = Release|Any CPU
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|x64.Build.0 = Release|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|x64.Build.0 = Debug|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.ActiveCfg = Release|Any CPU
+		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
