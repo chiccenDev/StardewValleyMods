@@ -54,51 +54,42 @@ namespace FruitTreeTweaks
         {
             if (location is null)
             {
-                   deniedMessage = "Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.";
-                   LogOnce($"Failed to find location. Please submit a bug report to Fruit Tree Tweaks For 1.6 on Nexus and provide the location you encountered this error in.", StardewModdingAPI.LogLevel.Error);
-                   return true;
-            }
-            else
-            {
-                LogOnce($"{location.Name} @ {tile.ToString}", debugOnly: true);
+                // potential error handling i may not need anymore
             }
 
+            deniedMessage = string.Empty;
+            if (location is not Farm && !CanPlantAnywhere())
+                deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
+            if (location.getBuildingAt(tile) is not null)
+                deniedMessage = "Tile is occupied by a building.";
+            if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
+                deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
+            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
+                deniedMessage = "Tile is occupied.";
+            if (terrainFeature is not null)
+                deniedMessage = "Tile is blocked by terrain!";
+            if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
+                deniedMessage = "Tile is not placeable.";
+            if (location.objects.ContainsKey(tile))
+                deniedMessage = "Tile is occupied by an object.";
+            if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
+                deniedMessage = "Cannot place indoors.";
+            if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
+                deniedMessage = "Cannot plant in water";
+            if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
+                deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
             try
             {
-                deniedMessage = string.Empty;
-                if (location is not Farm && !CanPlantAnywhere())
-                    deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
-                if (location.getBuildingAt(tile) is not null)
-                    deniedMessage = "Tile is occupied by a building.";
-                if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
-                    deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
-                if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
-                    deniedMessage = "Tile is occupied.";
-                if (terrainFeature is not null)
-                    deniedMessage = "Tile is blocked by terrain!";
-                if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
-                    deniedMessage = "Tile is not placeable.";
-                if (location.objects.ContainsKey(tile))
-                    deniedMessage = "Tile is occupied by an object.";
-                if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
-                    deniedMessage = "Cannot place indoors.";
-                if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
-                    deniedMessage = "Cannot plant in water";
                 if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
                     deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
-                if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
-                    deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
-
-                return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
             }
             catch (Exception e)
             {
                 deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for details.";
-                Log($"Fruit Tree Tweaks encountered an error. Consider submitting a bug report with as much relevant detail as possible, including this SMAPI log via https://smapi.io/log/", StardewModdingAPI.LogLevel.Error);
-                Log($"{e.Message}: {e.StackTrace}", StardewModdingAPI.LogLevel.Error);
-                return true;
+                Log("Greenhouse 'wood' tile property check error. If you are seeing this message but no other issues, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", debugOnly: true);
             }
-            
+
+            return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
         }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
