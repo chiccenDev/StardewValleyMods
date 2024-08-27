@@ -16,12 +16,13 @@ namespace WildTreeTweaks
 
         public static bool canPlaceWildTreeSeed(Object tree, GameLocation location, Vector2 tile, out string deniedMessage)
         {
-            /*if (!tree.IsWildTreeSapling())
+            deniedMessage = string.Empty;
+
+            if (!tree.IsWildTreeSapling())
             {
                 deniedMessage = string.Empty;
-                return false;
-            }*/
-
+                return true;
+            }
             if (location.getBuildingAt(tile) is not null)
             {
                 deniedMessage = "Tile is occupied by a building.";
@@ -52,7 +53,7 @@ namespace WildTreeTweaks
                 deniedMessage = "Tile is occupied by an object.";
                 return false;
             }
-            if(!location.IsOutdoors && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
+            if (!location.IsOutdoors && (!location.treatAsOutdoors.Value && !location.IsGreenhouse))
             {
                 deniedMessage = "Cannot place indoors.";
                 return false;
@@ -62,19 +63,28 @@ namespace WildTreeTweaks
                 deniedMessage = "Cannot plant in water";
                 return false;
             }
-            if ((location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood")) || location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Stone"))
-            {
-                deniedMessage = "Invalid plant location.";
-                return false;
-            }
             if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
             {
                 deniedMessage = "Invalid plant location.";
                 return false;
             }
+            try 
+            {
+                deniedMessage = "Invalid plant location.";
+                if ((location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood")) || location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Stone"))
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Log("Not set to instance of an object error provoked!", LogLevel.Alert);
+                Log(deniedMessage);
+                return true;
+            }
 
-            deniedMessage = string.Empty;
             return true;
+
         }
 
         private static int extraWoodCalculator(Vector2 tileLocation)
