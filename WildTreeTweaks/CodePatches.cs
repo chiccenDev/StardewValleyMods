@@ -150,7 +150,7 @@ namespace WildTreeTweaks
 
                 data.GrowthChance = Config.GrowthChance; // 1f = always true, called in Tree.dayUpdate()
                 data.GrowsInWinter = Config.GrowInWinter; // called in IsInSeason() => GetMaxSizeHere() => dayUpdate()
-                data.IsStumpDuringWinter = !Config.GrowInWinter; // called in dayUpdate()
+                //data.IsStumpDuringWinter = !Config.GrowInWinter; // called in dayUpdate() -- misunderstood. wild trees never become stumps in winter, only decorative town trees
                 data.SeedSpreadChance = Config.SeedSpreadChance; // 1f = always true, called in Tree.dayUpdate()
                 float difChance = (data.SeedOnShakeChance - Config.SeedChance) * 10f; // seed chop scales with seed shake. lowest possible val for seed chop = 0.25 = 25% chance
                 data.SeedOnShakeChance = Config.SeedChance; // 1f = always true, called in Tree.dayUpdate()
