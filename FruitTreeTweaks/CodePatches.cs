@@ -28,7 +28,7 @@ namespace FruitTreeTweaks
                 if (!Config.EnableMod && __instance.daysUntilMature.Value != Config.DaysUntilMature)
                     return;
                 __instance.daysUntilMature.Value = Math.Min(Config.DaysUntilMature, __instance.daysUntilMature.Value);
-                Log($"New fruit tree: set days until mature to {Config.DaysUntilMature}", debugOnly: true);
+                //Log($"New fruit tree: set days until mature to {Config.DaysUntilMature}", debugOnly: true); unnecessary atm
             }
         }
         [HarmonyPatch(typeof(FruitTree), new Type[] { typeof(string), typeof(int) })] // aedenthorn & chiccen
@@ -40,7 +40,7 @@ namespace FruitTreeTweaks
                 if (!Config.EnableMod && __instance.daysUntilMature.Value != Config.DaysUntilMature)
                     return;
                 __instance.daysUntilMature.Value = Math.Min(Config.DaysUntilMature, __instance.daysUntilMature.Value);
-                Log($"New fruit tree: set days until mature to {Config.DaysUntilMature}", debugOnly: true);
+                //Log($"New fruit tree: set days until mature to {Config.DaysUntilMature}", debugOnly: true); unnecessary atm
             }
         }
 
