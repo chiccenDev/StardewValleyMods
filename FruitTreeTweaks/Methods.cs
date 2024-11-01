@@ -93,12 +93,12 @@ namespace FruitTreeTweaks
         }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
-            if (!textures.TryGetValue(tree.fruit.Name, out var data)) // if sprites haven't already been collected
+            if (!textures.TryGetValue(tree.fruit[0].QualifiedItemId, out var data)) // if sprites haven't already been collected
             {
                 ParsedItemData fruit = (((int)tree.struckByLightningCountdown.Value > 0) ? ItemRegistry.GetDataOrErrorItem("(O)382") : ItemRegistry.GetDataOrErrorItem(tree.fruit[0].QualifiedItemId));
-                textures.Add(tree.fruit.Name, (fruit.GetTexture(), fruit.GetSourceRect())); // get the sprite and add it to the list, for optimization
+                textures.Add(tree.fruit[0].QualifiedItemId, (fruit.GetTexture(), fruit.GetSourceRect())); // get the sprite and add it to the list, for optimization
             }
-            textures.TryGetValue(tree.fruit.Name, out data);
+            textures.TryGetValue(tree.fruit[0].QualifiedItemId, out data);
             sourceRect = data.sourceRect;
             return data.texture;
         }
