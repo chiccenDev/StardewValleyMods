@@ -1,0 +1,13 @@
+{
+  "EnableMod": "Activar Mod",
+  "OnlyWaterCan": "Solo con la regadera equipada",
+  "OnlyWaterCanTip": "solo muestra el overlay sosteniendo la regadera.",
+  "IndicatorColor": "Indicador de color",
+  "IndicatorColorTip": "elige el color para el inidcador de que planta necesita ser regada.",
+  "IndicatorOpacity": "indicadpr de opacidad",
+  "IndicatorOpacityTip": "que tan visible el indicador es. Un valor de 0 significa que es completamente invisible, mientras que un valor de 1 significa que es completamente visible.",
+  "Debug": "Debug Logs",
+  "DebugTip": "Para SMAPI debugging logs. activar solo para generar un log y reportar un bug.",
+  "FarmNeedsWater": "Tienes plantas sin regar en tu granja!",
+  "IslandNeedsWater": "Tienes plantas sin regar en la isla!"
+}

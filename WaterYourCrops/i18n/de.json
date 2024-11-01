@@ -1,0 +1,13 @@
+{
+  "EnableMod": "Mod aktivieren",
+  "OnlyWaterCan": "Nur mit Gießkanne",
+  "OnlyWaterCanTip": "Anzeige des Overlays nur wenn die Gießkanne gehalten wird.",
+  "IndicatorColor": "Farbe des Indikators",
+  "IndicatorColorTip": "Wähle die Farbe des Indikators, der bei allen Nutzpflanzen angezeigt wird, wenn diese bewässert werden müssen.",
+  "IndicatorOpacity": "Deckkraft des Indikators",
+  "IndicatorOpacityTip": "Gibt an wie stark der Indikator sichtbar ist. Ein Wert von 0 macht ihn komplett unsichtbar während er durch einen Wert von 1 voll sichtbar erscheinen lässt.",
+  "Debug": "Debugprotokolle",
+  "DebugTip": "Für SMAPI Debugprotokolle. Vor dem Generieren eines SMAPI Protokolls und melden eines Bug Reports zu aktivieren.",
+  "FarmNeedsWater": "Du hast eine oder mehrere Nutzpflanzen auf Deiner Farm die heute Wasser benötigen!",
+  "IslandNeedsWater": "Du hast eine oder mehrere Nutzpflanzen auf der Ingwerinsel die heute Wasser benötigen!"
+}
