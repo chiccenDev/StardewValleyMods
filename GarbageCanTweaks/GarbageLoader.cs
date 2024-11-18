@@ -23,9 +23,9 @@ namespace GarbageCanTweaks
         /// </summary>
         public static void Load()
         {
-            if (!FindPacks(out var list))
+            if (!FindAssetPacks(out var list))
             {
-                Log("Failed to find any garbage packs.", LogLevel.Error);
+                Log("Failed to find any garbage packs in GarbageCanTweaks/assets/.", LogLevel.Error);
                 foundPacks = false;
                 return;
             }
@@ -43,7 +43,7 @@ namespace GarbageCanTweaks
         /// </summary>
         public static void Reload()
         {
-            if (!FindPacks(out var list))
+            if (!FindAssetPacks(out var list))
             {
                 Log("Failed to find any garbage lists.", LogLevel.Error);
                 foundPacks = false;
@@ -65,7 +65,7 @@ namespace GarbageCanTweaks
         /// </summary>
         /// <param name="list"></param>
         /// <returns>True if any garbage can data jsons were found, false if none were</returns>
-        public static bool FindPacks( out List<string> list)
+        public static bool FindAssetPacks(out List<string> list)
         {
             list = new List<string>();
             string assets = Path.Combine(SHelper.DirectoryPath, "assets");
