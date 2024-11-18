@@ -2,6 +2,7 @@
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.WorldMaps;
 using System.Reflection.Metadata.Ecma335;
 
 namespace GarbageCanTweaks
@@ -76,19 +77,16 @@ namespace GarbageCanTweaks
                 return "";
             }
             Log($"Finding can for {name}", debugOnly: true);
-            
-            if (name.Equals("Jodi") || name.Equals("Kent") || name.Equals("Sam") || name.Equals("Vincent"))
-                return "JodiAndKent";
-            if (name.Equals("Evelyn") || name.Equals("George") || name.Equals("Alex"))
-                return "Evelyn";
-            if (name.Equals("Haley") || name.Equals("Emily"))
-                return "EmilyAndHaley";
-            if (name.Equals("Gus"))
-                return "Saloon";
-            if (name.Equals("Clint"))
-                return "Blacksmith";
-            else return "Mayor";
-            
+
+            if (cans.TryGetValue(name, out string bcan))
+            {
+                return bcan;
+            }
+            else
+            {
+                return "Mayor";
+            }
+
         }
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
@@ -114,8 +112,7 @@ namespace GarbageCanTweaks
                     switch (str)
                     {
                         case "table":
-                            dataFile = (string)obj;
-                            dataFile = $"assets/{dataFile}.json";
+                            dataFile = $"assets/{(string) obj}.json";
                             Log($"Garbage data change to {dataFile}", debugOnly: true);
                             break;
                         default: break;
@@ -129,6 +126,17 @@ namespace GarbageCanTweaks
                 getValue: () => Config.EnableMod,
                 setValue: value => Config.EnableMod = value
             );
+
+            configMenu.AddNumberOption(
+                    mod: ModManifest,
+                    name: () => I18n.NumChecks(),
+                    tooltip: () => I18n.NumChecks_1(),
+                    getValue: () => Config.numChecks,
+                    setValue: value => Config.numChecks = value,
+                    min: 1,
+                    max: 20,
+                    interval: 1
+                );
 
             configMenu.AddTextOption(
                 mod: ModManifest,
@@ -183,12 +191,15 @@ namespace GarbageCanTweaks
 
         private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
         {
+            if (!Config.EnableMod) return;
             Reload();
             birthday = Utility.getTodaysBirthdayNPC();
             bCan = (birthday is not null) ? getCan(birthday.Name) : "";
             string bday = (birthday is not null) ? $"Today is {birthday.Name}'s birthday!" : "No birthday today.";
             Log(bday, debugOnly: true);
             Log("loaded NPC birthday cans");
+            binChecks = binChecks.ToDictionary(o => o.Key, o => 0);
+            Log("Daily bin check allowance refreshed!", debugOnly: true);
         }
 
     }
