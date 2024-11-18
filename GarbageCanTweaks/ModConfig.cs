@@ -4,6 +4,7 @@
     {
 
         public bool EnableMod { get; set; } = true;
+        public int numChecks { get; set; } = 1;
         public string LootTable { get; set; } = "default";
         public bool EnableBirthday { get; set; } = true;
         public float BirthdayChance { get; set; } = 0.75f;
