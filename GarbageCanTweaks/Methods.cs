@@ -9,6 +9,22 @@ namespace GarbageCanTweaks
 {
     public partial class ModEntry
     {
+        public static Dictionary<string, string> cans = new Dictionary<string, string>()
+        {
+            {"Jodi", "JodiAndKent" },
+            { "Kent", "JodiAndKent" },
+            { "Sam", "JodiAndKent" },
+            { "Vincent", "JodiAndKent" },
+            { "Evelyn", "Evelyn" },
+            { "George", "Evelyn" },
+            { "Alex", "Evelyn" },
+            { "Emily", "EmilyAndHaley" },
+            { "Haley", "EmilyAndHaley" },
+            { "Gus", "Saloon" },
+            { "Clint", "Blacksmith" },
+            { "Lewis", "Mayor" }
+        };
+
         public static string ApplyLootChance(string condition)
         {
             if (string.IsNullOrEmpty(condition)) return condition;
