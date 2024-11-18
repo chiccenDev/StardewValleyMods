@@ -1,7 +1,7 @@
 {
   "Name": "Garbage Can Tweaks",
   "Author": "chiccen",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Changes some behavior to make garbage cans a little more useful!",
   "UniqueID": "chiccen.GarbageCanTweaks",
   "EntryDll": "GarbageCanTweaks.dll",
