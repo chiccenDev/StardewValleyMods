@@ -1,5 +1,7 @@
 {
   "EnableMod": "Enable Mod",
+  "NumChecks": "Number of Allowed Checks",
+  "NumChecks.1": "Number of times you can check each trash can each day.",
   "Table": "Loot Table",
   "Table.1": "Which Garbage Can Data .json you would like to calculate loot drops and loot tables. All loot tables are stored in GarbageCanTweaks/assets/. The default value is the base game loot table.",
   "EnableBirthday": "Allow Birthday Items",
