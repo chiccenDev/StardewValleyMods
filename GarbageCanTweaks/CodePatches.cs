@@ -13,6 +13,19 @@ namespace GarbageCanTweaks
 
         public static string bCan; //b(irthday)can if it wasnt obvious
 
+        public static Dictionary<string, int> binChecks = new Dictionary<string, int>()
+        {
+            { "JodiAndKent", 0 },
+            { "EmilyAndHaley", 0 },
+            { "Mayor", 0 },
+            { "Museum", 0 },
+            { "Blacksmith", 0 },
+            { "Saloon", 0 },
+            { "Evelyn", 0 },
+            { "JojaMart", 0 },
+            { "DesertFestival", 0 }
+        };
+
         public static List<string> noGift = new List<string>()
         {
             "???",
@@ -36,7 +49,7 @@ namespace GarbageCanTweaks
 
             public static bool Prefix(GameLocation __instance, string id, double dailyLuck, out Item item, out GarbageCanItemData selected, out Random garbageRandom, ref bool __result, Action<string> logError = null)
             {
-                if (!Config.EnableMod)
+                if (!Config.EnableMod || !foundPacks)
                 {
                     selected = null;
                     item = null;
@@ -131,6 +144,21 @@ namespace GarbageCanTweaks
                 }
                 __result = item != null;
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(GameLocation), nameof(GameLocation.CheckGarbage))]
+        public class GameLocation_CheckGarbage_Patch
+        {
+            public static bool Prefix(string id)
+            {
+                binChecks.TryGetValue(id, out var result);
+                if (result < Config.numChecks)
+                {
+                    Game1.netWorldState.Value.CheckedGarbage.Remove(id);
+                    binChecks[id] = result + 1;
+                }
+                return true;
             }
         }
 
