@@ -1,0 +1,13 @@
+{
+  "EnableMod": "Mod'u aktive et",
+  "OnlyWaterCan": "Sadece sulama kabı tutrarken",
+  "OnlyWaterCanTip": "Arayüzü sadece sulama kabını tutarken göster.",
+  "IndicatorColor": "Göstergenin rengi",
+  "IndicatorColorTip": "Her ekinin sulanması gerektiğindeki göstergesinin rengini seçin.",
+  "IndicatorOpacity": "Göstergenin saydamlığı",
+  "IndicatorOpacityTip": "Göstergenin ne kadar saydam olduğu. 0 tamamen görünmez iken, 1 tamamen görünür anlamına gelir.",
+  "Debug": "Hata ayıklama kayıtları",
+  "DebugTip": "SMAPI için hata ayıklama kayıtları. Bir SMAPI kayıtı ve hata raporu yayınlamadan önce aktive edin.",
+  "FarmNeedsWater": "Çiftliğinde bugün sulanması gereken ekin(ler) var!",
+  "IslandNeedsWater": "Zencefil adasında bugün sulanması gereken ekin(ler) var!"
+}
