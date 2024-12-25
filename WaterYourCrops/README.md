@@ -23,17 +23,17 @@ Message @chiccen on Discord for details on how you would like to be credited!
 
 &nbsp;     | Water Your Crops
 :--------- | :----------------
-Chinese    | [❑](./i18n)
+Chinese    | [✓](./i18n)
 French     | [✓](./i18n)
-German     | [❑](./i18n)
+German     | [✓](./i18n)
 Hungarian  | [❑](./i18n)
 Italian    | [❑](./i18n)
 Japanese   | [❑](./i18n)
 Korean     | [❑](./i18n)
 Portuguese | [❑](./i18n)
 Russian    | [❑](./i18n)
-Spanish    | [❑](./i18n)
-Turkish    | [❑](./i18n)
+Spanish    | [✓](./i18n)
+Turkish    | [✓](./i18n)
 
 ## Credits and Notes
 
