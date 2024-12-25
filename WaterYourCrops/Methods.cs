@@ -8,7 +8,7 @@ namespace WaterYourCrops
     {
         public static bool HasCan()
         {
-            Item item = Game1.player.CurrentItem;
+            Item? item = Game1.player?.CurrentItem;
             if (item is not null)
             {
                 //Log($"{Game1.player} has a watering can", debugOnly: true);
