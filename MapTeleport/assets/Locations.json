@@ -1,0 +1,247 @@
+{
+	"Farm/Default": {
+		"Region": "Farm",
+		"X": 48,
+		"Y": 7
+	},
+	"Forest/MarnieRanch": {
+		"Region": "Forest",
+		"X": 90,
+		"Y": 16
+	},
+	"Forest/WizardTower": {
+		"Region": "Forest",
+		"X": 5,
+		"Y": 29
+	},
+	"Forest/LeahCottage": {
+		"Region": "Forest",
+		"X": 104,
+		"Y": 33
+	},
+	"Forest/AbandonedHouse": {
+		"Region": "Forest",
+		"X": 34,
+		"Y": 97
+	},
+	"Forest/SewerPipe": {
+		"Region": "Forest",
+		"X": 94,
+		"Y": 101
+	},
+	"SecretWoods/Default": {
+		"Region": "SecretWoods",
+		"X": 21,
+		"Y": 15
+	},
+	"Town/TownSquare": {
+		"Region": "Town",
+		"X": 29,
+		"Y": 67
+	},
+	"Town/SamHouse": {
+		"Region": "Town",
+		"X": 10,
+		"Y": 87
+	},
+	"Town/HaleyHouse": {
+		"Region": "Town",
+		"X": 20,
+		"Y": 90
+	},
+	"Town/AlexHouse": {
+		"Region": "Town",
+		"X": 57,
+		"Y": 65
+	},
+	"Town/ManorHouse": {
+		"Region": "Town",
+		"X": 58,
+		"Y": 88
+	},
+	"Town/Graveyard": {
+		"Region": "Town",
+		"X": 48,
+		"Y": 90
+	},
+	"Town/Sewer": {
+		"Region": "Town",
+		"X": 35,
+		"Y": 99
+	},
+	"Town/Blacksmith": {
+		"Region": "Town",
+		"X": 93,
+		"Y": 82
+	},
+	"Town/Museum": {
+		"Region": "Town",
+		"X": 103,
+		"Y": 90
+	},
+	"Town/CommunityCenter": {
+		"Region": "Town",
+		"X": 53,
+		"Y": 22
+	},
+	"Town/Trailer": {
+		"Region": "Town",
+		"X": 69,
+		"Y": 69
+	},
+	"Town/JojaMart": {
+		"Region": "Town",
+		"X": 92,
+		"Y": 51
+	},
+	"Town/PierreStore": {
+		"Region": "Town",
+		"X": 45,
+		"Y": 57
+	},
+	"Town/Saloon": {
+		"Region": "Town",
+		"X": 43,
+		"Y": 72
+	},
+	"Mountain/Carpenter": {
+		"Region": "Mountain",
+		"X": 12,
+		"Y": 27
+	},
+	"Mountain/Tent": {
+		"Region": "Mountain",
+		"X": 26,
+		"Y": 9
+	},
+	"Mountain/Quarry": {
+		"Region": "Mountain",
+		"X": 105,
+		"Y": 26
+	},
+	"Mountain/AdventureGuild": {
+		"Region": "Mountain",
+		"X": 76,
+		"Y": 10
+	},
+	"Mountain/Mines": {
+		"Region": "Mountain",
+		"X": 54,
+		"Y": 7
+	},
+	"Railroad/Spa": {
+		"Region": "Railroad",
+		"X": 10,
+		"Y": 58
+	},
+	"Railroad/Railroad": {
+		"Region": "Railroad",
+		"X": 35,
+		"Y": 41
+	},
+	"Beach/ElliottCabin": {
+		"Region": "Beach",
+		"X": 47,
+		"Y": 11
+	},
+	"Beach/LonelyStone": {
+		"Region": "Beach",
+		"X": 11,
+		"Y": 25
+	},
+	"Beach/FishShop": {
+		"Region": "Beach",
+		"X": 32,
+		"Y": 34
+	},
+	"BusStop/Default": {
+		"Region": "BusStop",
+		"X": 22,
+		"Y": 11
+	},
+	"Backwoods/Default": {
+		"Region": "Backwoods",
+		"X": 30,
+		"Y": 13
+	},
+	"Desert/Default": {
+		"Region": "Desert",
+		"X": 27,
+		"Y": 23
+	},
+	"GingerIsland/Default": {
+		"Region": "IslandSouth",
+		"X": 22,
+		"Y": 30
+	},
+	"West/QiWalnutRoom": {
+		"Region": "IslandWest",
+		"X": 20,
+		"Y": 25
+	},
+	"West/BirdieShack": {
+		"Region": "IslandWest",
+		"X": 20,
+		"Y": 58
+	},
+	"West/Shipwreck": {
+		"Region": "IslandWest",
+		"X": 57,
+		"Y": 92
+	},
+	"West/TigerSlimeGrove": {
+		"Region": "IslandWest",
+		"X": 38,
+		"Y": 29
+	},
+	"West/House": {
+		"Region": "IslandWest",
+		"X": 76,
+		"Y": 40
+	},
+	"West/GourmandCave": {
+		"Region": "IslandWest",
+		"X": 97,
+		"Y": 34
+	},
+	"South/Resort": {
+		"Region": "IslandSouth",
+		"X": 17,
+		"Y": 24
+	},
+	"South/Dock": {
+		"Region": "IslandSouth",
+		"X": 21,
+		"Y": 44
+	},
+	"SouthEast/PirateCove": {
+		"Region": "IslandSouthEast",
+		"X": 19,
+		"Y": 24
+	},
+	"East/JungleHut": {
+		"Region": "IslandEast",
+		"X": 20,
+		"Y": 30
+	},
+	"North/DigSite": {
+		"Region": "IslandNorth",
+		"X": 13,
+		"Y": 63
+	},
+	"North/Volcano": {
+		"Region": "IslandNorth",
+		"X": 40,
+		"Y": 25
+	},
+	"North/FieldOffice": {
+		"Region": "IslandNorth",
+		"X": 47,
+		"Y": 47
+	},
+	"North/Trader": {
+		"Region": "IslandNorth",
+		"X": 36,
+		"Y": 73
+	}
+}
