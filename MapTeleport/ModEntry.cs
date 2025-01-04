@@ -101,6 +101,13 @@ namespace MapTeleport
             );
             configMenu.AddBoolOption(
                 mod: ModManifest,
+                name: () => I18n.AllowUnknown(),
+                tooltip: () => I18n.AllowUnknown_1(),
+                getValue: () => Config.AllowUnknown,
+                setValue: value => Config.AllowUnknown = value
+            );
+            configMenu.AddBoolOption(
+                mod: ModManifest,
                 name: () => I18n.Debug(),
                 tooltip: () => I18n.Debug_1(),
                 getValue: () => Config.Debug,
