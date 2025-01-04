@@ -18,8 +18,13 @@
 
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.3.3" />
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
-    <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.0.1" />
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.3.2" />
+    <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.2.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\" />
   </ItemGroup>
 
 </Project>

@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoopTimeTweaks", "CoopTimeT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skateboard", "Skateboard\Skateboard.csproj", "{C3331204-DE48-4B1F-A1CE-B3AD7B397634}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapTeleport", "MapTeleport\MapTeleport.csproj", "{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,14 @@ Global
 		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.ActiveCfg = Release|Any CPU
 		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.Build.0 = Release|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|x64.Build.0 = Debug|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Release|x64.ActiveCfg = Release|Any CPU
+		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
