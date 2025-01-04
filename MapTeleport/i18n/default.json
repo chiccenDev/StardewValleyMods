@@ -1,0 +1,4 @@
+{
+  "EnableMod": "Example Bool",
+  "EnableMod.1": "Example of a GMCM config option storing a boolean.",
+}
