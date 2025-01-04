@@ -4,7 +4,8 @@
     {
 
         public bool EnableMod { get; set; } = true;
-        public int ExampleInt { get; set; } = 16;
+        public bool AllowUnknown { get; set; } = false;
+        public bool Simulate { get; set; } = false;
         public bool Debug { get; set; } = false;
 
     }

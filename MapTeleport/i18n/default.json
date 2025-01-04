@@ -1,4 +1,8 @@
 {
-  "EnableMod": "Example Bool",
-  "EnableMod.1": "Example of a GMCM config option storing a boolean.",
+  "EnableMod": "Enable Mod",
+  "EnableMod.1": "Toggle Map Teleport On/Off",
+  "Debug": "Debug Mode",
+  "Debug.1":  "Enable this to get verbose SMAPI logs for the purposes of debugging or bug reporting. WARNING: makes this mod quite spammy!",
+  "Simulate": "Simulate Warps (DEBUG)",
+  "Simulate.1":  "For debugging purposes, simulate warping except push a message to SMAPI log instead of actually performing warp."
 }
