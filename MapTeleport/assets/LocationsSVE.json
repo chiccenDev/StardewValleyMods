@@ -5,12 +5,6 @@
 		"Y": 7,
 		"Condition": null
 	},
-	"Farm/Beach": {
-		"Region": "Farm",
-		"X": 82,
-		"Y": 29,
-		"Condition": null
-	},
 	"Forest/MarnieRanch": {
 		"Region": "Forest",
 		"X": 90,
@@ -41,7 +35,7 @@
 		"Y": 101,
 		"Condition": null
 	},
-	"SecretWoods/Default": {
+	"Woods/Default": {
 		"Region": "SecretWoods",
 		"X": 21,
 		"Y": 15,
@@ -115,8 +109,8 @@
 	},
 	"Town/JojaMart": {
 		"Region": "Town",
-		"X": 92,
-		"Y": 51,
+		"X": 96,
+		"Y": 53,
 		"Condition": null
 	},
 	"Town/PierreStore": {
@@ -305,4 +299,101 @@
 		"Y": 73,
 		"Condition": "PLAYER_HAS_MAIL Host Island_UpgradeTrader"
 	}
+	"FlashShifter.StardewValleyExpandedCP_TownMap_SophiasHouse/FlashShifter.StardewValleyExpandedCP_Town_SophiasHouse": {
+		"Region": "Custom_BlueMoonVineyard",
+		"X": 28,
+		"Y": 40,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_EmeraldFarm/FlashShifter.StardewValleyExpandedCP_Town_EmeraldFarm": {
+		"Region": "Railroad",
+		"X": 38,
+		"Y": 52,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_Bluemoon/FlashShifter.StardewValleyExpandedCP_Town_Bluemoon": {
+		"Region": "Custom_BlueMoonVineyard";
+		"X": 28,
+		"Y": 40,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_Andys/FlashShifter.StardewValleyExpandedCP_Town_Andys": {
+		"Region": "Forest",
+		"X": 68,
+		"Y": 73,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_Fairhaven/FlashShifter.StardewValleyExpandedCP_Town_Fairhaven": {
+		"Region": "Forest",
+		"X": 68,
+		"Y": 73,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_ShearwaterBridge/FlashShifter.StardewValleyExpandedCP_Town_ShearwaterBridge": {
+		"Region": "Custom_ShearwaterBridge",
+		"X": 30,
+		"Y": 22,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_OldCommunityGarden/FlashShifter.StardewValleyExpandedCP_Town_OldCommunityGarden": {
+		"Region": "Custom_Garden",
+		"X": 22,
+		"Y": 27,
+		"Condition": null
+	},
+	"FlashShifter.StardewValleyExpandedCP_TownMap_JenkinsResidence/FlashShifter.StardewValleyExpandedCP_Town_JenkinsResidence": {
+		"Region": "Town",
+		"X": 59,
+		"Y": 53,
+		"Condition": null
+	},
+	"Custom_IridiumQuarry/Custom_IridiumQuarry": {
+		"Region": "Custom_CrimsonBadlands",
+		"X": 3,
+		"Y": 80,
+		"Condition":
+	},
+	"Custom_CastleVillageOutpost/Custom_CastleVillageOutpost": {
+		"Region": "Custom_CastleVillageOutpost",
+		"X": 31,
+		"Y": 28,
+		"Condition":
+	},
+	"Custom_TreasureCave/Custom_TreasureCave": {
+		"Region": "Custom_TreasureCave",
+		"X": 10,
+		"Y": 14,
+		"Condition": "PLAYER_HAS_VISITED Current Custom_TreasureCave"
+	},
+	"Custom_CastleVillageEntrance/Custom_CastleVillageEntrance": {
+		"Region": "Custom_CrimsonBadlands",
+		"X": 
+		"Y": 
+		"Condition":
+	},
+	"Custom_DesertRailway/Custom_DesertRailway": {
+		"Region": "Custom_CrimsonBadlands",
+		"X": 228,
+		"Y": 84,
+		"Condition": "PLAYERT_HAS_VISITED Current Custom_CrimsonBadlands"
+	},
+	"Custom_HighlandsOutpost/Custom_HighlandsOutpost": {
+		"Region": "Custom_Highlands",
+		"X": 129,
+		"Y": 114,
+		"Condition": null
+	},
+	"Custom_HighlandsDock/Custom_HighlandsDock": {
+		"Region": "Custom_Highlands",
+		"X": 129,
+		"Y": 143,
+		"Condition": null
+	},
+	"Custom_HighlandsCavernPrison/Custom_HighlandsCavernPrison": {
+		"Region": "Custom_Highlands",
+		"X": 50,
+		"Y": 38,
+		"Condition": "PLAYER_HAS_VISITED Current Custom_HighlandsCavern"
+	},
+	
 }
