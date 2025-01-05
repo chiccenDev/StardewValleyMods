@@ -15,6 +15,7 @@ namespace MapTeleport
         public string Region { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public string Condition { get; set; }
     }
 
     public partial class ModEntry
@@ -54,7 +55,12 @@ namespace MapTeleport
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
-                Game1.warpFarmer(entry.Region, entry.X, entry.Y, false);
+                if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
+                    Game1.warpFarmer(entry.Region, entry.X, entry.Y, false);
+                else { 
+                    Game1.showRedMessage(I18n.WarpFail());
+                    Log(I18n.WarpFail_1() + entry.Condition, debugOnly: true);
+                }
             }
             else { Log($"No Map Warp for {loc}, sorry!", debugOnly: true); }
             
