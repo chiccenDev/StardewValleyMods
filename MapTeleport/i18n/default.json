@@ -4,7 +4,9 @@
   "AllowUnknown": "Allow Unknown Locations",
   "AllowUnknown.1": "Allowing warping to locations you haven't unlocked or visited yet.",
   "Debug": "Debug Mode",
-  "Debug.1":  "Enable this to get verbose SMAPI logs for the purposes of debugging or bug reporting. WARNING: makes this mod quite spammy!",
+  "Debug.1": "Enable this to get verbose SMAPI logs for the purposes of debugging or bug reporting. WARNING: makes this mod quite spammy!",
   "Simulate": "Simulate Warps (DEBUG)",
-  "Simulate.1":  "For debugging purposes, simulate warping except push a message to SMAPI log instead of actually performing warp."
+  "Simulate.1": "For debugging purposes, simulate warping except push a message to SMAPI log instead of actually performing warp.",
+  "WarpFail": "You must unlock this location before you can warp!",
+  "WarpFail.1": "You can warp anyway by enabling \"Allow Unknown Locations\" in the config, or by meeting the Game State criteria: "
 }
