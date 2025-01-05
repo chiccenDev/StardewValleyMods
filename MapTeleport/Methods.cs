@@ -64,7 +64,7 @@ namespace MapTeleport
                 LocationDetails entry = Locations[loc];
                 if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
-                    Game1.warpFarmer(entry.Region, entry.X, entry.Y, false);
+                    Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
                 else { 
                     Game1.showRedMessage(I18n.WarpFail());
                     Log(I18n.WarpFail_1() + entry.Condition, debugOnly: true);
