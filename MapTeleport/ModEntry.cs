@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Microsoft.CodeAnalysis.FlowAnalysis;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
@@ -22,7 +23,6 @@ namespace MapTeleport
             SHelper = helper;
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
-            helper.Events.GameLoop.DayStarted += GameLoop_DayStarted;
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
@@ -63,11 +63,6 @@ namespace MapTeleport
             if (!debugOnly) SMonitor.LogOnce(message, level);
             if (debugOnly && Config.Debug) SMonitor.LogOnce(message, level);
             else return;
-        }
-
-        private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
-        {
-
         }
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
@@ -114,7 +109,9 @@ namespace MapTeleport
                 fieldId: "sim" // set OnFieldChanged later to Debug so this option only appears when DebugMode is on
             );
 
-            Locations = Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP") ? LoadLocations(true) : LoadLocations();
+            //if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) LoadLocations(true);
+            //else LoadLocations();
+            Locations = LoadLocations();
         }
 
     }

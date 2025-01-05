@@ -21,10 +21,9 @@ namespace MapTeleport
 
     public partial class ModEntry
     {
-        public static Dictionary<string, LocationDetails> LoadLocations(bool sve = false)
+        public static Dictionary<string, LocationDetails> LoadLocations()
         {
-            string smallPath = sve ? @"assets\Locations.json" : @"assets\LocationsSVE.json";
-            string jsonPath = Path.Combine(SHelper.DirectoryPath, smallPath); // hope this shit actually works cross-platform
+            string jsonPath = Path.Combine(SHelper.DirectoryPath, @"assets\Locations.json"); // hope this shit actually works cross-platform
             Log($"Loading Warp locations from {jsonPath}", debugOnly: true);
 
             try
@@ -35,6 +34,7 @@ namespace MapTeleport
                 if (locations != null)
                 {
                     Log("Map Teleport locations loaded successfully!");
+                    //string testVal = sve ? "Custom_IridiumQuarry/Custom_IridiumQuarry" : "Forest/MarnieRanch";
                     Log($"Data validation: {(locations.ContainsKey("Forest/MarnieRanch") ? "passed!" : "failed! :(")}", debugOnly: true);
                     return locations;
                 }
