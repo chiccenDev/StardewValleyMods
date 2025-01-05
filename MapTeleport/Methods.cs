@@ -1,4 +1,5 @@
-﻿using StardewModdingAPI;
+﻿using Microsoft.Xna.Framework;
+using StardewModdingAPI;
 using StardewValley;
 using System;
 using System.Collections.Generic;
@@ -52,9 +53,16 @@ namespace MapTeleport
         {
             
             Log($"MapWarp() called for {loc}", debugOnly: true);
+
+            if (loc.Contains("Town/JojaMart") || loc.Contains("Town/MovieTheater_Community")) loc = "Town/JojaMart";
+            if (loc.Contains("PierreStore")) loc = "Town/PierreStore";
+            if (loc.Contains("Beach/FishShop")) loc = "Beach/FishShop";
+            if (loc.Contains("PamHouse")) loc = "Town/Trailer";
+
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
+                if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, false);
                 else { 
@@ -75,6 +83,7 @@ namespace MapTeleport
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
+                if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 GameLocation location;
                 try { location = Game1.getLocationFromNameInLocationsList(entry.Region); }
                 catch (Exception e) { 
@@ -85,6 +94,15 @@ namespace MapTeleport
             }
             else { Log($"No Map Warp for {loc}, sorry!", LogLevel.Error); }
             
+        }
+
+        public static void CheckFarm(LocationDetails entry)
+        {
+            Log("Warping to farm. Checking farm type.", debugOnly: true);
+            Point door = Farm.getFrontDoorPositionForFarmer(Game1.player);
+            Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).", debugOnly: true);
+            entry.X = door.X;
+            entry.Y = ++door.Y;
         }
 
     }
