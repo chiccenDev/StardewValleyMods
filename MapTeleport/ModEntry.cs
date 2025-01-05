@@ -122,7 +122,7 @@ namespace MapTeleport
                 fieldId: "sim" // set OnFieldChanged later to Debug so this option only appears when DebugMode is on
             );
 
-            Locations = LoadLocations();
+            Locations = Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP") ? LoadLocations(true) : LoadLocations();
         }
 
     }
