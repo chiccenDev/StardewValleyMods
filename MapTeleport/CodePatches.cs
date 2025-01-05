@@ -20,6 +20,13 @@ namespace MapTeleport
          * 
          * Game1.warpFarmer(string locationName, int tileX, int tileY, bool flip
          * 
+         * c.Tooltips is a List<WorldMapTooltipData> of shit including KnownCondition for GameStateQuery -- !!!
+         * 
+         * 
+         * more notes to myself for when i return from break
+         * 
+         * gamestatequery gonna b annoying because mappage.cs doesn't have all the same shiz as maparea.cs but its probably fine
+         * 
         */
 
         [HarmonyPatch(typeof(MapPage), nameof(MapPage.receiveLeftClick))]
@@ -33,6 +40,7 @@ namespace MapTeleport
                     {
                         if (Config.Simulate) TestWarp(c.name);
                         else TryWarp(c.name);
+                        
                     }
                 }
 
