@@ -12,7 +12,7 @@
     "Directory": "_releases",
     "ModFolder": "MapTeleport" // remove this line for most cases, only needed if repository is overarching "Stardew Valley Mods" repo or otherwise not its own repo
   },
-  "UpdateKeys": [ "Nexus:????" ],
+  "UpdateKeys": [ "Nexus:30611" ],
   "Dependencies": [
     {
       "UniqueID": "Platonymous.ModUpdater",
