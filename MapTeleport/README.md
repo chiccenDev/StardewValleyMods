@@ -5,7 +5,7 @@ I made this mod for Stardew Valley!
 If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/).  
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/30611/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
-## Translating MyMod
+## Translating Map Teleport
 <!--
 
     This section is auto-generated using a script, there's no need to edit it manually.
