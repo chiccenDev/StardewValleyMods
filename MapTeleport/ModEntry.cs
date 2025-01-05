@@ -28,14 +28,6 @@ namespace MapTeleport
             harmony.PatchAll();
         }
 
-        private void Content_AssetRequested(object sender, AssetRequestedEventArgs e)
-        {
-            if (e.NameWithoutLocale.IsEquivalentTo("UPDATE ME SOON"))
-            {
-
-            }
-        }
-
         /// <summary>
 		///     Small method that handles Debug mode to make SMAPI logs a bit easier to read in bug reports.
 		/// </summary>
