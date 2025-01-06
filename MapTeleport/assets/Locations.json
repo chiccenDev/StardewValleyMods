@@ -107,7 +107,19 @@
 		"Y": 22,
 		"Condition": null
 	},
+	"Town/MovieTheater_JojaRoute": {
+		"Region": "Town",
+		"X": 53,
+		"Y": 22,
+		"Condition": null
+	},
 	"Town/Trailer": {
+		"Region": "Town",
+		"X": 69,
+		"Y": 69,
+		"Condition": null
+	},
+	"Town/PamHouse": {
 		"Region": "Town",
 		"X": 69,
 		"Y": 69,
@@ -119,7 +131,37 @@
 		"Y": 53,
 		"Condition": null
 	},
+	"Town/JojaMart_Open": {
+		"Region": "Town",
+		"X": 96,
+		"Y": 53,
+		"Condition": null
+	},
+	"Town/JojaMart_Abandoned": {
+		"Region": "Town",
+		"X": 96,
+		"Y": 53,
+		"Condition": null
+	},
+	"Town/MovieTheater_CommunityCenterRoute": {
+		"Region": "Town",
+		"X": 96,
+		"Y": 53,
+		"Condition": null
+	},
 	"Town/PierreStore": {
+		"Region": "Town",
+		"X": 45,
+		"Y": 57,
+		"Condition": null
+	},
+	"Town/PierreStore_InitialHours": {
+		"Region": "Town",
+		"X": 45,
+		"Y": 57,
+		"Condition": null
+	},
+	"Town/PierreStore_ExtendedHours": {
 		"Region": "Town",
 		"X": 45,
 		"Y": 57,
@@ -192,6 +234,18 @@
 		"Condition": null
 	},
 	"Beach/FishShop": {
+		"Region": "Beach",
+		"X": 32,
+		"Y": 34,
+		"Condition": "PLAYER_HAS_MET Current Willy"
+	},
+	"Beach/FishShop_DefaultHours": {
+		"Region": "Beach",
+		"X": 32,
+		"Y": 34,
+		"Condition": "PLAYER_HAS_MET Current Willy"
+	},
+	"Beach/FishShop_ExtendedHours": {
 		"Region": "Beach",
 		"X": 32,
 		"Y": 34,
