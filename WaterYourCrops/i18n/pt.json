@@ -1,0 +1,13 @@
+{
+  "EnableMod": "Ativar Mod",
+  "OnlyWaterCan": "Apenas com Regador equipado",
+  "OnlyWaterCanTip": "Mostra o overlay do mod apenas enquanto estiver com regador equipado.",
+  "IndicatorColor": "Cor do Indicador",
+  "IndicatorColorTip": "Escolha a cor do indicador em cada plantação quando ela precisa ser regada.",
+  "IndicatorOpacity": "Opacidade do Indicador",
+  "IndicatorOpacityTip": "O quão visível o indicador é. Um valor de 0 o deixa completamente invisível, enquanto um valor de 1 o torna inteiramente opaco e visível.",
+  "Debug": "Registros de depuração",
+  "DebugTip": "Para registros de depuração do SMAPI. Ative antes de gerar um registro do SMAPI para postar um relatório de erros/bugs.",
+  "FarmNeedsWater": "Você tem plantações na sua fazenda que precisam ser regadas hoje!",
+  "IslandNeedsWater": "Você tem plantações na Ilha Gengibre que precisam ser regadas hoje!"
+}
