@@ -1,13 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace MapTeleport
 {
@@ -67,6 +61,7 @@ namespace MapTeleport
                         break;
                     default: break;
                 }
+            }
 
             if (Locations.ContainsKey(loc))
             {
