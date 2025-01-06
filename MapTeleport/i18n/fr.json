@@ -1,0 +1,12 @@
+{
+  "EnableMod": "Activer le mod",
+  "EnableMod.1": "Active/désactive les téléportation.",
+  "AllowUnknown": "Autoriser les lieux inconnus",
+  "AllowUnknown.1": "Autorise la téléportation à des lieux que vous n’avez pas encore débloqué ou visité.",
+  "Debug": "Debug Mode",
+  "Debug.1": "Activer pour avoir des lignes verbeux dans SMAPI pour le debug ou report de bug. ATTENTION : rend le mod TRÈS bavard !",
+  "Simulate": "Simuler les téléportations (DEBUG)",
+  "Simulate.1": "Pour le debug, simule la téléportation en envoyant un message à SMAPI au lieu de faire la téléportation.",
+  "WarpFail": "Vous devez débloquer ce lieu avant de vous téléporter !",
+  "WarpFail.1": "Vous pouvez forcer la téléportation en activant \"Autoriser les lieux inconnus\" dans la configuration ou en validant les critères du jeu."
+}
