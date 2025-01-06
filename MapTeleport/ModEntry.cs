@@ -127,7 +127,7 @@ namespace MapTeleport
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            if (Config.Debug) CheckFarm(Locations["Farm/Default"]);
+            if (Config.EnableMod) CheckFarm(Locations["Farm/Default"]);
         }
 
     }
