@@ -6,12 +6,7 @@ If you experience issues, let me know by submitting a bug report or reaching on 
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/30611/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating Map Teleport
-<!--
 
-    This section is auto-generated using a script, there's no need to edit it manually.
-    https://github.com/Pathoschild/StardewScripts/tree/main/create-translation-summary
-
--->
 Map Teleport can be translated into any language supported by the game, and SMAPI will automatically
 use the right translations.
 
@@ -34,6 +29,14 @@ Portuguese | [❑](./i18n)
 Russian    | [❑](./i18n)
 Spanish    | [❑](./i18n)
 Turkish    | [❑](./i18n)
+
+## Changelog
+
+Version    | Date				| Release Notes
+:--------- | :----------------  | :------------------
+1.0.2      | 06 January 2025    | *French localization<br>*Toggleable audio cue when teleporting<br>*Minor SVE teleport location tweaks and fixes
+1.0.1      | 05 January 2025    | *Chinese localization<br>*Support for Stardew Valley Expanded<br>*Vanilla teleport location fixes
+1.0.0      | 04 January 2025    | *Initial release
 
 ## Credits and Notes
 
