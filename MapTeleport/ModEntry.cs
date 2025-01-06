@@ -106,8 +106,8 @@ namespace MapTeleport
                 name: () => I18n.Simulate(),
                 tooltip: () => I18n.Simulate_1(),
                 getValue: () => Config.Simulate,
-                setValue: value => Config.Simulate = value,
-                fieldId: "sim" // set OnFieldChanged later to Debug so this option only appears when DebugMode is on
+                setValue: value => Config.Simulate = Config.Debug ? value : false,
+                fieldId: "sim"
             );
 
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
