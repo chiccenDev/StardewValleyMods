@@ -54,12 +54,19 @@ namespace MapTeleport
             
             Log($"MapWarp() called for {loc}", debugOnly: true);
 
-            if (loc.Contains("Town/JojaMart") || loc.Contains("Town/MovieTheater_Community")) loc = "Town/JojaMart";
-            if (loc.Contains("PierreStore")) loc = "Town/PierreStore";
-            if (loc.Contains("Beach/FishShop")) loc = "Beach/FishShop";
-            if (loc.Contains("PamHouse")) loc = "Town/Trailer";
-            if (loc.Contains("AdventureGuild") && hasSVE) loc = "Custom/AdventureGuild";
-            if (loc.Contains("SecretWoods") && hasSVE) loc = "Woods/Default";
+            // sve patching, may find a more elegant solution in the future
+            if (hasSVE)
+            {
+                switch (loc)
+                {
+                    case "Mountain/AdventureGuild":
+                        loc = "Custom/AdventureGuild";
+                        break;
+                    case "SecretWoods/Default":
+                        loc = "Woods/Default";
+                        break;
+                    default: break;
+                }
 
             if (Locations.ContainsKey(loc))
             {
@@ -124,3 +131,16 @@ namespace MapTeleport
 
     }
 }
+
+/*
+ * Notes on Locations.json:
+ * 
+ * Woods/Default is SVE version of SecretWoods/Default. They both call the same Key/Region, but different coordinates are ideal. This will be a common theme.
+ * 
+ * Farm/Default doesn't do much right now because I currently have all farm teleports to just use Farm.getfrontDoorPositionForFarmer() but this COULD change
+ * 
+ * Mountain/Mines just goes into the mine because there wasn't a simple solution for vanilla, SVE, and SVE with the vanilla GMCM option selected.
+ * 
+ * Custom/AdventureGuild is SVE Mountain/AdventureGuild for mostly same reason as secret woods, except the Region is also different ("Custom_AdventurerSummit" vs "Mountain")
+ * 
+ */
