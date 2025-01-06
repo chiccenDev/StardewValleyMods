@@ -11,6 +11,7 @@ namespace MapTeleport
         public static IModHelper SHelper;
         public static ModConfig Config;
         public static ModEntry context;
+        public static bool hasSVE;
 
         public static Dictionary<string, LocationDetails> Locations = new();
 
@@ -109,8 +110,8 @@ namespace MapTeleport
                 fieldId: "sim" // set OnFieldChanged later to Debug so this option only appears when DebugMode is on
             );
 
-            //if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) LoadLocations(true);
-            //else LoadLocations();
+            hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
+            Log($"{(hasSVE ? "User has Stardew Valley Expanded" : "User does not have Stardew Valley Expanded")}", debugOnly: true);
             Locations = LoadLocations();
         }
 

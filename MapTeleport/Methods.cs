@@ -58,6 +58,8 @@ namespace MapTeleport
             if (loc.Contains("PierreStore")) loc = "Town/PierreStore";
             if (loc.Contains("Beach/FishShop")) loc = "Beach/FishShop";
             if (loc.Contains("PamHouse")) loc = "Town/Trailer";
+            if (loc.Contains("AdventureGuild") && hasSVE) loc = "Custom/AdventureGuild";
+            if (loc.Contains("SecretWoods") && hasSVE) loc = "Woods/Default";
 
             if (Locations.ContainsKey(loc))
             {
