@@ -36,13 +36,13 @@
 		"Condition": null
 	},
 	"Woods/Default": {
-		"Region": "SecretWoods",
-		"X": 21,
-		"Y": 15,
+		"Region": "Woods",
+		"X": 77,
+		"Y": 29,
 		"Condition": "PLAYER_HAS_MAIL Current beenToWoods"
 	},
 	"SecretWoods/Default": {
-		"Region": "SecretWoods",
+		"Region": "Woods",
 		"X": 21,
 		"Y": 15,
 		"Condition": "PLAYER_HAS_MAIL Current beenToWoods"
@@ -162,9 +162,9 @@
 		"Condition": "DAYS_PLAYED 5"
 	},
 	"Mountain/Mines": {
-		"Region": "Mountain",
-		"X": 54,
-		"Y": 7,
+		"Region": "Mine",
+		"X": 18,
+		"Y": 11,
 		"Condition": "DAYS_PLAYED 5"
 	},
 	"Railroad/Spa": {
@@ -400,6 +400,12 @@
 		"X": 50,
 		"Y": 38,
 		"Condition": "PLAYER_HAS_VISITED Current Custom_HighlandsCavern"
+	},
+	"Custom/AdventureGuild": {
+		"Region": "Custom_AdventurerSummit",
+		"X": 32,
+		"Y": 22,
+		"Condition": "DAYS_PLAYED 5"
 	}
 	
 }
