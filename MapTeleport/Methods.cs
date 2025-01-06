@@ -49,7 +49,7 @@ namespace MapTeleport
 
         }
 
-        public static void TryWarp(string loc)
+        public static bool TryWarp(string loc)
         {
             
             Log($"MapWarp() called for {loc}", debugOnly: true);
@@ -64,19 +64,25 @@ namespace MapTeleport
                 LocationDetails entry = Locations[loc];
                 if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
+                {
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
+                    PlayAudio();
+                    return true;
+                }
                 else { 
                     Game1.showRedMessage(I18n.WarpFail());
                     Log(I18n.WarpFail_1() + entry.Condition, debugOnly: true);
+                    return false;
                 }
             }
             else { Log($"No Map Warp for {loc}, sorry!", debugOnly: true); }
+            return false;
             
         }
         /// <summary>
         ///     For testing warps to see what may be broken without freezing or crashing the game.
         /// </summary>
-        public static void TestWarp(string loc)
+        public static bool TestWarp(string loc)
         {
             
             Log($"TestWarp() called for {loc}", LogLevel.Alert);
@@ -91,8 +97,10 @@ namespace MapTeleport
                     location = Game1.getLocationFromNameInLocationsList("Tent");
                 }
                 Log($"Teleport requested to {loc}!\n\tRegion: {entry.Region}\n\tX: {entry.X}\n\tY: {entry.Y}\n\tLocation:{(location?.name != null ? location.name : "null")}", LogLevel.Warn);
+                return location is not null;
             }
             else { Log($"No Map Warp for {loc}, sorry!", LogLevel.Error); }
+            return false;
             
         }
 
@@ -103,6 +111,14 @@ namespace MapTeleport
             Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).", debugOnly: true);
             entry.X = door.X;
             entry.Y = ++door.Y;
+        }
+
+        public static void PlayAudio()
+        {
+            Game1.playSound("grassyStep");
+            DelayedAction.playSoundAfterDelay("grassyStep", 400);
+            DelayedAction.playSoundAfterDelay("grassyStep", 800);
+            DelayedAction.playSoundAfterDelay("grassyStep", 1200);
         }
 
     }

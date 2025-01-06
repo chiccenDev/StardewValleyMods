@@ -34,12 +34,15 @@ namespace MapTeleport
         {
             public static void Postfix(MapPage __instance, int x, int y)
             {
+                bool success;
                 foreach (ClickableComponent c in __instance.points.Values)
                 {
                     if (c.containsPoint(x, y))
                     {
-                        if (Config.Simulate) TestWarp(c.name);
-                        else TryWarp(c.name);
+                        if (Config.Simulate) success = TestWarp(c.name);
+                        else success = TryWarp(c.name);
+
+                        if (success) __instance.exitThisMenu();
                         
                     }
                 }
