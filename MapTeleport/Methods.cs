@@ -118,7 +118,6 @@ namespace MapTeleport
             Game1.playSound("grassyStep");
             DelayedAction.playSoundAfterDelay("grassyStep", 400);
             DelayedAction.playSoundAfterDelay("grassyStep", 800);
-            DelayedAction.playSoundAfterDelay("grassyStep", 1200);
         }
 
     }
