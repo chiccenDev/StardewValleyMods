@@ -11,6 +11,8 @@ namespace MapTeleport
         {
             public static void Postfix(MapPage __instance, int x, int y)
             {
+                if (!Config.EnableMod) return;
+
                 bool success;
                 foreach (ClickableComponent c in __instance.points.Values)
                 {
@@ -22,8 +24,6 @@ namespace MapTeleport
                         
                     }
                 }
-
-                //return true;
             }
         }
 

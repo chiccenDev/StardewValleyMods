@@ -17,6 +17,8 @@ namespace MapTeleport
     {
         public static Dictionary<string, LocationDetails> LoadLocations()
         {
+            if (!Config.EnableMod) return new Dictionary<string, LocationDetails>();
+
             string jsonPath = Path.Combine(SHelper.DirectoryPath, @"assets\Locations.json"); // hope this shit actually works cross-platform
             Log($"Loading Warp locations from {jsonPath}", debugOnly: true);
 
@@ -28,7 +30,6 @@ namespace MapTeleport
                 if (locations != null)
                 {
                     Log("Map Teleport locations loaded successfully!");
-                    //string testVal = sve ? "Custom_IridiumQuarry/Custom_IridiumQuarry" : "Forest/MarnieRanch";
                     Log($"Data validation: {(locations.ContainsKey("Forest/MarnieRanch") ? "passed!" : "failed! :(")}", debugOnly: true);
                     return locations;
                 }
@@ -45,6 +46,8 @@ namespace MapTeleport
 
         public static bool TryWarp(string loc)
         {
+            if (!Config.EnableMod) return false;
+
             
             Log($"MapWarp() called for {loc}", debugOnly: true);
 
@@ -66,7 +69,6 @@ namespace MapTeleport
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
-                if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
                 {
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
@@ -88,12 +90,12 @@ namespace MapTeleport
         /// </summary>
         public static bool TestWarp(string loc)
         {
-            
+            if (!Config.EnableMod) return false;
+
             Log($"TestWarp() called for {loc}", LogLevel.Alert);
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
-                if (loc.Equals("Farm/Default")) CheckFarm(entry);
                 GameLocation location;
                 try { location = Game1.getLocationFromNameInLocationsList(entry.Region); }
                 catch (Exception e) { 
@@ -110,7 +112,9 @@ namespace MapTeleport
 
         public static void CheckFarm(LocationDetails entry)
         {
-            Log("Warping to farm. Checking farm type.", debugOnly: true);
+            if (!Config.EnableMod) return;
+
+            Log("Patching warp info for Farm", debugOnly: true);
             Point door = Farm.getFrontDoorPositionForFarmer(Game1.player);
             Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).", debugOnly: true);
             entry.X = door.X;
@@ -126,16 +130,3 @@ namespace MapTeleport
 
     }
 }
-
-/*
- * Notes on Locations.json:
- * 
- * Woods/Default is SVE version of SecretWoods/Default. They both call the same Key/Region, but different coordinates are ideal. This will be a common theme.
- * 
- * Farm/Default doesn't do much right now because I currently have all farm teleports to just use Farm.getfrontDoorPositionForFarmer() but this COULD change
- * 
- * Mountain/Mines just goes into the mine because there wasn't a simple solution for vanilla, SVE, and SVE with the vanilla GMCM option selected.
- * 
- * Custom/AdventureGuild is SVE Mountain/AdventureGuild for mostly same reason as secret woods, except the Region is also different ("Custom_AdventurerSummit" vs "Mountain")
- * 
- */
