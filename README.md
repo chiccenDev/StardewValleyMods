@@ -14,6 +14,8 @@
 
 **[Water Your Crops](https://www.nexusmods.com/stardewvalley/mods/24710)**
 
+**[Map Teleport by aedenthorn](https://www.nexusmods.com/stardewvalley/mods/30611)**
+
 **Co-op Time Tweaks (In Development)**
 
 **Template/MyMod (Mod Template)**
