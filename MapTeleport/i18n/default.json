@@ -3,6 +3,8 @@
   "EnableMod.1": "Toggle Map Teleport On/Off",
   "AllowUnknown": "Allow Unknown Locations",
   "AllowUnknown.1": "Allowing warping to locations you haven't unlocked or visited yet.",
+  "EnableAudio": "Enable Audio Cue",
+  "EnableAudio.1": "When enabled, an audio cue will play when teleporting.",
   "Debug": "Debug Mode",
   "Debug.1": "Enable this to get verbose SMAPI logs for the purposes of debugging or bug reporting. WARNING: makes this mod quite spammy!",
   "Simulate": "Simulate Warps (DEBUG)",

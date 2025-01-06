@@ -70,7 +70,7 @@ namespace MapTeleport
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
                 {
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
-                    PlayAudio();
+                    if (Config.EnableAudio) PlayAudio();
                     return true;
                 }
                 else { 

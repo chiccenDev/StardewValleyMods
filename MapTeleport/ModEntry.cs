@@ -96,6 +96,13 @@ namespace MapTeleport
             );
             configMenu.AddBoolOption(
                 mod: ModManifest,
+                name: () => I18n.EnableAudio(),
+                tooltip: () => I18n.EnableAudio_1(),
+                getValue: () => Config.EnableAudio,
+                setValue: value => Config.EnableAudio = value
+            );
+            configMenu.AddBoolOption(
+                mod: ModManifest,
                 name: () => I18n.Debug(),
                 tooltip: () => I18n.Debug_1(),
                 getValue: () => Config.Debug,
