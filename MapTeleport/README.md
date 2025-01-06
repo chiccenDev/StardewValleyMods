@@ -24,7 +24,7 @@ Message @chiccen on Discord for details on how you would like to be credited!
 &nbsp;     | Map Teleport
 :--------- | :----------------
 Chinese    | [✓](./i18n/zh.json) (Courtesy of @BlackRosePetals on Github)
-French     | [❑](./i18n)
+French     | [✓](./i18n/fr.json) (Courtesy of @CaranudLapin on Github)
 German     | [❑](./i18n)
 Hungarian  | [❑](./i18n)
 Italian    | [❑](./i18n)
