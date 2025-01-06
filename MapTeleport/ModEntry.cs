@@ -24,6 +24,10 @@ namespace MapTeleport
             SHelper = helper;
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
+            helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
+
+            helper.ConsoleCommands.Add("mtp_load", "Force Map Teleport to reload locations. Run \"mtp_farm\" to repair farm warp after using this command.", (command, args) => Locations = LoadLocations());
+            helper.ConsoleCommands.Add("mtp_farm", "Force Map Teleports to re-check and fix Farm warp coordinates.", (command, args) => CheckFarm(Locations["Farm/Default"]));
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
@@ -113,13 +117,17 @@ namespace MapTeleport
                 name: () => I18n.Simulate(),
                 tooltip: () => I18n.Simulate_1(),
                 getValue: () => Config.Simulate,
-                setValue: value => Config.Simulate = Config.Debug ? value : false,
-                fieldId: "sim"
+                setValue: value => Config.Simulate = Config.Debug ? value : false
             );
 
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
-            Log($"{(hasSVE ? "User has Stardew Valley Expanded" : "User does not have Stardew Valley Expanded")}", debugOnly: true);
+            Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
             Locations = LoadLocations();
+        }
+
+        private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            if (Config.Debug) CheckFarm(Locations["Farm/Default"]);
         }
 
     }
