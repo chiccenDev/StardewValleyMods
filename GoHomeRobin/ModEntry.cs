@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
 
 namespace GoHomeRobin
 {
@@ -11,6 +12,10 @@ namespace GoHomeRobin
         public static ModConfig Config;
         public static ModEntry context;
 
+        public bool startedWalking;
+        public int startDay = 900;
+        public int endDay = 1700;
+
         public override void Entry(IModHelper helper)
         {
             Config = Helper.ReadConfig<ModConfig>();
@@ -20,6 +25,8 @@ namespace GoHomeRobin
             SHelper = helper;
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
+            helper.Events.GameLoop.DayStarted += GameLoop_DayStarted;
+            helper.Events.GameLoop.TimeChanged += GameLoop_TimeChanged;
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
@@ -60,6 +67,16 @@ namespace GoHomeRobin
             if (!debugOnly) SMonitor.LogOnce(message, level);
             if (debugOnly && Config.Debug) SMonitor.LogOnce(message, level);
             else return;
+        }
+
+        private void GameLoop_DayStarted(object sender, DayStartedEventArgs e)
+        {
+            DayStarted();
+        }
+
+        private void GameLoop_TimeChanged(object sender, TimeChangedEventArgs e)
+        {
+            TimeChanged(e.NewTime);
         }
 
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
