@@ -15,18 +15,18 @@ Contributions are welcome! See [Modding:Translations](https://stardewvalleywiki.
 on the wiki for help contributing translations.  
 Message @chiccen on Discord for details on how you would like to be credited! 
 
-* = mod update, see mod page for details
+\* = mod update, see mod page for details
 (❑ = untranslated, ↻ = partly translated, ✓ = fully translated)
 
-&nbsp;																		| Chinese						| French						| German						| Hungarian		| Italian		| Japanese		| Korean		| Portgugeuse					| Russian		| Spanish						| Turkish
-:---------																	| :----------------				| :------						| :-----						| :--------		| :------		| :-------		| :-----		| :----------					| :------		| :------						| :------
-Deluxe Grabber*																| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)
-[Fruit Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/21449)*	| [✓](./FruitTreeTweaks/i18n)	| [❑](./i18n)					| [✓](./FruitTreeTweaks/i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n)	| [❑](./i18n)
-[Garbage Can Tweaks](https://www.nexusmods.com/stardewvalley/mods/24410)	| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)
-Go Home Robin																| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)
-[Map Teleport](https://www.nexusmods.com/stardewvalley/mods/30611)*			| [✓](./MapTeleport/i18n)		| [↻](./MapTeleport/i18n)		| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)
-[Water Your Crops](https://www.nexusmods.com/stardewvalley/mods/24710)		| [✓](./WaterYourCrops/i18n)	| [✓](./WaterYourCrops/i18n)	| [✓](./WaterYourcrops/i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [✓](./WaterYourCrops/i18n)	| [❑](./i18n)	| [✓](./WaterYourCrops/i18n)	| [✓](./WaterYourCrops/i18n)
-[Wild Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/24349)		| [❑](./WildTreeTweaks/i18n)	| [❑](./i18n)					| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)	| [❑](./i18n)					| [❑](./i18n)
+&nbsp;																		| Chinese								| French							| German								| Hungarian		| Italian		| Japanese		| Korean		| Portgugeuse								| Russian		| Spanish								| Turkish
+:---------																	| :----------------						| :------							| :-----								| :--------		| :------		| :-------		| :-----		| :----------								| :------		| :------								| :------
+Deluxe Grabber*																| [❑](./i18n)							| [❑](./i18n)						| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
+[Fruit Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/21449)*	| [✓](./FruitTreeTweaks/i18n/zh.json)	| [❑](./i18n)						| [✓](./FruitTreeTweaks/i18n/de.json)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n/pt-br.json)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n/es.json)	| [❑](./i18n)
+[Garbage Can Tweaks](https://www.nexusmods.com/stardewvalley/mods/24410)	| [❑](./i18n)							| [❑](./i18n)						| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
+Go Home Robin																| [❑](./i18n)							| [❑](./i18n)						| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
+[Map Teleport](https://www.nexusmods.com/stardewvalley/mods/30611)*			| [✓](./MapTeleport/i18n)				| [↻](./MapTeleport/i18n/fr.json)	| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
+[Water Your Crops](https://www.nexusmods.com/stardewvalley/mods/24710)		| [✓](./WaterYourCrops/i18n/zh.json)	| [✓](./WaterYourCrops/i18n/fr.json)| [✓](./WaterYourcrops/i18n/de.json)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [✓](./WaterYourCrops/i18n/pr-br.json)		| [❑](./i18n)	| [✓](./WaterYourCrops/i18n/es.json)	| [✓](./WaterYourCrops/i18n/tr.json)
+[Wild Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/24349)		| [❑](./WildTreeTweaks/i18n/zh.json)	| [❑](./i18n)						| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
 
 ## Credits and Notes
 
