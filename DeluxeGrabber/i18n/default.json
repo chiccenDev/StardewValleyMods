@@ -1,0 +1,6 @@
+{
+  "TestBool": "Enable Mod",
+  "TestBool.1": "Enable Deluxe Grabber.",
+  "Debug": "Debug Logs",
+  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
+}
