@@ -3,6 +3,8 @@
   "EnableMod.1": "Active/désactive les téléportation.",
   "AllowUnknown": "Autoriser les lieux inconnus",
   "AllowUnknown.1": "Autorise la téléportation à des lieux que vous n’avez pas encore débloqué ou visité.",
+  "EnableAudio": "Signal sonore",
+  "EnableAudio.1": "Si activé, un signal sonore se lancera à la téléportation.",
   "Debug": "Debug Mode",
   "Debug.1": "Activer pour avoir des lignes verbeux dans SMAPI pour le debug ou report de bug. ATTENTION : rend le mod TRÈS bavard !",
   "Simulate": "Simuler les téléportations (DEBUG)",
