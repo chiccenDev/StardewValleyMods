@@ -460,6 +460,18 @@
 		"X": 32,
 		"Y": 22,
 		"Condition": "DAYS_PLAYED 5"
+	},
+	"Custom_Ivy_OrnithologistsGuild/Custom_Ivy_OrnithologistsGuild": {
+		"Region": "Forest",
+		"X": 10,
+		"Y": 59,
+		"Condition": null
+	},
+	"Custom_SchoolHouse/Custom_SchoolHouse": {
+		"Region": "Town",
+		"X": 8,
+		"Y": 12,
+		"Condition": null
 	}
 	
 }
