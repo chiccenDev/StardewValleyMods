@@ -1,4 +1,9 @@
 {
+  "SectionTitle.Generic": "Allgemeine Optionen",
+  "SectionTitle.Placement": "Platzierungsoptionen",
+  "SectionTitle.Growth": "Wachstumsoptionen",
+  "SectionTitle.Aesthetic": "Renderoptionen",
+  "SectionTitle.Aesthetic.1": "Diese können nur über den Titelbildschirm bearbeitet werden, da Änderungen nicht mitten im Spiel wirksam werden",
   "EnableMod": "Mod aktiviert",
   "CropsBlock": "Pflanzen blockieren das Wachstum",
   "CropsBlock.1": "Klicken Sie auf das Kästchen, wenn Sie möchten, dass Pflanzen das Wachstum verhindern",
@@ -28,8 +33,6 @@
   "Debug.1": "Aktivieren Sie dies, bevor Sie einen SMAPI-Bericht erstellen. Zur Fehlerbehebung.",
   "GodMode": "Gott-Modus",
   "GodMode.1": "ACHTUNG: DIE EINSTELLUNG ZU AKTIVIEREN IST EXTREM GEFÄHRLICH. Mit dieser Einstellung können Sie Obstbäume ÜBERALL platzieren, sogar an absurden Orten. Es umgeht ALLE Kollisionsprüfungen. Aktivierung auf eigene Gefahr!",
-  "Section.title": "Renderoptionen",
-  "Section.tooltip": "Diese können nur über den Titelbildschirm bearbeitet werden, da Änderungen nicht mitten im Spiel wirksam werden",
   "ColorVar": "Farbvariation",
   "ColorVar.1": "0 - 255, zufällig auf R, B und G für jede Frucht aufgetragen, kosmetisch auf die Frucht aufgetragen, während sie am Baum ist",
   "SizeVar": "Größenvariation",

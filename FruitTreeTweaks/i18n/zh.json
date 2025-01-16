@@ -1,4 +1,7 @@
 {
+  "SectionTitle.Generic": "通用选项",
+  "SectionTitle.Placement": "通用选项",
+  "SectionTitle.Growth": "成长选项",
   "SectionTitle.Aesthetic": "绘制选项",
   "SectionTitle.Aesthetic.1": "这些选项只能在标题屏幕中编辑，因为游戏过程中所做的更改不会生效",
   "EnableMod": "启用模组",

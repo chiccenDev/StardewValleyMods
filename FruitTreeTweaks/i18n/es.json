@@ -1,4 +1,7 @@
 {
+  "SectionTitle.Generic": "Opciones Genéricas",
+  "SectionTitle.Placement": "Opciones de Colocación",
+  "SectionTitle.Growth": "Opciones de Crecimiento",
   "SectionTitle.Aesthetic": "Opciones de visualización",
   "SectionTitle.Aesthetic.1": "Estas solo pueden ser editadas desde la pantalla de inicio, ya que los cambios no tendrán efecto durante el juego.",
   "EnableMod": "Habilitar Mod",
