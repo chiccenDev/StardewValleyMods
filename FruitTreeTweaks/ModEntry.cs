@@ -286,17 +286,6 @@ namespace FruitTreeTweaks
                 setValue: value => Config.FruitSpawnBufferY = value
             );
             Log($"Fruit Buffer Y: {Config.FruitSpawnBufferY}", debugOnly: true);
-
-            /* future feature
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.GodMode(),
-                tooltip: () => I18n.GodMode_1(),
-                getValue: () => Config.GodMode,
-                setValue: value => Config.GodMode = value
-            );
-            Log($"God Mode: {Config.GodMode}", debugOnly: true);
-            */
         }
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)

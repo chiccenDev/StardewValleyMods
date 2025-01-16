@@ -240,7 +240,7 @@ namespace FruitTreeTweaks
                 {
                     Vector2 placementTile = new Vector2(x / 64, y / 64);
                     string deniedMessage = string.Empty;
-                    if ((location is Farm || CanPlantAnywhere()) && (CanItemBePlacedHere(location, placementTile, out deniedMessage) || Config.GodMode))
+                    if ((location is Farm || CanPlantAnywhere()) && CanItemBePlacedHere(location, placementTile, out deniedMessage))
                     {
                         location.playSound("dirtyHit");
                         DelayedAction.playSoundAfterDelay("coin", 100);
@@ -282,7 +282,7 @@ namespace FruitTreeTweaks
                     LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} CanPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _) && !Config.GodMode)
+                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
                     {
                         return true;
                     }
@@ -308,8 +308,8 @@ namespace FruitTreeTweaks
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
 
-                    
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _) && !Config.GodMode)
+
+                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
                     {
                         return true;
                     }
@@ -334,8 +334,8 @@ namespace FruitTreeTweaks
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
 
-                    
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _) && !Config.GodMode)
+
+                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
                     {
                         return true;
                     }
@@ -361,7 +361,7 @@ namespace FruitTreeTweaks
                     LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
 
                     
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _) && !Config.GodMode)
+                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
                     {
                         return true;
                     }

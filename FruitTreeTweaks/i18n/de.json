@@ -31,8 +31,6 @@
   "DaysUntilTip": "Nachdem der Baum vollständig ausgereift ist",
   "Debug": "Debuggen",
   "Debug.1": "Aktivieren Sie dies, bevor Sie einen SMAPI-Bericht erstellen. Zur Fehlerbehebung.",
-  "GodMode": "Gott-Modus",
-  "GodMode.1": "ACHTUNG: DIE EINSTELLUNG ZU AKTIVIEREN IST EXTREM GEFÄHRLICH. Mit dieser Einstellung können Sie Obstbäume ÜBERALL platzieren, sogar an absurden Orten. Es umgeht ALLE Kollisionsprüfungen. Aktivierung auf eigene Gefahr!",
   "ColorVar": "Farbvariation",
   "ColorVar.1": "0 - 255, zufällig auf R, B und G für jede Frucht aufgetragen, kosmetisch auf die Frucht aufgetragen, während sie am Baum ist",
   "SizeVar": "Größenvariation",

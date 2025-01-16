@@ -33,8 +33,6 @@
   "DaysUntilTip": "After fully mature",
   "Debug": "Debug Logs",
   "Debug.1": "Enable this if generating SMAPI log for a bug report or troubleshooting. Gives more verbose SMAPI logs.",
-  "GodMode": "God Mode",
-  "GodMode.1": "WARNING: EXTREMELY DANGEROUS SETTING TO ENABLE. This setting will let you place fruit trees ANYWHERE, even ridiculous locations. It bypasses ALL collision checks. Enable at your own risk!",
   "ColorVar": "Color Variation",
   "ColorVar.1": "0 - 255, applied randomly to R, B, and G for each fruit, only applied cosmetically while on tree",
   "SizeVar": "Size Variation",
