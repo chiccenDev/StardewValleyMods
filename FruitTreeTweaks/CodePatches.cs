@@ -19,6 +19,7 @@ namespace FruitTreeTweaks
 {
     public partial class ModEntry
     {
+        #region Constructors & Variables
         [HarmonyPatch(typeof(FruitTree), new Type[] { typeof(string), typeof(int) })] // aedenthorn & chiccen
         [HarmonyPatch(MethodType.Constructor)]
         public class FruitTree__Patch1
@@ -43,7 +44,35 @@ namespace FruitTreeTweaks
                 //Log($"New fruit tree: set days until mature to {Config.DaysUntilMature}", debugOnly: true); unnecessary atm
             }
         }
+        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.dayUpdate))] // aedenthorn & chiccen
+        public class FruitTree_dayUpdate_Patch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                Log($"Transpiling FruitTree.dayUpdate", LogLevel.Debug);
+                var codes = new List<CodeInstruction>(instructions);
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldfld && (FieldInfo)codes[i].operand == AccessTools.Field(typeof(FruitTree), nameof(FruitTree.daysUntilMature)) && codes[i + 3].opcode == OpCodes.Bgt_S)
+                    {
+                        Log("replacing daysUntilMature value with method", LogLevel.Debug);
+                        codes.Insert(i + 3, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.ChangeDaysToMatureCheck))));
+                    }
+                }
 
+                return codes.AsEnumerable();
+            }
+
+            public static bool Prefix()
+            {
+                fruitToday = GetFruitPerDay();
+                attempts = 0;
+                return true;
+            }
+        }
+        #endregion
+
+        #region Method Patches
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.IsInSeasonHere))] // chiccen
         public class FruitTree_IsInSeasonHere_Patch
         {
@@ -53,7 +82,6 @@ namespace FruitTreeTweaks
                 return !__result;
             }
         }
-
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.IsGrowthBlocked))] // aedenthorn
         public class FruitTree_IsGrowthBlocked_Patch
         {
@@ -88,9 +116,6 @@ namespace FruitTreeTweaks
                 return false;
             }
         }
-
-
-
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.draw), new Type[] { typeof(SpriteBatch) })] // aedenthorn & chiccen
         public class FruitTree_draw_Patch
         {
@@ -154,7 +179,6 @@ namespace FruitTreeTweaks
                 }
             }
         }
-
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.shake))] // aedenthorn & chiccen
         public class FruitTree_shake_Patch
         {
@@ -179,7 +203,6 @@ namespace FruitTreeTweaks
                 return codes.AsEnumerable();
             }
         }
-
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.GetQuality))] // chiccen
         public class FruitTree_GetQuality_Patch
         {
@@ -224,8 +247,45 @@ namespace FruitTreeTweaks
                 return false;
             }
         }
+        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.TryAddFruit))] // chiccen
+        public class FruitTree_TryAddFruit_Patch
+        {
 
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                if (!Config.EnableMod) return instructions;
 
+                Log("Transpiling FruitTree.TryAddFruit", LogLevel.Debug);
+
+                var codes = new List<CodeInstruction>(instructions);
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    if (codes[i].opcode == OpCodes.Ldc_I4_3)
+                    {
+                        Log("replacing max fruit per tree with method", LogLevel.Debug);
+                        codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetMaxFruit))));
+                        codes.RemoveAt(i + 1);
+                    }
+                }
+
+                return codes.AsEnumerable();
+            }
+
+            public static void Postfix(FruitTree __instance, ref bool __result) // 1 by default because base function already added one, or tried
+            {
+                attempts++;
+                if (!Config.EnableMod || !__result || fruitToday == 1) return;
+
+                if (!__instance.stump.Value && __instance.growthStage.Value >= 4 && __instance.IsInSeasonHere() && __instance.fruit.Count < GetMaxFruit() && attempts + 1 <= fruitToday)
+                {
+                    __instance.TryAddFruit();
+                }
+                return;
+            }
+        }
+        #endregion
+
+        #region Placement Logic
         [HarmonyPatch(typeof(Object), nameof(Object.placementAction))] // chiccen
         public class Object_placementAction_Patch
         {
@@ -373,70 +433,6 @@ namespace FruitTreeTweaks
                 return true;
             }
         }
-
-
-        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.dayUpdate))] // aedenthorn & chiccen
-        public class FruitTree_dayUpdate_Patch
-        {
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                Log($"Transpiling FruitTree.dayUpdate", LogLevel.Debug);
-                var codes = new List<CodeInstruction>(instructions);
-                for (int i = 0; i < codes.Count; i++)
-                {
-                    if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldfld && (FieldInfo)codes[i].operand == AccessTools.Field(typeof(FruitTree), nameof(FruitTree.daysUntilMature)) && codes[i + 3].opcode == OpCodes.Bgt_S)
-                    {
-                        Log("replacing daysUntilMature value with method", LogLevel.Debug);
-                        codes.Insert(i + 3, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.ChangeDaysToMatureCheck))));
-                    }
-                }
-
-                return codes.AsEnumerable();
-            }
-
-            public static bool Prefix()
-            {
-                fruitToday = GetFruitPerDay();
-                attempts = 0;
-                return true;
-            }
-        }
-
-        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.TryAddFruit))] // chiccen
-        public class FruitTree_TryAddFruit_Patch
-        {
-
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                if (!Config.EnableMod) return instructions;
-
-                Log("Transpiling FruitTree.TryAddFruit", LogLevel.Debug);
-
-                var codes = new List<CodeInstruction>(instructions);
-                for (int i = 0; i < codes.Count; i++)
-                {
-                    if (codes[i].opcode == OpCodes.Ldc_I4_3)
-                    {
-                        Log("replacing max fruit per tree with method", LogLevel.Debug);
-                        codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetMaxFruit))));
-                        codes.RemoveAt(i + 1);
-                    }
-                }
-
-                return codes.AsEnumerable();
-            }
-
-            public static void Postfix(FruitTree __instance, ref bool __result) // 1 by default because base function already added one, or tried
-            {
-                attempts++;
-                if (!Config.EnableMod || !__result || fruitToday == 1) return;
-
-                if (!__instance.stump.Value && __instance.growthStage.Value >= 4 && __instance.IsInSeasonHere() && __instance.fruit.Count < GetMaxFruit() && attempts + 1 <= fruitToday)
-                {
-                    __instance.TryAddFruit();
-                }
-                return;
-            }
-        }
+        #endregion
     }
 }
