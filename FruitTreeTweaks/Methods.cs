@@ -91,6 +91,8 @@ namespace FruitTreeTweaks
 
             return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
         }
+
+        #region Draw Methods
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
             if (!textures.TryGetValue(tree.fruit[0].QualifiedItemId, out var data)) // if sprites haven't already been collected
@@ -221,5 +223,6 @@ namespace FruitTreeTweaks
                 }
             }
         }
+        #endregion
     }
 }
