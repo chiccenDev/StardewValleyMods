@@ -91,6 +91,11 @@ namespace FruitTreeTweaks
                 save: () => Helper.WriteConfig(Config)
             );
 
+            configMenu.AddSectionTitle( // Generic Options
+                mod: ModManifest,
+                text: () => I18n.SectionTitle_Generic()
+            );
+
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.EnableMod(),
@@ -98,6 +103,20 @@ namespace FruitTreeTweaks
                 setValue: value => Config.EnableMod = value
             );
             Log($"Mod enabled: {Config.EnableMod}", debugOnly: true);
+
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.Debug(),
+                tooltip: () => I18n.Debug_1(),
+                getValue: () => Config.Debug,
+                setValue: value => Config.Debug = value
+            );
+            Log($"Debug: Well you're reading this, aren't you?", debugOnly: true); // xaxaxa
+
+            configMenu.AddSectionTitle( // Placement Options
+                mod: ModManifest,
+                text: () => I18n.SectionTitle_Placement()
+            );
 
             configMenu.AddBoolOption(
                 mod: ModManifest,
@@ -135,6 +154,27 @@ namespace FruitTreeTweaks
             );
             Log($"Plant Anywhere: {Config.PlantAnywhere}", debugOnly: true);
 
+            configMenu.AddSectionTitle( // Growth Options
+                mod: ModManifest,
+                text: () => I18n.SectionTitle_Growth()
+            );
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.DaysUntilMature(),
+                getValue: () => Config.DaysUntilMature,
+                setValue: value => Config.DaysUntilMature = value
+            );
+            Log($"Days to Mature: {Config.DaysUntilMature}", debugOnly: true);
+
+            configMenu.AddNumberOption(
+                mod: ModManifest,
+                name: () => I18n.MaxFruitTree(),
+                getValue: () => Config.MaxFruitPerTree,
+                setValue: value => Config.MaxFruitPerTree = value
+            );
+            Log($"Max Fruit / Tree: {Config.MaxFruitPerTree}", debugOnly: true);
+
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.FruitAllSeasons(),
@@ -152,31 +192,6 @@ namespace FruitTreeTweaks
                 setValue: value => Config.FruitInWinter = value
             );
             Log($"Fruit In Winter: {Config.FruitInWinter}", debugOnly: true);
-
-            configMenu.AddNumberOption(
-                mod: ModManifest,
-                name: () => I18n.MaxFruitTree(),
-                getValue: () => Config.MaxFruitPerTree,
-                setValue: value => Config.MaxFruitPerTree = value
-            );
-            Log($"Max Fruit / Tree: {Config.MaxFruitPerTree}", debugOnly: true);
-
-            configMenu.AddNumberOption(
-                mod: ModManifest,
-                name: () => I18n.DaysUntilMature(),
-                getValue: () => Config.DaysUntilMature,
-                setValue: value => Config.DaysUntilMature = value
-            );
-            Log($"Days to Mature: {Config.DaysUntilMature}", debugOnly: true);
-            /* future feature? maybe?
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.SaplingMaturity(),
-                tooltip: () => I18n.SaplingMaturity_1(),
-                getValue: () => Config.UseBaseSaplingMaturity,
-                setValue: value => Config.UseBaseSaplingMaturity = value
-            );
-            Log($"Use Base Sapling Maturity: {Config.UseBaseSaplingMaturity}", debugOnly: true);*/
 
             configMenu.AddNumberOption(
                 mod: ModManifest,
@@ -223,35 +238,16 @@ namespace FruitTreeTweaks
             );
             Log($"Days until Iridium: {Config.DaysUntilIridiumFruit}", debugOnly: true);
 
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.Debug(),
-                tooltip: () => I18n.Debug_1(),
-                getValue: () => Config.Debug,
-                setValue: value => Config.Debug = value
-            );
-            Log($"Debug: Well you're reading this, aren't you?", debugOnly: true); // xaxaxa
-            /* future feature
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.GodMode(),
-                tooltip: () => I18n.GodMode_1(),
-                getValue: () => Config.GodMode,
-                setValue: value => Config.GodMode = value
-            );
-            Log($"God Mode: {Config.GodMode}", debugOnly: true);
-            */
-
-            configMenu.SetTitleScreenOnlyForNextOptions(
+            configMenu.SetTitleScreenOnlyForNextOptions( // Aesthetic Options
                 mod: ModManifest,
                 titleScreenOnly: true
                 );
 
             configMenu.AddSectionTitle(
                 mod: ModManifest,
-                text: () => I18n.Section_Title(),
-                tooltip: () => I18n.Section_Tooltip()
-                );
+                text: () => I18n.SectionTitle_Aesthetic(),
+                tooltip: () => I18n.SectionTitle_Aesthetic_1()
+            );
 
             configMenu.AddNumberOption(
                 mod: ModManifest,
@@ -290,6 +286,17 @@ namespace FruitTreeTweaks
                 setValue: value => Config.FruitSpawnBufferY = value
             );
             Log($"Fruit Buffer Y: {Config.FruitSpawnBufferY}", debugOnly: true);
+
+            /* future feature
+            configMenu.AddBoolOption(
+                mod: ModManifest,
+                name: () => I18n.GodMode(),
+                tooltip: () => I18n.GodMode_1(),
+                getValue: () => Config.GodMode,
+                setValue: value => Config.GodMode = value
+            );
+            Log($"God Mode: {Config.GodMode}", debugOnly: true);
+            */
         }
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)

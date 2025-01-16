@@ -10,7 +10,6 @@
         public bool FruitAllSeasons { get; set; } = true;
         public bool FruitInWinter { get; set; } = false;
         public int DaysUntilMature { get; set; } = 28;
-        public bool UseBaseSaplingMaturity { get; set;  } = false;
         public int MaxFruitPerTree { get; set; } = 3;
         public int MinFruitPerDay { get; set; } = 1;
         public int MaxFruitPerDay { get; set; } = 1;

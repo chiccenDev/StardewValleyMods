@@ -1,4 +1,9 @@
 {
+  "SectionTitle.Generic": "Generic Options",
+  "SectionTitle.Placement": "Placement Options",
+  "SectionTitle.Growth": "Growth Options",
+  "SectionTitle.Aesthetic": "Draw Options",
+  "SectionTitle.Aesthetic.1": "These can only be edited from the title screen, as changes won't take effect mid-game",
   "EnableMod": "Mod Enabled",
   "CropsBlock": "Crops Block",
   "CropsBlock.1": "Set true if you want crops to prevent growth",
@@ -30,8 +35,6 @@
   "Debug.1": "Enable this if generating SMAPI log for a bug report or troubleshooting. Gives more verbose SMAPI logs.",
   "GodMode": "God Mode",
   "GodMode.1": "WARNING: EXTREMELY DANGEROUS SETTING TO ENABLE. This setting will let you place fruit trees ANYWHERE, even ridiculous locations. It bypasses ALL collision checks. Enable at your own risk!",
-  "Section.title": "Draw Options",
-  "Section.tooltip": "These can only be edited from the title screen, as changes won't take effect mid-game",
   "ColorVar": "Color Variation",
   "ColorVar.1": "0 - 255, applied randomly to R, B, and G for each fruit, only applied cosmetically while on tree",
   "SizeVar": "Size Variation",

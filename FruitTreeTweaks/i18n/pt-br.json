@@ -1,4 +1,6 @@
 {
+  "SectionTitle.Aesthetic": "Opção de edição",
+  "SectionTitle.Aesthetic.1": "Só podem ser editadas na tela inicial, pois as alterações não terão efeito durante o jogo",
   "EnableMod": "Mod ativo",
   "CropsBlock": "Plantações",
   "CropsBlock.1": "Plantações não atrapalham no cultivo de árvores frutíferas",
@@ -30,8 +32,6 @@
   "Debug.1": "Atie se o SMAPI reportar um bug ou um erro gigante.",
   "GodMode": "Modo Deus",
   "GodMode.1": "AVISO: Cuidado ao ativar esse modo. Ele lhe deixará plantar árvores em QUALQUER lugar. Podendo obstruir passagens, ative por sua conta e risco!",
-  "Section.title": "Opção de edição",
-  "Section.tooltip": "Só podem ser editadas na tela inicial, pois as alterações não terão efeito durante o jogo",
   "ColorVar": "Variação de cor",
   "ColorVar.1": "0 - 255, aplicado aleatoriamente em R, B and G para cada fruta, somente como uma skin enquanto na árvore",
   "SizeVar": "Variação de tamanho",

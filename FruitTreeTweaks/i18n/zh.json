@@ -1,4 +1,6 @@
 {
+  "SectionTitle.Aesthetic": "绘制选项",
+  "SectionTitle.Aesthetic.1": "这些选项只能在标题屏幕中编辑，因为游戏过程中所做的更改不会生效",
   "EnableMod": "启用模组",
   "CropsBlock": "作物阻挡",
   "CropsBlock.1": "如果希望作物阻止周围其他植物生长，请设置为真",
@@ -30,8 +32,6 @@
   "Debug.1": "如果为生成SMAPI日志以报告错误或进行故障排除，请启用此选项。这将提供更详细的SMAPI日志。",
   "GodMode": "万物皆可种",
   "GodMode.1": "穿越万载，成为大道境界强者的你重返地球，在这个世界，没有你不能种树的地方！",
-  "Section.title": "绘制选项",
-  "Section.tooltip": "这些选项只能在标题屏幕中编辑，因为游戏过程中所做的更改不会生效",
   "ColorVar": "颜色变化",
   "ColorVar.1": "0 - 255，对每个水果的R、B、G值随机应用，仅在树上时影响外观",
   "SizeVar": "大小变化",
