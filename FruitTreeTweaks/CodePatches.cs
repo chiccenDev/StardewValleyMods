@@ -105,14 +105,14 @@ namespace FruitTreeTweaks
                 {
                     if (!found1 && i < codes.Count - 2 && codes[i].opcode == OpCodes.Ldc_I4_1 && codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 1E-07f)
                     {
-                        Log("shifting bottom of tree draw layer offset");
+                        Log("shifting bottom of tree draw layer offset", debugOnly: true);
                         codes[i + 1].opcode = OpCodes.Ldarg_0;
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetTreeBottomOffset))));
                         found1 = true;
                     }
                     else if (i < codes.Count && i > 2 && codes[i - 2].opcode == OpCodes.Ldloc_S && codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 0.0f && codes[i + 3].opcode == OpCodes.Ldc_R4 && (float)codes[i + 3].operand == 4.0f && codes[i + 4].opcode == OpCodes.Ldc_I4_0)
                     {
-                        Log("modifying fruit color");
+                        Log("modifying fruit color", debugOnly: true);
                         codes.RemoveAt(i);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitColor))));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldloc_S, 8));
@@ -121,7 +121,7 @@ namespace FruitTreeTweaks
                     }
                     else if (i < codes.Count && i > 8 && codes[i - 8].opcode == OpCodes.Ldloc_S && codes[i].opcode == OpCodes.Ldc_R4 && (float)codes[i].operand == 4.0f && codes[i + 1].opcode == OpCodes.Ldc_I4_0 && codes[i + 2].opcode == OpCodes.Ldloca_S)
                     {
-                        Log("modifying fruit scale");
+                        Log("modifying fruit scale", debugOnly: true);
                         codes.RemoveAt(i);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitScale))));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldloc_S, 8));
@@ -205,19 +205,19 @@ namespace FruitTreeTweaks
                         }
                         else
                         {
-                            Log($"{days} is older than -{Config.DaysUntilSilverFruit}! Returning 2", debugOnly: true);
+                            Log($"{days} is older than -{Config.DaysUntilSilverFruit}! Returning 1 (Silver)", debugOnly: true);
                             __result = 1;
                         }
                     }
                     else
                     {
-                        Log($"{days} is older than -{Config.DaysUntilGoldFruit}! Returning 3", debugOnly: true);
+                        Log($"{days} is older than -{Config.DaysUntilGoldFruit}! Returning 2 (Gold)", debugOnly: true);
                         __result = 2;
                     }
                 }
                 else
                 {
-                    Log($"{days} is older than -{Config.DaysUntilIridiumFruit}! Returning 4", debugOnly: true);
+                    Log($"{days} is older than -{Config.DaysUntilIridiumFruit}! Returning 4 (Iridium)", debugOnly: true);
                     __result = 4;
                 }
 

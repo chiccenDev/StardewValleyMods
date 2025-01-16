@@ -41,7 +41,7 @@ namespace FruitTreeTweaks
 		///     Small method that handles Debug mode to make SMAPI logs a bit easier to read.
 		/// </summary>
         /// <remarks>
-        ///     Allows basic Log functions to upgrade Logs to <see cref="LogLevel.Debug"/>, excluding <see cref="LogLevel.Error"/>, when debugging for ease of reading.<br/>
+        ///     Allows basic Log functions to upgrade <see cref="LogLevel.Trace"/> Logs to <see cref="LogLevel.Debug"/> when debugging for ease of reading.<br/>
         ///     For <b>Debug Only</b> Logs -- use <c>debugOnly: true</c> and omit <see cref="LogLevel"/> -- <code>Log(message, debugOnly: true);</code><br/>
         ///     For Debug Logs that <b>always</b> show -- use <see cref="LogLevel"/> and omit <c>debugOnly</c> -- <code>Log(message, <see cref="LogLevel"/>)</code>.
         /// </remarks>
@@ -50,7 +50,7 @@ namespace FruitTreeTweaks
 
         public static void Log(string message, LogLevel level = LogLevel.Trace, bool debugOnly = false)
         {
-            level = Config.Debug && level != LogLevel.Error ? LogLevel.Debug : level;
+            level = Config.Debug && level == LogLevel.Trace ? LogLevel.Debug : level;
             if (!debugOnly) SMonitor.Log(message, level);
             else if (debugOnly && Config.Debug) SMonitor.Log(message, level);
             else return;
@@ -60,7 +60,7 @@ namespace FruitTreeTweaks
 		///     Small method that handles Debug mode to make SMAPI logs a bit easier to read.
 		/// </summary>
         /// <remarks>
-        ///     Allows basic Log functions to upgrade Logs to <see cref="LogLevel.Debug"/>, excluding <see cref="LogLevel.Error"/>, when debugging for ease of reading.<br/>
+        ///     Allows basic Log functions to upgrade <see cref="LogLevel.Trace"/> Logs to <see cref="LogLevel.Debug"/> when debugging for ease of reading.<br/>
         ///     For <b>Debug Only</b> Logs -- use <c>debugOnly: true</c> and omit <see cref="LogLevel"/> -- <code>LogOnce(message, debugOnly: true);</code><br/>
         ///     For Debug Logs that <b>always</b> show -- use <see cref="LogLevel"/> and omit <c>debugOnly</c> -- <code>LogOnce(message, <see cref="LogLevel"/>)</code>.
         /// </remarks>
