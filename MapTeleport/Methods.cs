@@ -19,7 +19,7 @@ namespace MapTeleport
         {
             if (!Config.EnableMod) return new Dictionary<string, LocationDetails>();
 
-            string jsonPath = Path.Combine(SHelper.DirectoryPath, @"assets\Locations.json"); // hope this shit actually works cross-platform
+            string jsonPath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json"); // hope this shit actually works cross-platform
             Log($"Loading Warp locations from {jsonPath}", debugOnly: true);
 
             try
