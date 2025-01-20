@@ -25,6 +25,7 @@ namespace MapTeleport
 
             helper.Events.GameLoop.GameLaunched += GameLoop_GameLaunched;
             helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
+            helper.Events.Input.ButtonPressed += Input_ButtonPressed;
 
             helper.ConsoleCommands.Add("mtp_load", "Force Map Teleport to reload locations. Run \"mtp_farm\" to repair farm warp after using this command.", (command, args) => Locations = LoadLocations());
             helper.ConsoleCommands.Add("mtp_farm", "Force Map Teleports to re-check and fix Farm warp coordinates.", (command, args) => CheckFarm(Locations["Farm/Default"]));
@@ -123,6 +124,12 @@ namespace MapTeleport
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
             Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
             Locations = LoadLocations();
+        }
+
+        private void Input_ButtonPressed(object sender, ButtonPressedEventArgs e)
+        {
+            if (!Config.Debug || !Config.EnableMod || (e.Button != SButton.F2)) return;
+            SaveLocations(Locations);
         }
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
