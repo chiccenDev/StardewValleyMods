@@ -1,0 +1,14 @@
+{
+  "EnableMod": "Habilitar Mod",
+  "EnableMod.1": "Activar/Desactivar Teletransporte en el Mapa",
+  "AllowUnknown": "Permitir Ubicaciones Desconocidas",
+  "AllowUnknown.1": "Permitir el teletransporte a ubicaciones que no hayas desbloqueado o visitado aun.",
+  "EnableAudio": "Habilitar Señal de Audio",
+  "EnableAudio.1": "Si esta habilitado, se reproducira una señal de audio al teletransportarse.",
+  "Debug": "Modo Depuracion",
+  "Debug.1": "Habilita esto para obtener registros detallados de SMAPI con fines de depuracion o reporte de errores. ADVERTENCIA: ¡hace que este mod genere mucho spam!",
+  "Simulate": "Simular Teletransportes (DEPURACION)",
+  "Simulate.1": "Con fines de depuracion, simula teletransportes pero muestra un mensaje en el registro de SMAPI en lugar de realizar el teletransporte.",
+  "WarpFail": "¡Debes desbloquear esta ubicacion antes de poder teletransportarte!",
+  "WarpFail.1": "Puedes teletransportarte de todas formas habilitando \"Permitir Ubicaciones Desconocidas\" en la configuracion, o cumpliendo los criterios del Estado del Juego: "
+}
