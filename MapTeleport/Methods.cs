@@ -15,11 +15,12 @@ namespace MapTeleport
 
     public partial class ModEntry
     {
+        #region Load/Save
         public static Dictionary<string, LocationDetails> LoadLocations()
         {
             if (!Config.EnableMod) return new Dictionary<string, LocationDetails>();
 
-            string jsonPath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json"); // hope this shit actually works cross-platform
+            string jsonPath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
             Log($"Loading Warp locations from {jsonPath}", debugOnly: true);
 
             try
@@ -43,7 +44,13 @@ namespace MapTeleport
             }
 
         }
-
+        public static void SaveLocations(Dictionary<string, LocationDetails> loc)
+        {
+            string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "devLocations.json");
+            string json = JsonSerializer.Serialize(loc);
+            File.WriteAllText(savePath, json);
+        }
+        #endregion
         public static bool TryWarp(string loc)
         {
             if (!Config.EnableMod) return false;
@@ -85,31 +92,6 @@ namespace MapTeleport
             return false;
             
         }
-        /// <summary>
-        ///     For testing warps to see what may be broken without freezing or crashing the game.
-        /// </summary>
-        public static bool TestWarp(string loc)
-        {
-            if (!Config.EnableMod) return false;
-
-            Log($"TestWarp() called for {loc}", LogLevel.Alert);
-            if (Locations.ContainsKey(loc))
-            {
-                LocationDetails entry = Locations[loc];
-                GameLocation location;
-                try { location = Game1.getLocationFromNameInLocationsList(entry.Region); }
-                catch (Exception e) { 
-                    Log($"Failed to get GameLocation: {e.Message}", LogLevel.Error);
-                    location = Game1.getLocationFromNameInLocationsList("Tent");
-                }
-                Log($"Teleport requested to {loc}!\n\tRegion: {entry.Region}\n\tX: {entry.X}\n\tY: {entry.Y}\n\tLocation:{(location?.name != null ? location.name : "null")}", LogLevel.Warn);
-                return location is not null;
-            }
-            else { Log($"No Map Warp for {loc}, sorry!", LogLevel.Error); }
-            return false;
-            
-        }
-
         public static void CheckFarm(LocationDetails entry)
         {
             if (!Config.EnableMod) return;
@@ -127,6 +109,7 @@ namespace MapTeleport
             DelayedAction.playSoundAfterDelay("grassyStep", 400);
             DelayedAction.playSoundAfterDelay("grassyStep", 800);
         }
+
 
     }
 }
