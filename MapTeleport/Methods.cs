@@ -10,7 +10,7 @@ namespace MapTeleport
         public string Region { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public string Condition { get; set; }
+        public string? Condition { get; set; }
     }
 
     public partial class ModEntry
@@ -84,11 +84,21 @@ namespace MapTeleport
                 }
                 else { 
                     Game1.showRedMessage(I18n.WarpFail());
-                    Log(I18n.WarpFail_1() + entry.Condition, debugOnly: true);
+                    Log(I18n.WarpFail_1() + entry.Condition);
                     return false;
                 }
             }
-            else { Log($"No Map Warp for {loc}, sorry!", debugOnly: true); }
+            else if (Config.Debug)
+            {
+                Locations[loc] = new LocationDetails
+                {
+                    X = 0,
+                    Y = 0,
+                    Condition = null
+                };
+                Log($"{loc} has been added to Locations list. Press F2 to save.", LogLevel.Alert);
+            }
+            else { Log($"No Map Warp for {loc}, sorry!"); }
             return false;
             
         }
@@ -96,9 +106,9 @@ namespace MapTeleport
         {
             if (!Config.EnableMod) return;
 
-            Log("Patching warp info for Farm", debugOnly: true);
+            Log("Patching warp info for Farm");
             Point door = Farm.getFrontDoorPositionForFarmer(Game1.player);
-            Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).", debugOnly: true);
+            Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).");
             entry.X = door.X;
             entry.Y = ++door.Y;
         }
