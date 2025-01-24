@@ -472,6 +472,107 @@
 		"X": 8,
 		"Y": 12,
 		"Condition": null
-	}
-	
+	},
+  "ScarpCrossing/ScarpCrossing": {
+    "Region": "EastScarp_ClearingHouse",
+    "X": 23,
+    "Y": 20,
+    "Condition": null
+  },
+  "ScarpCrossing/JessieHouse": {
+    "Region": "EastScarp_ClearingHouse",
+    "X": 24,
+    "Y": 9,
+    "Condition": null
+  },
+  "ScarpCrossing/JessieCottage": {
+    "Region": "EastScarp_ClearingHouse",
+    "X": 43,
+    "Y": 31,
+    "Condition": null
+  },
+  "MainScarp/Tidepools": {
+    "Region": "EastScarp_Village",
+    "X": 47,
+    "Y": 111,
+    "Condition": null
+  },
+  "MainScarp/Lighthouse": {
+    "Region": "EastScarp_Village",
+    "X": 71,
+    "Y": 119,
+    "Condition": null
+  },
+  "CherryOrchard/SmugglerShack": {
+    "Region": "EastScarp_Orchard",
+    "X": 18,
+    "Y": 65,
+    "Condition": null
+  },
+  "MainScarp/PlumFarm": {
+    "Region": "EastScarp_Village",
+    "X": 74,
+    "Y": 49,
+    "Condition": null
+  },
+  "MainScarp/ScarpeInn": {
+    "Region": "EastScarp_Village",
+    "X": 42,
+    "Y": 66,
+    "Condition": null
+  },
+  "MainScarp/AideenHouse": {
+    "Region": "EastScarp_Village",
+    "X": 16,
+    "Y": 49,
+    "Condition": null
+  },
+  "MainScarp/ToriHouse": {
+    "Region": "EastScarp_Village",
+    "X": 4,
+    "Y": 62,
+    "Condition": null
+  },
+  "MainScarp/VetHouse": {
+    "Region": "EastScarp_Village",
+    "X": 14,
+    "Y": 25,
+    "Condition": null
+  },
+  "MainScarp/JacobBarn": {
+    "Region": "EastScarp_Village",
+    "X": 14,
+    "Y": 12,
+    "Condition": null
+  },
+  "MainScarp/Silo": {
+    "Region": "EastScarp_Village",
+    "X": 88,
+    "Y": 32,
+    "Condition": null
+  },
+  "MainScarp/ScarpePond": {
+    "Region": "EastScarp_Village",
+    "X": 26,
+    "Y": 70,
+    "Condition": null
+  },
+  "MainScarp/Underscarp": {
+    "Region": "EastScarp_Village",
+    "X": 44,
+    "Y": 86,
+    "Condition": null
+  },
+  "AbandonedMine/OrchardHouse": {
+    "Region": "EastScarp_MineEntrance",
+    "X": 22,
+    "Y": 10,
+    "Condition": null
+  },
+  "CherryOrchard/OrchardHouse": {
+    "Region": "EastScarp_Orchard",
+    "X": 4,
+    "Y": 18,
+    "Condition": null
+  }
 }
