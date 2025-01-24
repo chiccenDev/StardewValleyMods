@@ -46,7 +46,9 @@ namespace MapTeleport
         }
         public static void SaveLocations(Dictionary<string, LocationDetails> loc)
         {
-            string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "devLocations.json");
+            if (!Config.EnableMod || !Config.Debug) return;
+
+            string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
             string json = JsonSerializer.Serialize(loc);
             File.WriteAllText(savePath, json);
         }
