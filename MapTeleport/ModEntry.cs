@@ -114,13 +114,6 @@ namespace MapTeleport
                 getValue: () => Config.Debug,
                 setValue: value => Config.Debug = value
             );
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.Simulate(),
-                tooltip: () => I18n.Simulate_1(),
-                getValue: () => Config.Simulate,
-                setValue: value => Config.Simulate = Config.Debug ? value : false
-            );
 
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
             Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
