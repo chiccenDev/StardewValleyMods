@@ -74,6 +74,7 @@ namespace MapTeleport
         private void GameLoop_GameLaunched(object sender, GameLaunchedEventArgs e)
         {
             Log("Launching with Debug mode enabled.", debugOnly: true);
+            Log($"\tEnableMod: {Config.EnableMod}\n\tAllowUnknown: {Config.AllowUnknown}\n\tEnableAudio: {Config.EnableAudio}\n\tSimulate: {Config.Simulate}", debugOnly: true);
 
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
             if (configMenu is null)
