@@ -78,6 +78,7 @@ namespace MapTeleport
             if (Locations.ContainsKey(loc))
             {
                 LocationDetails entry = Locations[loc];
+                Log($"Warping to Region: {entry.Region}\n\tX: {entry.X}\n\tY: {entry.Y}", debugOnly: true);
                 if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
                 {
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
