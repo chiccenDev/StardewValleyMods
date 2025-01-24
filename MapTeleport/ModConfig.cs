@@ -6,7 +6,6 @@
         public bool EnableMod { get; set; } = true;
         public bool AllowUnknown { get; set; } = false;
         public bool EnableAudio { get; set; } = true;
-        public bool Simulate { get; set; } = false;
         public bool Debug { get; set; } = false;
 
     }

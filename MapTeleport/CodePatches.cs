@@ -18,7 +18,7 @@ namespace MapTeleport
                 {
                     if (c.containsPoint(x, y))
                     {
-                        success = Config.Simulate ? TestWarp(c.name) : TryWarp(c.name);
+                        success = TryWarp(c.name);
 
                         if (success) __instance.exitThisMenu();
                         
