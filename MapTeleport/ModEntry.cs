@@ -14,6 +14,7 @@ namespace MapTeleport
         public static bool hasSVE;
 
         public static Dictionary<string, LocationDetails> Locations = new();
+        public static readonly string MapDataSource = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
 
         public override void Entry(IModHelper helper)
         {
