@@ -76,6 +76,8 @@ namespace MapTeleport
             Log("Launching with Debug mode enabled.", debugOnly: true);
             Log($"\tEnableMod: {Config.EnableMod}\n\tAllowUnknown: {Config.AllowUnknown}\n\tEnableAudio: {Config.EnableAudio}", debugOnly: true);
 
+
+            // GMCM //
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
             if (configMenu is null)
                 return;
@@ -115,8 +117,12 @@ namespace MapTeleport
                 setValue: value => Config.Debug = value
             );
 
+            // SVE check, probably deprecated but I am too lazy to check
+
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
             Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
+
+            // Load Locations
             Locations = LoadLocations();
         }
 
