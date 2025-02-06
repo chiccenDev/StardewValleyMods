@@ -5,9 +5,15 @@ using System.Text.Json;
 
 namespace MapTeleport
 {
+    /// <summary>
+    ///     LocationDetails class for Stardew Valley MapToolTip data
+    /// </summary>
+    /// <remarks>
+    ///     Mimicks Stardew Valley's native <seealso cref="StardewValley.WorldMaps.MapAreaTooltip"/> class to store minimal data for all locations, including custom modded locations.
+    /// </remarks>
     public class LocationDetails
     {
-        public string Region { get; set; }
+        public string? Region { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public string? Condition { get; set; }
@@ -19,7 +25,7 @@ namespace MapTeleport
         /// <summary>
         /// Load Locations.json and store into Dictionary<\string, LocationDetails> for future reference.
         /// </summary>
-        /// <returns>Dictionary<\string, LocationDetails></returns>
+        /// <returns>Dictionary<<see cref="string"/>, <see cref="LocationDetails"/>></returns>
         public static Dictionary<string, LocationDetails> LoadLocations()
         {
             if (!Config.EnableMod) return new Dictionary<string, LocationDetails>();
@@ -40,7 +46,7 @@ namespace MapTeleport
                 }
                 else { 
                     Log("JSON data failed to deserialize. Please re-download from Nexus or post a bug report if re-downloading failed to resolve this error.", LogLevel.Error);
-                    return new Dictionary<string, LocationDetails>(); 
+                    return new Dictionary<string, LocationDetails>();
                 }
                 
             }
@@ -59,9 +65,9 @@ namespace MapTeleport
         {
             if (!Config.EnableMod || !Config.Debug) return;
 
-            //string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
             string json = JsonSerializer.Serialize(loc);
             File.WriteAllText(MapDataSource, json);
+            Log($"Locations have been saved to {MapDataSource}!", LogLevel.Info);
         }
         #endregion
         public static bool TryWarp(string loc)
@@ -104,6 +110,7 @@ namespace MapTeleport
             {
                 Locations[loc] = new LocationDetails
                 {
+                    Region = null,
                     X = 0,
                     Y = 0,
                     Condition = null
@@ -114,6 +121,7 @@ namespace MapTeleport
             return false;
             
         }
+        #region auxiliary methods
         public static void CheckFarm(LocationDetails entry)
         {
             if (!Config.EnableMod) return;
@@ -131,7 +139,6 @@ namespace MapTeleport
             DelayedAction.playSoundAfterDelay("grassyStep", 400);
             DelayedAction.playSoundAfterDelay("grassyStep", 800);
         }
-
-
+        #endregion
     }
 }

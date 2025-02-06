@@ -28,6 +28,7 @@ namespace MapTeleport
             helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
             helper.Events.Input.ButtonPressed += Input_ButtonPressed;
 
+            // rebug commands for trouble shooting or updating Locations
             helper.ConsoleCommands.Add("mtp_load", "Force Map Teleport to reload locations. Run \"mtp_farm\" to repair farm warp after using this command.", (command, args) => Locations = LoadLocations());
             helper.ConsoleCommands.Add("mtp_farm", "Force Map Teleports to re-check and fix Farm warp coordinates.", (command, args) => CheckFarm(Locations["Farm/Default"]));
 
@@ -41,7 +42,7 @@ namespace MapTeleport
         /// <remarks>
         ///     Allows basic Log functions to upgrade <see cref="LogLevel.Trace"/> Logs to <see cref="LogLevel.Debug"/> when debugging for ease of reading.<br/>
         ///     For <b>Debug Only</b> Logs -- use <c>debugOnly: true</c> and omit <see cref="LogLevel"/> <code>Log(message, debugOnly: true);</code><br/>
-        ///     For Debug Logs that <b>always</b> show -- use <see cref="LogLevel"/> and omit <c>debugOnly</c> <code>Log(message, <see cref="LogLevel"/>);</code>.
+        ///     For Debug Logs that <b>always</b> show -- use <see cref="LogLevel"/> and omit <c>debugOnly</c> <code>Log(message, <see cref="LogLevel"/>);</code>
         /// </remarks>
 		/// <param name="message"></param>
 		/// <param name="level"></param>
@@ -118,8 +119,7 @@ namespace MapTeleport
                 setValue: value => Config.Debug = value
             );
 
-            // SVE check, probably deprecated but I am too lazy to check
-
+            // SVE check, purely for situational awareness
             hasSVE = (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) ;
             Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
 
