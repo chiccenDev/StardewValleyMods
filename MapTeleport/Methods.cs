@@ -24,12 +24,11 @@ namespace MapTeleport
         {
             if (!Config.EnableMod) return new Dictionary<string, LocationDetails>();
 
-            string jsonPath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
-            Log($"Loading Warp locations from {jsonPath}", debugOnly: true);
+            Log($"Loading Warp locations from {MapDataSource}", debugOnly: true);
 
             try
             {
-                string jsonText = File.ReadAllText(jsonPath);
+                string jsonText = File.ReadAllText(MapDataSource);
                 var locations = JsonSerializer.Deserialize<Dictionary<string, LocationDetails>>(jsonText);
 
                 if (locations != null)
@@ -39,7 +38,10 @@ namespace MapTeleport
                     Log($"Data validation: {(postLoadQC ? "passed!" : "failed! Please re-download MapTeleport from Nexus or send in a bug report! :(")}",(postLoadQC ? LogLevel.Trace : LogLevel.Error), debugOnly: !postLoadQC); // and if it doesn't have such a basic location, spit out error
                     return locations;
                 }
-                //else { return new Dictionary<string, LocationDetails>(); } this was a light-handed way to handle things
+                else { 
+                    Log("JSON data failed to deserialize. Please re-download from Nexus or post a bug report if re-downloading failed to resolve this error.", LogLevel.Error);
+                    return new Dictionary<string, LocationDetails>(); 
+                }
                 
             }
             catch (Exception e)
@@ -57,9 +59,9 @@ namespace MapTeleport
         {
             if (!Config.EnableMod || !Config.Debug) return;
 
-            string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
+            //string savePath = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
             string json = JsonSerializer.Serialize(loc);
-            File.WriteAllText(savePath, json);
+            File.WriteAllText(MapDataSource, json);
         }
         #endregion
         public static bool TryWarp(string loc)
