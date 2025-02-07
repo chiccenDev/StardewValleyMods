@@ -21,6 +21,8 @@ namespace MapTeleport
 
     public partial class ModEntry
     {
+        JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true }; // for formatting re-serialized JSON in SaveLocations()
+
         #region Load/Save
         /// <summary>
         /// Load Locations.json and store into Dictionary<\string, LocationDetails> for future reference.
@@ -65,7 +67,7 @@ namespace MapTeleport
         {
             if (!Config.EnableMod || !Config.Debug) return;
 
-            string json = JsonSerializer.Serialize(loc);
+            string json = JsonSerializer.Serialize(loc, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText(MapDataSource, json);
             Log($"Locations have been saved to {MapDataSource}!", LogLevel.Info);
         }
@@ -94,7 +96,7 @@ namespace MapTeleport
             {
                 LocationDetails entry = Locations[loc];
                 Log($"Warping to Region: {entry.Region}\n\tX: {entry.X}\n\tY: {entry.Y}", debugOnly: true);
-                if (Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true))
+                if ((Config.AllowUnknown || (entry.Condition != null ? GameStateQuery.CheckConditions(entry.Condition) : true)) && entry.Region != null)
                 {
                     Game1.warpFarmer(entry.Region, entry.X, entry.Y, 2);
                     if (Config.EnableAudio) PlayAudio();
