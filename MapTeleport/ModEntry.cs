@@ -14,7 +14,7 @@ namespace MapTeleport
         public static bool hasSVE;
 
         public static Dictionary<string, LocationDetails> Locations = new();
-        public static readonly string MapDataSource = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
+        public static string MapDataSource;
 
         public override void Entry(IModHelper helper)
         {
@@ -124,6 +124,7 @@ namespace MapTeleport
             Log($"User {(hasSVE ? "has" : "does not have")} Stardew Valley Expanded", debugOnly: true);
 
             // Load Locations
+            MapDataSource = Path.Combine(SHelper.DirectoryPath, "assets", "Locations.json");
             Locations = LoadLocations();
         }
 
