@@ -574,5 +574,17 @@
     "X": 4,
     "Y": 18,
     "Condition": null
+  },
+  "Custom_LK_ClearingHouse/Custom_LK_ClearingHouse": {
+    "Region": null,
+    "X": 0,
+    "Y": 0,
+    "Condition": null
+  },
+  "sdvhead.LawAndOrderSV_Jail/sdvhead.LawAndOrderSV_Jail": {
+    "Region": null,
+    "X": 0,
+    "Y": 0,
+    "Condition": null
   }
 }
