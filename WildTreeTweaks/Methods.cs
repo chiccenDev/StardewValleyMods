@@ -128,7 +128,7 @@ namespace WildTreeTweaks
             {
                 return null;
             }
-            return ItemQueryResolver.TryResolveRandomItem(drop, new ItemQueryContext(tree.Location, targetFarmer, r), avoidRepeat: false, null, formatItemId, null, delegate (string query, string error)
+            return ItemQueryResolver.TryResolveRandomItem(drop, new ItemQueryContext(tree.Location, targetFarmer, r, "ChopItems"), avoidRepeat: false, null, formatItemId, null, delegate (string query, string error)
             {
                 Log($"Wild tree '{tree.treeType.Value}' failed parsing item query '{query}' for {fieldName} entry '{drop.Id}': {error}", StardewModdingAPI.LogLevel.Error);
             });
