@@ -2,6 +2,8 @@
 using Microsoft.CodeAnalysis.FlowAnalysis;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MapTeleport
 {
