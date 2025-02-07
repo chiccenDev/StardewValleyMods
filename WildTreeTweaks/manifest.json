@@ -1,7 +1,7 @@
 {
   "Name": "Wild Tree Tweaks",
   "Author": "chiccen",
-  "Version": "1.0.4",
+  "Version": "1.0.5",
   "Description": "Offers some functionality from Fruit Tree Tweaks to basic wild, non-fruit trees.",
   "UniqueID": "chiccen.WildTreeTweaks",
   "EntryDll": "WildTreeTweaks.dll",
