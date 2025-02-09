@@ -26,7 +26,7 @@ namespace MapTeleport
     {
         JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true }; // for formatting re-serialized JSON in SaveLocations()
 
-        #region Load/Save
+        #region Load/Edit/Save
         /// <summary>
         /// Load Locations.json and store into Dictionary<\string, LocationDetails> for future reference.
         /// </summary>
@@ -61,6 +61,50 @@ namespace MapTeleport
                 return new Dictionary<string, LocationDetails>();
             }
 
+        }
+        public static void EditLocations(string[] args)
+        {
+            if (!Config.EnableMod || !Config.Debug) return;
+            if (args == null || args.Length < 3)
+            {
+                Log($"Command mtp_edit requires 3 parameters: key, x, y.", LogLevel.Error);
+                return;
+            }
+
+            try
+            {
+                string key = args[0];
+                if (!Locations.ContainsKey(key)) { Log($"Could not find key: {key}", LogLevel.Error); return;  }
+                int x = Int32.Parse(args[1]);
+                int y = Int32.Parse(args[2]);
+
+                Locations[key] = new LocationDetails
+                {
+                    Region = Game1.player.currentLocation.Name, // its either this for DisplayName, I can never remember which
+                    Condition = null,
+                    X = x,
+                    Y = y
+                };
+            }
+            catch (Exception e)
+            {
+                switch (e)
+                {
+                    case NullReferenceException:
+                        Log("One or more of the provided parameters is null. Ensure you pass a valid key, x, and y.", LogLevel.Error);
+                        break;
+                    case FormatException:
+                        Log($"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}", LogLevel.Error);
+                        break;
+                    case OverflowException:
+                        Log($"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to map Teleport For 1.6 on Nexus.\n{e.Message}", LogLevel.Error);
+                        break;
+                    default:
+                        Log($"{e.Message}: {e.StackTrace}", LogLevel.Error);
+                        break;
+                }
+                return;
+            }
         }
         /// <summary>
         /// Save Dictionary<\string, LocationDetails> into the Locations.json file for future re-use.
