@@ -32,6 +32,7 @@ namespace MapTeleport
 
             // rebug commands for trouble shooting or updating Locations
             helper.ConsoleCommands.Add("mtp_load", "Force Map Teleport to reload locations. Run \"mtp_farm\" to repair farm warp after using this command.", (command, args) => Locations = LoadLocations());
+            helper.ConsoleCommands.Add("mtp_save", "Force Map Teleport to save current loaded locations, including any modifications since loading, to the Locations.json file.", (commands, args) => SaveLocations(Locations));
             helper.ConsoleCommands.Add("mtp_farm", "Force Map Teleports to re-check and fix Farm warp coordinates.", (command, args) => CheckFarm(Locations["Farm/Default"]));
 
             var harmony = new Harmony(ModManifest.UniqueID);

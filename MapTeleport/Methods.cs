@@ -120,7 +120,7 @@ namespace MapTeleport
                     Y = 0,
                     Condition = null
                 };
-                Log($"{loc} has been added to Locations list. Press F2 to save.", LogLevel.Alert);
+                Log($"{loc} has been added to Locations list. Press F2 or use SMAPI command \"mtp_save\" to save to file.", LogLevel.Alert);
             }
             else { Log($"No Map Warp for {loc}, sorry!"); }
             return false;
