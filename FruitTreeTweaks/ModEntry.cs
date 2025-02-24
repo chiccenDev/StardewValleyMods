@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Metadata;
-using HarmonyLib;
-using Microsoft.Xna.Framework;
+﻿using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewValley;
-using StardewValley.TerrainFeatures;
 
 namespace FruitTreeTweaks
 {
