@@ -18,7 +18,7 @@ Message @chiccen on Discord for details on how you would like to be credited!
 \* = mod update, see mod page for details
 (❑ = untranslated, ↻ = partly translated, ✓ = fully translated)
 
-&nbsp;																		| Chinese								| French							| German								| Hungarian		| Italian		| Japanese		| Korean		| Portgugeuse								| Russian		| Spanish								| Turkish
+&nbsp;																		| Chinese								| French							| German								| Hungarian		| Italian		| Japanese		| Korean		| Portugeuse								| Russian		| Spanish								| Turkish
 :---------																	| :----------------						| :------							| :-----								| :--------		| :------		| :-------		| :-----		| :----------								| :------		| :------								| :------
 Deluxe Grabber*																| [❑](./i18n)							| [❑](./i18n)						| [❑](./i18n)							| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)								| [❑](./i18n)	| [❑](./i18n)							| [❑](./i18n)
 [Fruit Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/21449)*	| [✓](./FruitTreeTweaks/i18n/zh.json)	| [❑](./i18n)						| [✓](./FruitTreeTweaks/i18n/de.json)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n/pt-br.json)	| [❑](./i18n)	| [✓](./FruitTreeTweaks/i18n/es.json)	| [❑](./i18n)
