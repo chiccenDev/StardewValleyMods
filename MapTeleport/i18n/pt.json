@@ -1,0 +1,15 @@
+Portuguese translation
+{
+"EnableMod": "Habilitar Mod",
+"EnableMod.1": "Ativar/desativar teletransporte de mapa",
+"AllowUnknown": "Permitir locais desconhecidos",
+"AllowUnknown.1": "Permitir teletransporte para locais que você ainda não desbloqueou ou visitou.",
+"EnableAudio": "Habilitar som",
+"EnableAudio.1": "Quando ativado, um sinal sonoro será reproduzido ao se teletransportar.",
+"Debug": "Debug Mode",
+"Debug.1": "Habilite isso para obter logs SMAPI detalhados para fins de depuração ou relatórios de bugs. AVISO: faz este mod dar bastante spam!",
+"Simulate": "Simular teletransporte (DEBUG)",
+"Simulate.1": "Para fins de depuração, simule o teletransporte, mas envie uma mensagem para o log SMAPI em vez de realmente executar o teleporte.",
+"WarpFail": "Você deve desbloquear este local antes de poder se eleportar!",
+"WarpFail.1": "Você pode teleportar para qualquer lugar habilitando \"Permitir Locais Desconhecidos\" na configuração ou atendendo aos critérios do Estado do Jogo: "
+}
