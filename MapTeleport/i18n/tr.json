@@ -1,0 +1,14 @@
+{
+"EnableMod": "Mod'u Aktifleştir",
+"EnableMod.1": "Harita Işınlamasını Aç/Kapa",
+"AllowUnknown": "Bilinmeyen Lokasyonlara İzin Ver",
+"AllowUnknown.1": "Açılmayan ya da ziyaret edilmeyen lokasyonlara ışınlanmaya izin ver.",
+"EnableAudio": "Ses işaretini aktifleştir",
+"EnableAudio.1": "Aktifleştirildiğinde ışılanıldığında bir ses işareti duyulur.",
+"Debug": "Hata Ayıklama Modu",
+"Debug.1": "Hata ayıklama veya hata raporlama amacıyla ayrıntılı SMAPI günlükleri almak için bunu etkinleştirin. UYARI: bu modda oldukça spam yapar!",
+"Simulate": "Işınlanma Simülasyonu (DEBUG)",
+"Simulate.1": "Hata ayıklama amacıyla, ışınlanma simülasyonu yapın ancak gerçekte ışınlanmayı gerçekleştirmek yerine SMAPI günlüğüne bir mesaj gönderin.",
+"WarpFail": "Işınlanmadan önce bu lokasyonun kilidini açmalısınız!",
+"WarpFail.1": "Yapılandırmada \"Bilinmeyen Lokasyonlara İzin Ver\" seçeneğini etkinleştirerek veya Oyun Durumu kriterlerini karşılayarak yine de ışınlanabilirsiniz: "
+}
