@@ -26,7 +26,7 @@ Deluxe Grabber*																|  ❑                                   |  ❑  
 Go Home Robin																|  ❑                                   |  ❑                                   |  ❑                                   |  ❑                                       |  ❑                               |  ❑                                   |  ❑
 [Map Teleport](https://www.nexusmods.com/stardewvalley/mods/30611)*			| [✓](./MapTeleport/i18n/zh.json)      | [✓](./MapTeleport/i18n/fr.json)      |  ❑                                   | [✓](./MapTeleport/i18n/pt.json)			| [✓](./MapTeleport/i18n/ru.json)  | [✓](./MapTeleport/i18n/es.json)      | [✓](./MapTeleport/i18n/tr.json)
 [Water Your Crops](https://www.nexusmods.com/stardewvalley/mods/24710)		| [✓](./WaterYourCrops/i18n/zh.json)   | [✓](./WaterYourCrops/i18n/fr.json)   | [✓](./WaterYourcrops/i18n/de.json)   | [✓](./WaterYourCrops/i18n/pr-br.json)    |  ❑                               | [✓](./WaterYourCrops/i18n/es.json)   | [✓](./WaterYourCrops/i18n/tr.json)
-[Wild Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/24349)		| [❑](./WildTreeTweaks/i18n/zh.json)   |  ❑                                   |  ❑                                   |  ❑                                       |  ❑                               |  ❑                                   |  ❑
+[Wild Tree Tweaks](https://www.nexusmods.com/stardewvalley/mods/24349)		| [✓](./WildTreeTweaks/i18n/zh.json)   |  ❑                                   |  ❑                                   |  ❑                                       |  ❑                               |  ❑                                   |  ❑
 
 ## Credits and Notes
 
