@@ -2,7 +2,7 @@
 
 
 I made this mod for Stardew Valley! 
-If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/).  
+If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/).  
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/1/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating MyMod
@@ -21,19 +21,20 @@ Message @chiccen on Discord for details on how you would like to be credited!
 
 (❑ = untranslated, ↻ = partly translated, ✓ = fully translated)
 
-&nbsp;     | MyMod
-:--------- | :----------------
-Chinese    | [❑](./i18n)
-French     | [❑](./i18n)
-German     | [❑](./i18n)
-Hungarian  | [❑](./i18n)
-Italian    | [❑](./i18n)
-Japanese   | [❑](./i18n)
-Korean     | [❑](./i18n)
-Portuguese | [❑](./i18n)
-Russian    | [❑](./i18n)
-Spanish    | [❑](./i18n)
-Turkish    | [❑](./i18n)
+&nbsp;          | MyMod
+:---------      | :----------------
+Chinese         | [❑](./i18n/zh.json)
+French          | [❑](./i18n/fr.json)
+German          | [❑](./i18n/de.json)
+Hungarian       | [❑](./i18n/hu.json)
+Italian         | [❑](./i18n/it.json)
+Japanese        | [❑](./i18n/ja.json)
+Korean          | [❑](./i18n/ko.json)
+Portuguese      | [❑](./i18n/pt.json)
+Portuguese (BR) | [❑](./i18n/pt-br.json)
+Russian         | [❑](./i18n/ru.json)
+Spanish         | [❑](./i18n/es.json)
+Turkish         | [❑](./i18n/tr.json)
 
 ## Credits and Notes
 

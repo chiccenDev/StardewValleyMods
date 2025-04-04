@@ -2,16 +2,11 @@
 
 
 Another mod that changes the visual cue for when crops haven't been watered yet. 
-If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/WaterYourCrops/).  
+If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/WaterYourCrops/).  
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/24710/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating Water Your Crops
-<!--
 
-    This section is auto-generated using a script, there's no need to edit it manually.
-    https://github.com/Pathoschild/StardewScripts/tree/main/create-translation-summary
-
--->
 Water Your Crops can be translated into any language supported by the game, and SMAPI will automatically
 use the right translations.
 
@@ -23,17 +18,17 @@ Message @chiccen on Discord for details on how you would like to be credited!
 
 &nbsp;     | Water Your Crops
 :--------- | :----------------
-Chinese    | [✓](./i18n)
-French     | [✓](./i18n)
-German     | [✓](./i18n)
+Chinese    | [✓](./i18n/zh.json) (Courtesy of @PixelMonster717 on Github)
+French     | [✓](./i18n/fr.json) (Courtesy of @mouahrara on Github)
+German     | [✓](./i18n/de.json) (Courtesy of @PrivateDandelion on Github)
 Hungarian  | [❑](./i18n)
 Italian    | [❑](./i18n)
 Japanese   | [❑](./i18n)
 Korean     | [❑](./i18n)
-Portuguese | [❑](./i18n)
+Portuguese | [✓](./i18n/pt.json) (Courtesy of @LunaticoMexcarado on Github)
 Russian    | [❑](./i18n)
-Spanish    | [✓](./i18n)
-Turkish    | [✓](./i18n)
+Spanish    | [✓](./i18n/es.json) (Courtesy of @Roldemix on Github)
+Turkish    | [✓](./i18n/tr.json) (Courtesy of @Breekk on Github)
 
 ## Credits and Notes
 

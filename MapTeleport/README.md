@@ -2,7 +2,7 @@
 
 
 I made this mod for Stardew Valley! 
-If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/).  
+If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/).  
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/30611/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating Map Teleport
@@ -25,18 +25,23 @@ Hungarian  | [❑](./i18n)
 Italian    | [❑](./i18n)
 Japanese   | [❑](./i18n)
 Korean     | [❑](./i18n)
-Portuguese | [❑](./i18n)
-Russian    | [❑](./i18n)
-Spanish    | [❑](./i18n)
-Turkish    | [❑](./i18n)
+Portuguese | [✓](./i18n/pt.json) (Courtesy of @DearSloth1812 on Github)
+Russian    | [✓](./i18n/ru.json) (Courtesy of @Ognejar on Github)
+Spanish    | [✓](./i18n/es.json) (Courtesy of @Jossegenbu on Github)
+Turkish    | [✓](./i18n/tr.json) (Courtesy of @evelynope on Github)
 
 ## Changelog
 
 Version    | Date				| Release Notes
 :--------- | :----------------  | :------------------
-1.0.2      | 06 January 2025    | *French localization<br>*Toggleable audio cue when teleporting<br>*Minor SVE teleport location tweaks and fixes
-1.0.1      | 05 January 2025    | *Chinese localization<br>*Support for Stardew Valley Expanded<br>*Vanilla teleport location fixes
-1.0.0      | 04 January 2025    | *Initial release
+1.0.7      | TBD                | ·Patched typo in JSON path when fetching<br>·Cmd `mtp_edit (key, x, y)` to edit location data in debug mode<br>·Russian localization<br>·Portuguese localization<br>·Turkish localization
+1.0.6      | 06 February 2025   | ·Support for Law and Order jail<br>·Juliet and Jessie's house in the clearing<br>·Beautify serialized JSON location data<br>·Cleaned error checking to prevent spam
+1.0.5      | 24 January 2025    | ·Support for East Scarp<br>·New debug option to update locations list<br>·Fixed bugs from obsolete code<br>·Spanish localization
+1.0.4      | 19 January 2025    | ·Patched typo in JSON path when fetching
+1.0.3      | 14 January 2025    | ·Updated French & Chinese i18n<br>·Support for LittleRedSchoolHouse and OrnothologistsGuild
+1.0.2      | 06 January 2025    | ·French localization<br>·Toggleable audio cue when teleporting<br>·Minor SVE teleport location tweaks and fixes
+1.0.1      | 05 January 2025    | ·Chinese localization<br>·Support for Stardew Valley Expanded<br>·Vanilla teleport location fixes
+1.0.0      | 04 January 2025    | ·Initial release
 
 ## Credits and Notes
 

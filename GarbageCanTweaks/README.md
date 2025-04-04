@@ -2,16 +2,10 @@
 
 
 Changes some behavior to make garbage cans in Stardew Valley a little more useful!
-If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccenFL/StardewValleyMods/).  
+If you experience issues, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/).  
 If making a bug report on Nexus, please use the ["Bugs"](https://www.nexusmods.com/stardewvalley/mods/1/?tab=bugs) tab and ***not*** "Posts" unless it is a suggestion, a mod conflict, or a very very minor bug.  
 
 ## Translating Garbage Can Tweaks
-<!--
-
-    This section is auto-generated using a script, there's no need to edit it manually.
-    https://github.com/Pathoschild/StardewScripts/tree/main/create-translation-summary
-
--->
 Garbage Can Tweaks can be translated into any language supported by the game, and SMAPI will automatically
 use the right translations.
 
