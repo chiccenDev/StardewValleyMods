@@ -78,8 +78,8 @@ namespace WildTreeTweaks
             }
             catch (Exception e)
             {
-                Log("Not set to instance of an object error provoked!", LogLevel.Alert);
-                Log(deniedMessage);
+                LogOnce("Not set to instance of an object error provoked!", LogLevel.Alert);
+                LogOnce(deniedMessage);
                 return true;
             }
 
