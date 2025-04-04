@@ -58,8 +58,8 @@ namespace FruitTreeTweaks
             }
 
             deniedMessage = string.Empty;
-            if (location is not Farm && !CanPlantAnywhere())
-                deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm!";
+            if (location is not Farm && !location.isGreenhouse.Value && !CanPlantAnywhere())
+                deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm or greenhouse!";
             if (location.getBuildingAt(tile) is not null)
                 deniedMessage = "Tile is occupied by a building.";
             if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
