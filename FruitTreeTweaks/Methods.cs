@@ -80,7 +80,7 @@ namespace FruitTreeTweaks
                 deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
             try
             {
-                if (location.IsGreenhouse && location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood"))
+                if (location.IsGreenhouse && (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere()))
                     deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
             }
             catch (Exception e)
