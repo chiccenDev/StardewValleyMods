@@ -313,7 +313,7 @@ namespace FruitTreeTweaks
                 {
                     Vector2 placementTile = new Vector2(x / 64, y / 64);
                     string deniedMessage = string.Empty;
-                    if ((location is Farm || CanPlantAnywhere()) && CanItemBePlacedHere(location, placementTile, out deniedMessage))
+                    if (CanItemBePlacedHere(location, placementTile, out deniedMessage))
                     {
                         location.playSound("dirtyHit");
                         DelayedAction.playSoundAfterDelay("coin", 100);
@@ -330,7 +330,7 @@ namespace FruitTreeTweaks
                     else
                     {
                         //Game1.showRedMessage(deniedMessage); need to translate first
-                        Log($"{deniedMessage}", debugOnly: true); // placeholder until we can translate
+                        Log($"{deniedMessage}", LogLevel.Warn); // placeholder until we can translate
                     }
                 }
                 LogOnce($"placementAction for {obj?.DisplayName} passed to vanilla method.", debugOnly: true);
@@ -348,15 +348,17 @@ namespace FruitTreeTweaks
                 Farmer who = Game1.player;
                 Object tree = who?.ActiveObject ?? null;
 
-                if (tree is null || !Config.EnableMod || (l is not Farm && !Config.PlantAnywhere)) return true;
+                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
 
                 if (tree.IsFruitTreeSapling())
                 {
                     LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CanPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
+                    LogOnce($"{tree.DisplayName} CanPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
+
+                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -373,17 +375,18 @@ namespace FruitTreeTweaks
                 Farmer who = Game1.player;
                 Object tree = who?.ActiveObject ?? null;
 
-                if (tree is null || !Config.EnableMod || (l is not Farm && !Config.PlantAnywhere)) return true;
+                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
 
                 if (tree.IsFruitTreeSapling())
                 {
                     LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
+                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
 
 
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
+                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -399,17 +402,18 @@ namespace FruitTreeTweaks
                 Farmer who = Game1.player;
                 Object tree = who?.ActiveObject ?? null;
 
-                if (tree is null || !Config.EnableMod || (l is not Farm && !Config.PlantAnywhere)) return true;
+                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
 
                 if (tree.IsFruitTreeSapling())
                 {
                     LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
+                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
 
 
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
+                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -425,17 +429,17 @@ namespace FruitTreeTweaks
                 Farmer who = Game1.player;
                 Object tree = who?.ActiveObject ?? null;
 
-                if (tree is null || !Config.EnableMod || (l is not Farm && !Config.PlantAnywhere)) return true;
+                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
 
                 if (tree.IsFruitTreeSapling())
                 {
                     LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
                     LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out var deniedMessage2)}", debugOnly: true);
+                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
 
-                    
-                    if ((l is not Farm && !CanPlantAnywhere()) || !CanItemBePlacedHere(l, tile, out _))
+                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
