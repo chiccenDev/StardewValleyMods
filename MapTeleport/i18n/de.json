@@ -1,0 +1,14 @@
+{
+"EnableMod": "Mod aktivieren",
+"EnableMod.1": "Map Teleport ein/ausschalten",
+"AllowUnknown": "Unbekannte Orte erlauben",
+"AllowUnknown.1": "Erlaubt das Teleportieren zu Orten, die du noch nicht freigeschaltet oder besucht hast.",
+"EnableAudio": "Audio-Hinweis aktivieren",
+"EnableAudio.1": "Wenn aktiviert, beim Teleportieren ein Audio-Hinweis abgespielt",
+"Debug": "Debug-Modus",
+"Debug.1": "Aktiviere dies, um ausführliche SMAPI-Protokolle für Debugging oder Bug-Reports zu erhalten. WARNUNG: macht dieses Mod sehr spam-lastig!",
+"Simulate": "Warp-Simulation (DEBUG)",
+"Simulate.1": "Zum Debugging wird das Teleportieren simuliert, aber nur eine Nachricht ins SMAPI-Protokoll geschrieben, ohne den Warp tatsächlich auszuführen.",
+"WarpFail": "Du musst diesen Ort freischalten, bevor du dich dorthin teleportieren kannst!",
+"WarpFail.1": "Du kannst dich trotzdem teleportieren, indem du in der Konfiguration \"Unbekannte Orte erlauben\" aktivierst oder die Spielstatus-Kriterien erfüllst: "
+}
