@@ -177,7 +177,7 @@ namespace MapTeleport
 
             Log("Patching warp info for Farm");
             Point door = Farm.getFrontDoorPositionForFarmer(Game1.player);
-            Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).");
+            Log($"Original point: ({entry.X}, {entry.Y}). New point: ({door.X}, {door.Y}).", debugOnly: true);
             entry.X = door.X;
             entry.Y = ++door.Y;
         }
