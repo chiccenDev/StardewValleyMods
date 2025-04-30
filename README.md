@@ -2,9 +2,9 @@
 
 
 I make mods and mod updates for Stardew Valley. Not every mod here is my original work. Most are, but some, such as Fruit Tree Tweaks, are updates for pre-existing mods by other authors.
-If you experience issues with any of my mods, let me know by submitting a bug report or reaching on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/).  
+If you experience issues with any of my mods, let me know by submitting a bug report or reaching out on Discord (@chiccen). You are also free to contribute to the [Github](https://github.com/chiccendev/StardewValleyMods/).  
 You can also view all of my mods on [Nexus](https://next.nexusmods.com/profile/chiccenSDV) where you can submit bug reports, as well.
-Any mods listed below wihout a hyperlinked name is a Work In Progress and thus has not been published yet. Considering contributing to published mods before these.
+Any mods listed below without a hyperlinked name is a Work-In-Progress and thus has not been published yet. Consider contributing to published mods before these.
 
 ## Translating My Mods
 
