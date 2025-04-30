@@ -34,7 +34,7 @@ Turkish    | [✓](./i18n/tr.json) (Courtesy of @evelynope on Github)
 
 Version    | Date				| Release Notes
 :--------- | :----------------  | :------------------
-1.0.7      | 30 April 2025      | ·Patched typo in JSON path when fetching<br>·Cmd `mtp_edit (key, x, y)` to edit location data in debug mode<br>·Re-check Farmhouse door when Farmhouse is moved at Robin's<br>·Russian localization<br>·Portuguese localization<br>·Turkish localization<br>·German localization
+1.0.7      | 30 April 2025      | ·Cmd `mtp_edit (key, x, y)` to edit location data in debug mode<br>·Re-check Farmhouse door when Farmhouse is moved at Robin's<br>·Russian localization<br>·Portuguese localization<br>·Turkish localization<br>·German localization
 1.0.6      | 06 February 2025   | ·Support for Law and Order jail<br>·Juliet and Jessie's house in the clearing<br>·Beautify serialized JSON location data<br>·Cleaned error checking to prevent spam
 1.0.5      | 24 January 2025    | ·Support for East Scarp<br>·New debug option to update locations list<br>·Fixed bugs from obsolete code<br>·Spanish localization
 1.0.4      | 19 January 2025    | ·Patched typo in JSON path when fetching
