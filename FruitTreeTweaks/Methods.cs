@@ -14,13 +14,7 @@ namespace FruitTreeTweaks
         private static Dictionary<GameLocation, Dictionary<Vector2, (List<Color> colors, List<float> sizes, List<Vector2> offsets)>> fruitData = new();
         private static Dictionary<string, (Texture2D texture, Rectangle sourceRect)> textures = new();
         private static int fruitToday;
-
-        private static float GetTreeBottomOffset(FruitTree tree)
-        {
-            if (!Config.EnableMod)
-                return 1E-07f;
-            return 1E-07f + Game1.getFarm().terrainFeatures.Pairs.FirstOrDefault(pair => pair.Value == tree).Key.X / 100000f;
-        }
+        #region Internal Methods
         private static bool CanPlantAnywhere()
         {
             return Config.PlantAnywhere; // a bit redundant but I've used it a few times so I'll keep it, whatever
@@ -50,6 +44,32 @@ namespace FruitTreeTweaks
             }
             return oldValue;
         }
+        private static void HandleFruitStayThroughSeasonsChange()
+        {
+            // For each tree, do a season update to remove out of season fruit
+            // for the FruitStayThroughSeasons option. This should be called
+            // when the option is changed. This should be safe to call
+            // regardless of whether the option is off or on since the prefix
+            // will check
+            Utility.ForEachLocation(
+                delegate (GameLocation location)
+                {
+                    location.terrainFeatures.RemoveWhere(
+                        (KeyValuePair<Vector2, TerrainFeature> pair) =>
+                        {
+                            if (pair.Value is FruitTree fruitTree)
+                            {
+                                return fruitTree.seasonUpdate(false);
+                            }
+                            return false;
+                        }
+                    );
+                    return true;
+                }
+            );
+        }
+        #endregion
+        #region Strawman Methods
         private static bool CanItemBePlacedHere(GameLocation location, Vector2 tile, out string deniedMessage)
         {
             if (location is null)
@@ -91,33 +111,14 @@ namespace FruitTreeTweaks
 
             return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
         }
-
-        private static void HandleFruitStayThroughSeasonsChange()
-        {
-            // For each tree, do a season update to remove out of season fruit
-            // for the FruitStayThroughSeasons option. This should be called
-            // when the option is changed. This should be safe to call
-            // regardless of whether the option is off or on since the prefix
-            // will check
-            Utility.ForEachLocation(
-                delegate(GameLocation location)
-                {
-                    location.terrainFeatures.RemoveWhere(
-                        (KeyValuePair<Vector2, TerrainFeature> pair) =>
-                        {
-                            if (pair.Value is FruitTree fruitTree)
-                            {
-                                return fruitTree.seasonUpdate(false);
-                            }
-                            return false;
-                        }
-                    );
-                    return true;
-                }
-            );
-        }
-
+        #endregion
         #region Draw Methods
+        private static float GetTreeBottomOffset(FruitTree tree)
+        {
+            if (!Config.EnableMod)
+                return 1E-07f;
+            return 1E-07f + Game1.getFarm().terrainFeatures.Pairs.FirstOrDefault(pair => pair.Value == tree).Key.X / 100000f;
+        }
         private static Texture2D GetTexture(FruitTree tree, out Rectangle sourceRect)
         {
             if (!textures.TryGetValue(tree.fruit[0].QualifiedItemId, out var data)) // if sprites haven't already been collected
