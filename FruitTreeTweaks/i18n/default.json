@@ -21,8 +21,6 @@
   "FruitInWinter.1": "Expands Fruit All Seasons to include Winter. Fruit All Seasons must be enabled.",
   "FruitStayThroughSeasons": "Fruit Stay Through Seasons",
   "FruitStayThroughSeasons.1": "Fruits will stay on trees even out of season. This option is only relevant if Fruit All Seasons is disabled",
-  "FertilizeFruit": "Allow Fertilizer For Fruit Trees",
-  "FrtilizeFruit.1": "Allow tree fertilizer to be used on Fruit Trees, similar to Wild Trees, to speed up growth time.",
   "MaxFruitTree": "Max Fruit / Tree",
   "DaysUntilMature": "Days to Mature",
   "SaplingMaturity": "Use Base Sapling Maturity",

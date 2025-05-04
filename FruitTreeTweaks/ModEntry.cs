@@ -202,15 +202,6 @@ namespace FruitTreeTweaks
             );
             Log($"Fruit Stay Through Seasons: {Config.FruitStayThroughSeasons}", debugOnly: true);
 
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.FruitStayThroughSeasons(),
-                tooltip: () => I18n.FruitStayThroughSeasons_1(),
-                getValue: () => Config.FertilizeFruitTrees,
-                setValue: value => Config.FertilizeFruitTrees = value
-            );
-            Log($"Fruit Stay Through Seasons: {Config.FertilizeFruitTrees}", debugOnly: true);
-
             configMenu.AddNumberOption(
                 mod: ModManifest,
                 name: () => I18n.MinFruitDay(),
