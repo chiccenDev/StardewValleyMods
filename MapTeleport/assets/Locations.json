@@ -586,5 +586,155 @@
     "X": 0,
     "Y": 0,
     "Condition": null
+  },
+  "SunberryForest/ReiHouse": {
+    "Region": "Custom_SBV_SunberryForest",
+    "X": 54,
+    "Y": 13,
+    "Condition": null
+  },
+  "SunberryForest/AlchemistHouse": {
+    "Region": "Custom_SBV_SunberryForest",
+    "X": 48,
+    "Y": 29,
+    "Condition": null
+  },
+  "SunberryForest/ThyHouse": {
+    "Region": "Custom_SBV_SunberryForest",
+    "X": 41,
+    "Y": 8,
+    "Condition": null
+  },
+  "SunberryVillage/RipleyHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 8,
+    "Y": 89,
+    "Condition": null
+  },
+  "SunberryVillage/WrenHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 12,
+    "Y": 62,
+    "Condition": null
+  },
+  "SunberryVillage/DaoHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 37,
+    "Y": 67,
+    "Condition": null
+  },
+  "SunberryVillage/MaiaHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 31,
+    "Y": 49,
+    "Condition": null
+  },
+  "SunberryVillage/CooperHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 12,
+    "Y": 45,
+    "Condition": null
+  },
+  "SunberryVillage/YriHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 63,
+    "Y": 59,
+    "Condition": null
+  },
+  "SunberryVillage/SaturdayHangout": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 65,
+    "Y": 86,
+    "Condition": null
+  },
+  "SunberryVillage/DidoHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 73,
+    "Y": 90,
+    "Condition": null
+  },
+  "SunberryVillage/EliasOldHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 86,
+    "Y": 92,
+    "Condition": null
+  },
+  "SunberryVillage/JonghyukHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 86,
+    "Y": 63,
+    "Condition": null
+  },
+  "SunberryVillage/AriMarket": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 87,
+    "Y": 50,
+    "Condition": null
+  },
+  "SunberryVillage/SerenityInn": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 74,
+    "Y": 32,
+    "Condition": null
+  },
+  "SunberryVillage/DDCafe": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 50,
+    "Y": 27,
+    "Condition": null
+  },
+  "SunberryVillage/ImanHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 38,
+    "Y": 14,
+    "Condition": null
+  },
+  "SunberryVillage/EzraClothes": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 49,
+    "Y": 14,
+    "Condition": null
+  },
+  "SunberryVillage/SunberryLibrary": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 73,
+    "Y": 14,
+    "Condition": null
+  },
+  "SunberryVillage/MiyoungHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 94,
+    "Y": 11,
+    "Condition": null
+  },
+  "SunberryVillage_Mountain/ChrisDiner": {
+    "Region": "Custom_SBV_SunberryMountain",
+    "X": 28,
+    "Y": 19,
+    "Condition": null
+  },
+  "SunberryVillage_Mountain/SunberryMines": {
+    "Region": "Custom_SBV_SunberryMountain",
+    "X": 29,
+    "Y": 27,
+    "Condition": null
+  },
+  "SunberryVillage_Mountain/SilasBlacksmith": {
+    "Region": "Custom_SBV_SunberryMountain",
+    "X": 16,
+    "Y": 23,
+    "Condition": null
+  },
+  "SunberryVillage_Mountain/AbandonedHouseValli": {
+    "Region": "Custom_SBV_SunberryMountain",
+    "X": 8,
+    "Y": 31,
+    "Condition": null
+  },
+  "SunberryVillage/LaniHouse": {
+    "Region": "Custom_SBV_SunberryVillage",
+    "X": 65,
+    "Y": 48,
+    "Condition": null
   }
 }
