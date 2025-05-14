@@ -85,6 +85,7 @@ namespace MapTeleport
                     X = x,
                     Y = y
                 };
+                Log($"{key} updated to ({x}, {y}) in the region \"{Game1.player.currentLocation.Name}\"", debugOnly: true);
             }
             catch (Exception e)
             {
@@ -97,7 +98,7 @@ namespace MapTeleport
                         Log($"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}", LogLevel.Error);
                         break;
                     case OverflowException:
-                        Log($"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to map Teleport For 1.6 on Nexus.\n{e.Message}", LogLevel.Error);
+                        Log($"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to Map Teleport For 1.6 on Nexus.\n{e.Message}", LogLevel.Error);
                         break;
                     default:
                         Log($"{e.Message}: {e.StackTrace}", LogLevel.Error);
