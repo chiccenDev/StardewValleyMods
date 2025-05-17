@@ -9,7 +9,7 @@ namespace MoreRings
     {
 
         private static Item? LastItem;
-
+        #region ModEntry
         public static int CountRingsEquipped(string id)
         {
             int count = (Game1.player.leftRing.Value?.GetEffectsOfRingMultiplier(id) ?? 0) + (Game1.player.rightRing.Value?.GetEffectsOfRingMultiplier(id) ?? 0);
@@ -21,7 +21,8 @@ namespace MoreRings
         {
             return CountRingsEquipped(id) > 0;
         }
-
+        #endregion
+        #region CropPatcher
         public static Debris Game1_createItemDebris(Item item, Vector2 origin, int direction, GameLocation location, int groundLevel)
         {
             ModifyCropQuality(item);
@@ -52,7 +53,8 @@ namespace MoreRings
                 };
             }
         }
-
+        #endregion
+        #region Game1Patcher
         private static int Utility_withinRadiusOfPlayer()
         {
             var tool = Game1.player.CurrentTool;
@@ -63,5 +65,6 @@ namespace MoreRings
             }
             else return 1;
         }
+        #endregion
     }
 }
