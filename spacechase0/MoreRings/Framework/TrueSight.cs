@@ -113,8 +113,6 @@ namespace MoreRings.Framework
         {
             int mineLevel = mine.mineLevel;
             int stonesLeftOnThisLevel = mine.stonesLeftOnThisLevel;
-            //int stonesLeftOnThisLevel = Mod.Helper.Reflection.GetProperty<int>(mine, "stonesLeftOnThisLevel").GetValue(); public getter/setter from MineShaft
-            //bool ladderHasSpawned = Mod.Helper.Reflection.GetField<bool>(mine, "ladderHasSpawned").GetValue(); MineShaft.ladderHasSpawned is a public bool
 
             player ??= Game1.player;
             double num1 = player.DailyLuck / 2.0 + player.MiningLevel * 0.005 + player.LuckLevel * 0.001;
