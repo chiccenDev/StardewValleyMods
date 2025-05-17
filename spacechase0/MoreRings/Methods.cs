@@ -35,7 +35,7 @@ namespace MoreRings
             return farmer.addItemToInventoryBool(item, makeActiveObject);
         }
 
-        public static void ModifyCropQuality(Item item)
+        private static void ModifyCropQuality(Item item)
         {
             if (item is not Object obj || object.ReferenceEquals(item, LastItem)) return;
 
