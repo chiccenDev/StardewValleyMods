@@ -21,6 +21,6 @@
         public int DaysUntilSilverFruit { get; set; } = 112;
         public int DaysUntilGoldFruit { get; set; } = 224;
         public int DaysUntilIridiumFruit { get; set; } = 336;
-        public bool Debug { get; set; } = true;
+        public bool Debug { get; set; } = false;
     }
 }
