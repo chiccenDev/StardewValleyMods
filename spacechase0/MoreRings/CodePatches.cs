@@ -30,11 +30,54 @@ namespace MoreRings
                 }
             }
         }
+
         /// <summary>
         /// Replacement for AxePatcher.Before_DoFunction because I am just not familiar with that Harmony Patch formatting lol
         /// </summary>
         [HarmonyPatch(typeof(Axe), nameof(Axe.DoFunction))]
         public class Axe_DoFunction_Patch
+        {
+            public static bool Prefix(ref int x, ref int y, Farmer who)
+            {
+                if (HasRingEquipped("Ring_of_Far_Reaching"))
+                {
+                    x = (int)who.lastClick.X;
+                    y = (int)who.lastClick.Y;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(Hoe), nameof(Hoe.DoFunction))]
+        public class Hoe_DoFunction_Patch
+        {
+            public static bool Prefix(ref int x, ref int y, Farmer who)
+            {
+                if (HasRingEquipped("Ring_of_Far_Reaching"))
+                {
+                    x = (int)who.lastClick.X;
+                    y = (int)who.lastClick.Y;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(Pickaxe), nameof(Pickaxe.DoFunction))]
+        public class Pickaxe_DoFunction_Patch
+        {
+            public static bool Prefix(ref int x, ref int y, Farmer who)
+            {
+                if (HasRingEquipped("Ring_of_Far_Reaching"))
+                {
+                    x = (int)who.lastClick.X;
+                    y = (int)who.lastClick.Y;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(WateringCan), nameof(WateringCan.DoFunction))]
+        public class WateringCan_DoFunction_Patch
         {
             public static bool Prefix(ref int x, ref int y, Farmer who)
             {
