@@ -16,7 +16,6 @@ namespace MoreRings
 
             return count;
         }
-
         public static bool HasRingEquipped(string id)
         {
             return CountRingsEquipped(id) > 0;
@@ -29,14 +28,12 @@ namespace MoreRings
 
             return Game1.createItemDebris(item, origin, direction, location, groundLevel);
         }
-
         public static bool Farmer_addItemToInventoryBool(Farmer farmer, Item item, bool makeActiveObject)
         {
             ModifyCropQuality(item);
 
             return farmer.addItemToInventoryBool(item, makeActiveObject);
         }
-
         private static void ModifyCropQuality(Item item)
         {
             if (item is not Object obj || object.ReferenceEquals(item, LastItem)) return;
