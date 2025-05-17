@@ -4,6 +4,7 @@ using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,6 +44,26 @@ namespace MoreRings
                     y = (int)who.lastClick.Y;
                 }
                 return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(Crop), nameof(Crop.harvest))]
+        public class Crop_harvest_Patch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                Log("Transpiling Crop.harvest", debugOnly: true);
+                var codes = new List<CodeInstruction>(instructions);
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldc_I4_0 && codes[i + 1].opcode == OpCodes.Call && codes[i + 2].opcode == OpCodes.Pop)
+                    {
+                        Log("Replacing Game1.createItemDebris with method", debugOnly: true);
+                        codes.RemoveAt(i + 1);
+                        codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Game1_createItemDebris))));
+                    }
+                }
+                return codes.AsEnumerable();
             }
         }
     }
