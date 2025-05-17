@@ -72,5 +72,25 @@ namespace MoreRings
                 return codes.AsEnumerable();
             }
         }
+
+        [HarmonyPatch(typeof(Game1), nameof(Game1.pressUseToolButton))]
+        public class Game1_pressToolUseButton_Patch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                Log("Transpiling Game1.pressToolUseButton", debugOnly: true);
+                var codes = new List<CodeInstruction>(instructions);
+                for (int i = 0; i < codes.Count; i++)
+                {
+                    if (i < codes.Count + 4 && codes[i].opcode == OpCodes.Ldc_I4_1 && codes[i + 1].opcode == OpCodes.Call && codes[i + 2].opcode == OpCodes.Call && codes[i + 3].opcode == OpCodes.Brfalse_S)
+                    {
+                        Log("Replacing Utility.withinRadiusOfPlayer parameter with custom value", debugOnly: true);
+                        codes.RemoveAt(i);
+                        codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Utility_withinRadiusOfPlayer))));
+                    }
+                }
+                return codes.AsEnumerable();
+            }
+        }
     }
 }
