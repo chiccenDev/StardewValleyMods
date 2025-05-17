@@ -62,6 +62,12 @@ namespace MoreRings
                         codes.RemoveAt(i + 1);
                         codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Game1_createItemDebris))));
                     }
+                    if (i < codes.Count - 2 && codes[i].opcode == OpCodes.Callvirt && codes[i + 1].opcode == OpCodes.Brfalse)
+                    {
+                        Log("Replacing Game1.player.addItemToInventoryBool with method", debugOnly: true);
+                        codes.RemoveAt(i);
+                        codes.Insert(i, new CodeInstruction(OpCodes.Callvirt, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Farmer_addItemToInventoryBool))));
+                    }
                 }
                 return codes.AsEnumerable();
             }
