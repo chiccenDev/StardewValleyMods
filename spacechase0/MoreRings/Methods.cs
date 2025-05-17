@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Tools;
 using Object = StardewValley.Object;
 
 namespace MoreRings
@@ -50,6 +51,17 @@ namespace MoreRings
                     _ => obj.Quality
                 };
             }
+        }
+
+        private static int Utility_withinRadiusOfPlayer()
+        {
+            var tool = Game1.player.CurrentTool;
+
+            if (tool is Hoe or Pickaxe or WateringCan or Axe)
+            {
+                return HasRingEquipped("Ring_of_Far_Reaching") ? Config.RingOfFarReaching_TileDistance : 1;
+            }
+            else return 1;
         }
     }
 }
