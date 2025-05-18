@@ -63,14 +63,6 @@ namespace FruitTreeTweaks
                 setValue: value => Config.EnableMod = value
             );
 
-            configMenu.AddBoolOption(
-                mod: ModManifest,
-                name: () => I18n.Debug(),
-                tooltip: () => I18n.Debug_1(),
-                getValue: () => Config.Debug,
-                setValue: value => Config.Debug = value
-            );
-
             configMenu.AddSectionTitle(
                 mod: ModManifest,
                 text: () => I18n.SectionTitle_Placement()

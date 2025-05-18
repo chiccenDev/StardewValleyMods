@@ -29,8 +29,6 @@
   "DaysUntilGold": "Tage bis zur Goldqualität",
   "DaysUntilIridium": "Tage bis zur Qualität des Iridiums",
   "DaysUntilTip": "Nachdem der Baum vollständig ausgereift ist",
-  "Debug": "Debuggen",
-  "Debug.1": "Aktivieren Sie dies, bevor Sie einen SMAPI-Bericht erstellen. Zur Fehlerbehebung.",
   "ColorVar": "Farbvariation",
   "ColorVar.1": "0 - 255, zufällig auf R, B und G für jede Frucht aufgetragen, kosmetisch auf die Frucht aufgetragen, während sie am Baum ist",
   "SizeVar": "Größenvariation",

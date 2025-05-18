@@ -31,8 +31,6 @@
   "DaysUntilGold": "Días para lograr calidad oro",
   "DaysUntilIridium": "Días para lograr calidad iridio",
   "DaysUntilTip": "Tras alcanzar su completa madurez.",
-  "Debug": "Registros de depuración",
-  "Debug.1": "Actívalo si necesitas generar un registro SMAPI para un reporte de error o solución de problemas. Proporciona más detalles en los registros de SMAPI.",
   "ColorVar": "Variación de color",
   "ColorVar.1": "0 - 255, aplicado aleatoriamente a R, B y G de cada fruta, solo se aplica de forma estética mientras está en el árbol.",
   "SizeVar": "Variación de tamaño",
