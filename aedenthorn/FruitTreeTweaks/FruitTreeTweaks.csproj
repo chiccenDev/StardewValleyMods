@@ -14,11 +14,6 @@
     <None Remove="__releases\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="PatchingNotes.txt" />
-    <None Remove="Stardew-Valley.pdb" />
-    <None Remove="TO-DO.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <AdditionalFiles Include="i18n\default.json" />
   </ItemGroup>
 
