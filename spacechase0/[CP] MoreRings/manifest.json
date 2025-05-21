@@ -1,0 +1,11 @@
+{
+    "Name": "[CP] More Rings",
+    "Author": "spacechase0",
+    "Version": "1.0.0",
+    "Description": "Adds new rings with special effects.",
+    "UniqueID": "spacechase0.MoreRingsCP",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    }
+}
