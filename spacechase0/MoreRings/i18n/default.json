@@ -1,41 +1,40 @@
 {
-  "quality-ring.name": "Quality+ Ring",
-  "quality-ring.description": "A chance for higher quality crop harvests.",
+  "wide-nets.name": "Ring of Wide Nets",
+  "wide-nets.description": "Increases the size of the fishing bar.",
 
-  "refreshing-ring.name": "Refreshing Ring",
-  "refreshing-ring.description": "I wonder what it does.",
+  "regeneration.name": "Ring of Regeneration",
+  "regeneration.description": "Slowly heal over time.",
 
-  "ring-of-regeneration.name": "Ring of Regeneration",
-  "ring-of-regeneration.description": "Slowly heal over time.",
+  "booze.name": "Ring of Diamond Booze",
+  "booze.description": "Negates the tipsy effect of lighter alcohol.",
 
-  "ring-of-diamond-booze.name": "Ring of Diamond Booze",
-  "ring-of-diamond-booze.description": "Negates the tipsy effect of lighter alcohol.",
+  "refreshing.name": "Refreshing Ring",
+  "refreshing.description": "I wonder what it does.",
 
-  "ring-of-wide-nets.name": "Ring of Wide Nets",
-  "ring-of-wide-nets.description": "Increases fishing bar size by 50%.",
+  "quality.name": "Quality+ Ring",
+  "quality.description": "A chance for higher quality crop harvests.",
 
-  "ring-of-far-reaching.name": "Ring of Far Reaching",
-  "ring-of-far-reaching.description": "Use tools at a distance.",
+  "reaching.name": "Ring of Far Reaching",
+  "reaching.description": "Use tools at a distance.",
 
-  "ring-of-true-sight.name": "Ring of True Sight",
-  "ring-of-true-sight.description": "See beyond what you can see.",
+  "sight.name": "Ring of True Sight",
+  "sight.description": "See beyond what you can see.",
 
+  "quality-chance.name": "Quality+ Ring: Chance",
+  "quality-chance.description": "The percentage chance of a higher crop quality with the Quality+ Ring equipped.",
 
-  "config.quality-ring-chance.name": "Quality+ Ring: Chance",
-  "config.quality-ring-chance.description": "The percentage chance of a higher crop quality with the Quality+ Ring equipped.",
+  "nets-multiplier.name": "Ring of Wide Nets: Multiplier",
+  "nets-multiplier.description": "The multiplier applied to the fishing bar size with the Ring of Wide Nets equipped.",
 
-  "config.ring-of-wide-nets-multiplier.name": "Ring of Wide Nets: Multiplier",
-  "config.ring-of-wide-nets-multiplier.description": "The multiplier applied to the fishing bar size with the Ring of Wide Nets equipped.",
+  "regeneration-rate.name": "Ring of Regeneration: Regen",
+  "regeneration-rate.description": "The health regen rate per second with the Ring of Regeneration equipped.",
 
-  "config.ring-of-regeneration-rate.name": "Ring of Regeneration: Regen",
-  "config.ring-of-regeneration-rate.description": "The health regen rate per second with the Ring of Regeneration equipped.",
+  "refreshing-rate.name": "Refreshing Ring: Regen",
+  "refreshing-rate.description": "The stamina regen rate per second with the Refreshing Ring equipped.",
 
-  "config.refreshing-ring-rate.name": "Refreshing Ring: Regen",
-  "config.refreshing-ring-rate.description": "The stamina regen rate per second with the Refreshing Ring equipped.",
+  "reaching-distance.name": "Ring of Far Reaching: Distance",
+  "reaching-distance.description": "The distance in tiles at which you can use tools with the Ring of Far Reaching equipped.",
 
-  "config.ring-of-far-reaching-distance.name": "Ring of Far Reaching: Distance",
-  "config.ring-of-far-reaching-distance.description": "The distance in tiles at which you can use tools with the Ring of Far Reaching equipped.",
-
-  "Debug": "Debug Logs",
-  "Debug.1": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
+  "debug.name": "Debug Logs",
+  "debug.description": "For SMAPI debugging logs. Enable before generating a SMAPI log and posting a bug report."
 }
