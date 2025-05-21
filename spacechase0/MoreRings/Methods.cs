@@ -22,11 +22,11 @@ namespace MoreRings
         }
         #endregion
         #region CropPatcher
-        public static Debris Game1_createItemDebris(Item item, Vector2 origin, int direction, GameLocation location, int groundLevel)
+        public static Debris Game1_createItemDebris(Item item, Vector2 origin, int direction, GameLocation location, int groundLevel = -1, bool flopFish = false)
         {
             ModifyCropQuality(item);
 
-            return Game1.createItemDebris(item, origin, direction, location, groundLevel);
+            return Game1.createItemDebris(item, origin, direction, location, groundLevel, flopFish);
         }
         public static bool Farmer_addItemToInventoryBool(Farmer farmer, Item item, bool makeActiveObject)
         {
