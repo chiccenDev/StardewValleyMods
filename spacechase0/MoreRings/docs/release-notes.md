@@ -2,10 +2,11 @@
 
 # Release notes
 ## 1.2.4
-Released 14 May 2025 for SMAPI 4.2.1 or later. Updated by chiccenSDV.
+Released 20 May 2025 for SMAPI 4.2.1 or later. Updated by chiccenSDV.
 
-* Put some patch notes here
-* And here
+* Moved JSONAssets to Content Patcher
+* Update for Stardew Valley 1.6.15
+* Messed up all of spacechase0's beautiful code
 
 ## 1.2.3
 Released 12 January 2022 for SMAPI 3.13.0 or later. Updated by Pathoschild.
