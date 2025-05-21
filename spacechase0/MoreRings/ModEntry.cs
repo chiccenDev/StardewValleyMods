@@ -1,10 +1,12 @@
 ﻿using HarmonyLib;
+using Microsoft.Xna.Framework.Graphics;
 using MoreRings.Framework;
 using StardewHack.WearMoreRings;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
+using StardewValley.Objects;
 
 namespace MoreRings
 {
@@ -30,7 +32,7 @@ namespace MoreRings
 
     public partial class ModEntry : Mod
     {
-        private IWearMoreRingsAPI_2 WearMoreRings;
+        private IWearMoreRingsAPI_2? WearMoreRings;
 
         public static IMonitor SMonitor;
         public static IModHelper SHelper;
@@ -100,7 +102,7 @@ namespace MoreRings
         {
             Log("Launching with Debug mode enabled.", debugOnly: true);
 
-            var WearMoreRings = Helper.ModRegistry.GetApi<IWearMoreRingsAPI_2>("bcmpinc.WearMoreRings");
+            WearMoreRings = Helper.ModRegistry.GetApi<IWearMoreRingsAPI_2>("bcmpinc.WearMoreRings");
             var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
             if (configMenu is null)
                 return;
@@ -110,11 +112,59 @@ namespace MoreRings
                 reset: () => Config = new ModConfig(),
                 save: () => Helper.WriteConfig(Config)
             );
-
+            configMenu.AddNumberOption(
+                    mod: this.ModManifest,
+                    name: I18n.QualityChance_Name,
+                    tooltip: I18n.QualityChance_Description,
+                    getValue: () => Config.QualityRing_ChancePerRing,
+                    setValue: value => Config.QualityRing_ChancePerRing = value,
+                    min: 0.05f,
+                    max: 1,
+                    interval: 0.05f
+                );
+            configMenu.AddNumberOption(
+                mod: this.ModManifest,
+                name: I18n.NetsMultiplier_Name,
+                tooltip: I18n.NetsMultiplier_Description,
+                getValue: () => Config.RingOfWideNets_BarSizeMultiplier,
+                setValue: value => Config.RingOfWideNets_BarSizeMultiplier = value,
+                min: 1,
+                max: 3,
+                interval: 0.05f
+            );
+            configMenu.AddNumberOption(
+                mod: this.ModManifest,
+                name: I18n.RegenerationRate_Name,
+                tooltip: I18n.RegenerationRate_Description,
+                getValue: () => Config.RingOfRegeneration_RegenPerSecond,
+                setValue: value => Config.RingOfRegeneration_RegenPerSecond = value,
+                min: 0.05f,
+                max: 200,
+                interval: 0.05f
+            );
+            configMenu.AddNumberOption(
+                mod: this.ModManifest,
+                name: I18n.RefreshingRate_Name,
+                tooltip: I18n.RefreshingRate_Description,
+                getValue: () => Config.RefreshingRing_RegenPerSecond,
+                setValue: value => Config.RefreshingRing_RegenPerSecond = value,
+                min: 0.05f,
+                max: 200,
+                interval: 0.05f
+            );
+            configMenu.AddNumberOption(
+                mod: this.ModManifest,
+                name: I18n.ReachingDistance_Name,
+                tooltip: I18n.ReachingDistance_Description,
+                getValue: () => Config.RingOfFarReaching_TileDistance,
+                setValue: value => Config.RingOfFarReaching_TileDistance = value,
+                min: 1,
+                max: 200
+            );
             configMenu.AddBoolOption(
                 mod: ModManifest,
-                name: () => I18n.Debug(),
-                tooltip: () => I18n.Debug_1(),
+                name: I18n.Debug_Name,
+                tooltip: I18n.Debug_Description,
                 getValue: () => Config.Debug,
                 setValue: value => Config.Debug = value
             );
