@@ -1,5 +1,8 @@
 ﻿using HarmonyLib;
 using StardewValley;
+using StardewValley.GameData.Objects;
+using StardewValley.ItemTypeDefinitions;
+using StardewValley.Objects;
 using StardewValley.Tools;
 using System.Reflection.Emit;
 
@@ -98,14 +101,17 @@ namespace MoreRings
                     {
                         Log("Replacing Game1.createItemDebris with method", debugOnly: true);
                         codes.RemoveAt(i + 1);
-                        codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Game1_createItemDebris))));
+                        codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(Game1_createItemDebris))));
+                        continue;
                     }
-                    if (i < codes.Count - 2 && codes[i].opcode == OpCodes.Callvirt && codes[i + 1].opcode == OpCodes.Brfalse)
+                    if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldc_I4_0 && codes[i + 1].opcode == OpCodes.Callvirt && codes[i + 2].opcode == OpCodes.Brfalse)
                     {
                         Log("Replacing Game1.player.addItemToInventoryBool with method", debugOnly: true);
-                        codes.RemoveAt(i);
-                        codes.Insert(i, new CodeInstruction(OpCodes.Callvirt, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Farmer_addItemToInventoryBool))));
+                        codes.RemoveAt(i + 1);
+                        codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(Farmer_addItemToInventoryBool))));
+                        continue;
                     }
+                    if (i >= codes.Count) break;
                 }
                 return codes.AsEnumerable();
             }
@@ -128,6 +134,16 @@ namespace MoreRings
                     }
                 }
                 return codes.AsEnumerable();
+            }
+        }
+
+        [HarmonyPatch(typeof(Ring), nameof(Ring.onEquip))]
+        public class Ring_onEquip_Patch
+        {
+            public static void Postfix(Ring __instance)
+            {
+                ParsedItemData data = ItemRegistry.GetDataOrErrorItem(__instance.QualifiedItemId);
+                Log($"{data.GetTextureName()}: {data.GetSourceRect()}", StardewModdingAPI.LogLevel.Alert);
             }
         }
     }
