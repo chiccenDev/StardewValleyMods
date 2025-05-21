@@ -15,8 +15,8 @@
   "UpdateKeys": [ "Nexus:2054" ],
   "Dependencies": [
     {
-      "UniqueID": "spacechase0.MoreRings",
-      "IsRequired": false
+      "UniqueID": "spacechase0.MoreRingsCP",
+      "IsRequired": true
     }
   ]
 }
