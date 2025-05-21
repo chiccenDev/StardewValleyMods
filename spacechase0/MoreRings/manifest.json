@@ -1,14 +1,14 @@
 {
   "Name": "More Rings",
   "Author": "spacechase0",
-  "Version": "1.2.5",
+  "Version": "1.2.4",
   "Description": "Adds new rings with special effects.",
   "UniqueID": "spacechase0.MoreRings",
   "EntryDll": "MoreRings.dll",
   "MinimumApiVersion": "3.15.0",
   "ModUpdater": {
     "Repository": "StardewValleyMods",
-    "User": "chiccen",
+    "User": "spacechase0",
     "Directory": "_releases",
     "ModFolder": "MoreRings"
   },
