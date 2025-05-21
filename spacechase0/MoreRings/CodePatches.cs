@@ -99,14 +99,14 @@ namespace MoreRings
                 {
                     if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldc_I4_0 && codes[i + 1].opcode == OpCodes.Call && codes[i + 2].opcode == OpCodes.Pop)
                     {
-                        Log("Replacing Game1.createItemDebris with method", debugOnly: true);
+                        LogOnce("Replacing Game1.createItemDebris with method", debugOnly: true);
                         codes.RemoveAt(i + 1);
                         codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(Game1_createItemDebris))));
                         continue;
                     }
                     if (i < codes.Count - 3 && codes[i].opcode == OpCodes.Ldc_I4_0 && codes[i + 1].opcode == OpCodes.Callvirt && codes[i + 2].opcode == OpCodes.Brfalse)
                     {
-                        Log("Replacing Game1.player.addItemToInventoryBool with method", debugOnly: true);
+                        LogOnce("Replacing Game1.player.addItemToInventoryBool with method", debugOnly: true);
                         codes.RemoveAt(i + 1);
                         codes.Insert(i + 1, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(Farmer_addItemToInventoryBool))));
                         continue;
@@ -128,22 +128,12 @@ namespace MoreRings
                 {
                     if (i < codes.Count + 4 && codes[i].opcode == OpCodes.Ldc_I4_1 && codes[i + 1].opcode == OpCodes.Call && codes[i + 2].opcode == OpCodes.Call && codes[i + 3].opcode == OpCodes.Brfalse_S)
                     {
-                        Log("Replacing Utility.withinRadiusOfPlayer parameter with custom value", debugOnly: true);
+                        LogOnce("Replacing Utility.withinRadiusOfPlayer parameter with custom value", debugOnly: true);
                         codes.RemoveAt(i);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.Utility_withinRadiusOfPlayer))));
                     }
                 }
                 return codes.AsEnumerable();
-            }
-        }
-
-        [HarmonyPatch(typeof(Ring), nameof(Ring.onEquip))]
-        public class Ring_onEquip_Patch
-        {
-            public static void Postfix(Ring __instance)
-            {
-                ParsedItemData data = ItemRegistry.GetDataOrErrorItem(__instance.QualifiedItemId);
-                Log($"{data.GetTextureName()}: {data.GetSourceRect()}", StardewModdingAPI.LogLevel.Alert);
             }
         }
     }
