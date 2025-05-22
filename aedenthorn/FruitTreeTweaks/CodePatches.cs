@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
+using LogLevel = StardewModdingAPI.LogLevel;
 using Object = StardewValley.Object;
 
 namespace FruitTreeTweaks
@@ -119,7 +120,7 @@ namespace FruitTreeTweaks
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
                 if (!Config.EnableMod) return instructions;
-                //Log($"Transpiling FruitTree.draw", LogLevel.Debug);
+                SMonitor.Log($"Transpiling FruitTree.draw", LogLevel.Debug);
                 var codes = new List<CodeInstruction>(instructions);
                 bool found1 = false;
                 int which = 0;
@@ -127,14 +128,14 @@ namespace FruitTreeTweaks
                 {
                     if (!found1 && i < codes.Count - 2 && codes[i].opcode == OpCodes.Ldc_I4_1 && codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 1E-07f)
                     {
-                        //Log("shifting bottom of tree draw layer offset", debugOnly: true);
+                        SMonitor.Log("shifting bottom of tree draw layer offset", LogLevel.Debug);
                         codes[i + 1].opcode = OpCodes.Ldarg_0;
                         codes.Insert(i + 2, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetTreeBottomOffset))));
                         found1 = true;
                     }
                     else if (i < codes.Count && i > 2 && codes[i - 2].opcode == OpCodes.Ldloc_S && codes[i + 1].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 0.0f && codes[i + 3].opcode == OpCodes.Ldc_R4 && (float)codes[i + 3].operand == 4.0f && codes[i + 4].opcode == OpCodes.Ldc_I4_0)
                     {
-                        //Log("modifying fruit color", debugOnly: true);
+                        SMonitor.Log("modifying fruit color", LogLevel.Debug);
                         codes.RemoveAt(i);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitColor))));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldloc_S, 8));
@@ -143,7 +144,7 @@ namespace FruitTreeTweaks
                     }
                     else if (i < codes.Count && i > 8 && codes[i - 8].opcode == OpCodes.Ldloc_S && codes[i].opcode == OpCodes.Ldc_R4 && (float)codes[i].operand == 4.0f && codes[i + 1].opcode == OpCodes.Ldc_I4_0 && codes[i + 2].opcode == OpCodes.Ldloca_S)
                     {
-                        //Log("modifying fruit scale", debugOnly: true);
+                        SMonitor.Log("modifying fruit scale", LogLevel.Debug);
                         codes.RemoveAt(i);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitScale))));
                         codes.Insert(i, new CodeInstruction(OpCodes.Ldloc_S, 8));
@@ -182,13 +183,13 @@ namespace FruitTreeTweaks
             [MethodImpl(MethodImplOptions.NoInlining)]
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                //Log($"Transpiling FruitTree.shake", LogLevel.Debug);
+                SMonitor.Log($"Transpiling FruitTree.shake", LogLevel.Debug);
                 var codes = new List<CodeInstruction>(instructions);
                 for (int i = 0; i < codes.Count; i++)
                 {
                     if (i < codes.Count - 4 && codes[i].opcode == OpCodes.Ldloca_S && codes[i + 1].opcode == OpCodes.Ldc_R4 && codes[i + 2].opcode == OpCodes.Ldc_R4 && (float)codes[i + 1].operand == 0 && (float)codes[i + 2].operand == 0 && codes[i + 3].opcode == OpCodes.Call && (ConstructorInfo)codes[i + 3].operand == AccessTools.Constructor(typeof(Vector2), new Type[] { typeof(float), typeof(float) }) && codes[i + 4].opcode == OpCodes.Ldloc_S && codes[i + 4].operand == codes[1 + 4].operand)
-                    { // im getting index out of range on above if statement after changing Ldloc_3 => Ldloc_S
-                        //Log("replacing default fruit offset with method", LogLevel.Debug);
+                    {
+                        SMonitor.Log("replacing default fruit offset with method", LogLevel.Debug);
                         codes.Insert(i + 4, new CodeInstruction(OpCodes.Stloc_S, 4));
                         codes.Insert(i + 4, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetFruitOffsetForShake))));
                         codes.Insert(i + 4, new CodeInstruction(OpCodes.Ldloc_S));
@@ -200,7 +201,7 @@ namespace FruitTreeTweaks
                 return codes.AsEnumerable();
             }
         }
-        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.GetQuality))] // chiccen
+        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.GetQuality))]
         public class FruitTree_GetQuality_Patch
         {
             public static bool Prefix(FruitTree __instance, ref int __result)
@@ -220,31 +221,27 @@ namespace FruitTreeTweaks
                     {
                         if (days > -Config.DaysUntilSilverFruit)
                         {
-                            //Log($"{days} is not old enough for Silver. Returning Base.", debugOnly: true);
                             __result = 0;
                         }
                         else
                         {
-                            //Log($"{days} is older than -{Config.DaysUntilSilverFruit}! Returning 1 (Silver)", debugOnly: true);
                             __result = 1;
                         }
                     }
                     else
                     {
-                        //Log($"{days} is older than -{Config.DaysUntilGoldFruit}! Returning 2 (Gold)", debugOnly: true);
                         __result = 2;
                     }
                 }
                 else
                 {
-                    //Log($"{days} is older than -{Config.DaysUntilIridiumFruit}! Returning 4 (Iridium)", debugOnly: true);
                     __result = 4;
                 }
 
                 return false;
             }
         }
-        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.TryAddFruit))] // chiccen
+        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.TryAddFruit))]
         public class FruitTree_TryAddFruit_Patch
         {
 
@@ -252,14 +249,14 @@ namespace FruitTreeTweaks
             {
                 if (!Config.EnableMod) return instructions;
 
-                //Log("Transpiling FruitTree.TryAddFruit", LogLevel.Debug);
+                SMonitor.Log("Transpiling FruitTree.TryAddFruit", LogLevel.Debug);
 
                 var codes = new List<CodeInstruction>(instructions);
                 for (int i = 0; i < codes.Count; i++)
                 {
                     if (codes[i].opcode == OpCodes.Ldc_I4_3)
                     {
-                        //Log("replacing max fruit per tree with method", LogLevel.Debug);
+                        SMonitor.Log("replacing max fruit per tree with method", LogLevel.Debug);
                         codes.Insert(i, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModEntry), nameof(ModEntry.GetMaxFruit))));
                         codes.RemoveAt(i + 1);
                     }
@@ -280,23 +277,10 @@ namespace FruitTreeTweaks
                 return;
             }
         }
-
-        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.seasonUpdate))]
-        public class FruitTree_SeasonUpdate_Patch
-        {
-            public static bool Prefix(ref bool __result, bool onLoad)
-            {
-                if (Config.EnableMod && Config.FruitStayThroughSeasons) {
-                    __result = false; // This is the original return value
-                    return false; // Do not run original code
-                }
-                return true;
-            }
-        }
         #endregion
 
         #region Placement Logic
-        [HarmonyPatch(typeof(Object), nameof(Object.placementAction))] // chiccen
+        [HarmonyPatch(typeof(Object), nameof(Object.placementAction))]
         public class Object_placementAction_Patch
         {
             public static bool Prefix(Object __instance, GameLocation location, int x, int y, ref bool __result, Farmer who = null)
@@ -321,21 +305,19 @@ namespace FruitTreeTweaks
                         location.terrainFeatures.Remove(placementTile);
                         location.terrainFeatures.Add(placementTile, fruitTree);
                         __result = true;
-                        //LogOnce($"{obj?.DisplayName} passed all checks and should be placed!", debugOnly: true);
                         return false;
                     }
                     else
                     {
-                        //Game1.showRedMessage(deniedMessage); need to translate first
-                        //Log($"{deniedMessage}", LogLevel.Warn); // placeholder until we can translate
+                        SMonitor.Log($"{deniedMessage}", LogLevel.Warn);
                     }
                 }
-                //LogOnce($"placementAction for {obj?.DisplayName} passed to vanilla method.", debugOnly: true);
+                SMonitor.LogOnce($"placementAction for {obj?.DisplayName} passed to vanilla method.", LogLevel.Debug);
                 return true;
             }
         }
 
-        [HarmonyPatch(typeof(Object), nameof(Object.canBePlacedHere))] // chiccen
+        [HarmonyPatch(typeof(Object), nameof(Object.canBePlacedHere))]
         public class Object_canBePlacedHere_Patch
         {
 
@@ -349,20 +331,16 @@ namespace FruitTreeTweaks
 
                 if (tree.IsFruitTreeSapling())
                 {
-                    //LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} CanPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        //LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        SMonitor.LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", LogLevel.Debug);
                         return true;
                     }
 
                     __result = true;
                     return false;
                 }
-                //LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
+                SMonitor.LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", LogLevel.Debug);
                 return true;
             }
 
@@ -376,21 +354,16 @@ namespace FruitTreeTweaks
 
                 if (tree.IsFruitTreeSapling())
                 {
-                    //LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
-
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        //LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        SMonitor.LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", LogLevel.Debug);
                         return true;
                     }
 
                     __result = true;
                     return false;
                 }
-                //LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
+                SMonitor.LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", LogLevel.Debug);
                 return true;
             }
 
@@ -403,21 +376,16 @@ namespace FruitTreeTweaks
 
                 if (tree.IsFruitTreeSapling())
                 {
-                    //LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
-
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        //LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        SMonitor.LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", LogLevel.Debug);
                         return true;
                     }
 
                     __result = true;
                     return false;
                 }
-                //LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
+                SMonitor.LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", LogLevel.Debug);
                 return true;
             }
 
@@ -430,20 +398,16 @@ namespace FruitTreeTweaks
 
                 if (tree.IsFruitTreeSapling())
                 {
-                    //LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    //LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        //LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        SMonitor.LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", LogLevel.Debug);
                         return true;
                     }
 
                     __result = true;
                     return false;
                 }
-                //LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
+                SMonitor.LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", LogLevel.Debug);
                 return true;
             }
         }
