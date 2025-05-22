@@ -1,10 +1,10 @@
 # ignore folders
 *.dll
 *.deps.json
-Properties
-.vs
-obj
-bin
+*Properties*
+*.vs
+*obj/
+*bin/
 *.txt
 GCTJsonBuilder/*
 __releases
@@ -15,3 +15,4 @@ GarbagePacker/*
 msbuild.binlog*
 README
 StardewReference
+*NOTES*

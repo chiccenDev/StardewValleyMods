@@ -1,7 +1,0 @@
-# ignore folders
-__releases
-Properties
-.vs
-obj
-*.txt
-NOTES.md
