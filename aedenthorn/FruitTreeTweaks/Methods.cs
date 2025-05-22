@@ -72,7 +72,7 @@ namespace FruitTreeTweaks
                 deniedMessage = "Tile is occupied by an object.";
             if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
                 deniedMessage = "Cannot place indoors.";
-            if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
+            if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // plug up any water
                 deniedMessage = "Cannot plant in water";
             if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
                 deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
