@@ -10,26 +10,6 @@ using StardewValley.Objects;
 
 namespace MoreRings
 {
-    /// <summary>
-    /// 
-    /// !!!IMPORTANT!!!
-    /// BEFORE USING THIS TEMPLATE:
-    /// Change "MyMod" to your mod's name/namespace in the following locations:
-    ///     (1) ModEntry.cs namespace
-    ///     (2) IGenericModConfigMenuApi.cs namespace
-    ///     (3) ModConfig.cs namespace
-    ///     (4) Manifest.json
-    ///         - Name
-    ///         - Description (optional)
-    ///         - UniqueID
-    ///         - EntryDll
-    ///         
-    /// It is also recommended you update "Description" and Nexus update key in manifest.json
-    /// You can delete this entire comment summary once these tasks are completed.
-    /// 
-    /// </summary>
-
-
     public partial class ModEntry : Mod
     {
         private IWearMoreRingsAPI_2? WearMoreRings;
