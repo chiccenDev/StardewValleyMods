@@ -1,0 +1,14 @@
+{
+  "EnableMod": "Attiva Mod",
+  "EnableMod.1": "Attiva/Disattiva Teletrasporto Mappa",
+  "AllowUnknown": "Permetti luoghi sconosciuti",
+  "AllowUnknown.1": "Consenti il teletrasporto verso luoghi che non hai ancora sbloccato o visitato.",
+  "EnableAudio": "Abilita segnale sonoro",
+  "EnableAudio.1": "Quando abilitato, un segnale sonoro verrà riprodotto durante il teletrasporto.",
+  "Debug": "Modalità di debug",
+  "Debug.1": "Abilita questa opzione per ottenere log SMAPI per debugging o segnalazioni bug. ATTENZIONE: questo produrrà un notevole spam!",
+  "Simulate": "Simula Teletrasporti (DEBUG)",
+  "Simulate.1": "Per scopi di debugging, simula il teletrasporto inviando un messaggio al log di SMAPI invece di eseguire realmente il teletrasporto.",
+  "WarpFail": "Sblocca prima questo luogo per poterti teletrasportare lì.",
+  "WarpFail.1": "Puoi teletrasportarti ovunque abilitando \"Consenti luoghi sconosciuti\" nelle impostazioni, o soddisfacendo i criteri del gioco: "
+}
