@@ -1,0 +1,13 @@
+{
+	"EnableMod": "모드 활성화",
+	"OnlyWaterCan": "물뿌리개 장착 필수",
+	"OnlyWaterCanTip": "물뿌리개를 들고 있을 때만 오버레이가 보입니다.",
+	"IndicatorColor": "지표 색상",
+	"IndicatorColorTip": "물이 필요할 때 작물마다의 지표 색상을 정합니다.",
+	"IndicatorOpacity": "지표 투명도",
+	"IndicatorOpacityTip": "얼마나 지표가 잘 보일지 설정합니다. 0으로 갈수록 투명합니다.",
+	"Debug": "디버그 로그",
+	"DebugTip": "스마피 디버깅 로그를 위한 것. 스마피 로그를 생성하거나 버그 리포트를 하기 전 활성화",
+	"FarmNeedsWater": "오늘 물을 필요로 하는 작물이 농장에 있습니다.",
+	"IslandNeedsWater": "오늘 물을 필요로 하는 작물이 진저섬에 있습니다."
+}
