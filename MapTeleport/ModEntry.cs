@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using Microsoft.CodeAnalysis.FlowAnalysis;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ namespace MapTeleport
         public static IModHelper SHelper;
         public static ModConfig Config;
         public static ModEntry context;
+        public static string lastLocation;
         public static bool hasSVE;
 
         public static Dictionary<string, LocationDetails> Locations = new();
@@ -30,7 +30,7 @@ namespace MapTeleport
             helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
             helper.Events.Input.ButtonPressed += Input_ButtonPressed;
 
-            // rebug commands for trouble shooting or updating Locations
+            // debug commands for trouble shooting or updating Locations
             helper.ConsoleCommands.Add("mtp_load", "Force Map Teleport to reload locations. Run \"mtp_farm\" to repair farm warp after using this command.", (command, args) => Locations = LoadLocations());
             helper.ConsoleCommands.Add("mtp_edit", "Syntax: 'mtp_edit name x y'. Must include valid key and all 3 parameters. This will also edit the region value to be whatever GameLocation you are currently.", (command, args) => EditLocations(args));
             helper.ConsoleCommands.Add("mtp_save", "Force Map Teleport to save current loaded locations, including any modifications since loading, to the Locations.json file.", (commands, args) => SaveLocations(Locations));
