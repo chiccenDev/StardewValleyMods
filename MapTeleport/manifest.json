@@ -1,7 +1,7 @@
 {
   "Name": "Map Teleport",
   "Author": "chiccen",
-  "Version": "1.0.8",
+  "Version": "1.1.0",
   "Description": "Teleport by clicking on locations in the in-game map.",
   "UniqueID": "chiccen.MapTeleport",
   "EntryDll": "MapTeleport.dll",
