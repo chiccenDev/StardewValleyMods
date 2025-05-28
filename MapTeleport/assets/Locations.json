@@ -736,5 +736,179 @@
     "X": 65,
     "Y": 48,
     "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/VillageOffice": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 114,
+    "Y": 40,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Kobayashi": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 130,
+    "Y": 46,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Yojeong": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 105,
+    "Y": 63,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Amethyne": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 130,
+    "Y": 72,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/WaterResearch": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 118,
+    "Y": 107,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Lidens": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 77,
+    "Y": 115,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Nightingale": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 18,
+    "Y": 98,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Bladebane": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 14,
+    "Y": 64,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Rivera": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 77,
+    "Y": 73,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/CommunityGreenhouse": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 95,
+    "Y": 75,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Akina": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 74,
+    "Y": 59,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/LolaShed": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 8,
+    "Y": 48,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/BloomingHillFarmChickenCoop": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 31,
+    "Y": 38,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/BloomingHillFarm": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 22,
+    "Y": 23,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Starbound": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 74,
+    "Y": 37,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Pikas": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 94,
+    "Y": 40,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Clinic": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 135,
+    "Y": 37,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/OddJobs": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 132,
+    "Y": 23,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/LogCabinHotel": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 114,
+    "Y": 23,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Pickens": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 90,
+    "Y": 28,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Daniels": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 84,
+    "Y": 19,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgesideVillage/Heaps": {
+    "Region": "Custom_Ridgeside_RidgesideVillage",
+    "X": 75,
+    "Y": 19,
+    "Condition": null
+  },
+  "Custom_Ridgeside_Ridge/Ridge": {
+    "Region": "Custom_Ridgeside_Ridge",
+    "X": 18,
+    "Y": 12,
+    "Condition": null
+  },
+  "Custom_Ridgeside_Ridge/RidgeForest": {
+    "Region": "Custom_Ridgeside_Ridge",
+    "X": 32,
+    "Y": 1,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RidgeFalls/RidgeFalls": {
+    "Region": "Custom_Ridgeside_RidgeFalls",
+    "X": 39,
+    "Y": 22,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RSVCliff/CableCar": {
+    "Region": "Custom_Ridgeside_RSVCliff",
+    "X": 39,
+    "Y": 18,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RSVCliff/Electrician": {
+    "Region": "Custom_Ridgeside_RSVCliff",
+    "X": 47,
+    "Y": 32,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RSVTheHike/AbandonedHouse": {
+    "Region": "Custom_Ridgeside_RSVTheHike",
+    "X": 60,
+    "Y": 43,
+    "Condition": null
+  },
+  "Custom_Ridgeside_RSVTheHike/Hike": {
+    "Region": "Custom_Ridgeside_RSVTheHike",
+    "X": 43,
+    "Y": 28,
+    "Condition": null
   }
 }
