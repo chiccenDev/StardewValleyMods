@@ -24,8 +24,6 @@ namespace MapTeleport
 
     public partial class ModEntry
     {
-        JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true }; // for formatting re-serialized JSON in SaveLocations()
-
         #region Load/Edit/Save
         /// <summary>
         /// Load Locations.json and store into Dictionary<\string, LocationDetails> for future reference.
@@ -62,13 +60,17 @@ namespace MapTeleport
             }
 
         }
-        public static void EditLocations(string[] args)
+        public static void EditLocations(string[]? args = null)
         {
             if (!Config.EnableMod || !Config.Debug) return;
             if (args == null || args.Length < 3)
             {
-                Log($"Command mtp_edit requires 3 parameters: key, x, y.", LogLevel.Error);
-                return;
+                if (lastLocation is null)
+                {
+                    Log($"Command mtp_edit requires 3 parameters: key, x, y.", LogLevel.Error);
+                    return;
+                }
+                args = new string[] { lastLocation, Game1.player.Tile.X.ToString(), Game1.player.Tile.Y.ToString() };
             }
 
             try
@@ -80,7 +82,7 @@ namespace MapTeleport
 
                 Locations[key] = new LocationDetails
                 {
-                    Region = Game1.player.currentLocation.Name, // its either this for DisplayName, I can never remember which
+                    Region = Game1.player.currentLocation.Name,
                     Condition = null,
                     X = x,
                     Y = y
@@ -123,6 +125,7 @@ namespace MapTeleport
         public static bool TryWarp(string loc)
         {
             if (!Config.EnableMod) return false;
+            lastLocation = loc;
 
             Log($"MapWarp() called for {loc}", debugOnly: true);
 
