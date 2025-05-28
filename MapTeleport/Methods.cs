@@ -44,14 +44,15 @@ namespace MapTeleport
                 {
                     Log("Map Teleport locations loaded successfully!");
                     var postLoadQC = locations.ContainsKey("Forest/MarnieRanch"); // bit mediocre of a test but it'll check if file is messed up
-                    Log($"Data validation: {(postLoadQC ? "passed!" : "failed! Please re-download MapTeleport from Nexus or send in a bug report! :(")}",(postLoadQC ? LogLevel.Trace : LogLevel.Error), debugOnly: !postLoadQC); // and if it doesn't have such a basic location, spit out error
+                    Log($"Data validation: {(postLoadQC ? "passed!" : "failed! Please re-download MapTeleport from Nexus or send in a bug report! :(")}", (postLoadQC ? LogLevel.Trace : LogLevel.Error), debugOnly: !postLoadQC); // and if it doesn't have such a basic location, spit out error
                     return locations;
                 }
-                else { 
+                else
+                {
                     Log("JSON data failed to deserialize. Please re-download from Nexus or post a bug report if re-downloading failed to resolve this error.", LogLevel.Error);
                     return new Dictionary<string, LocationDetails>();
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -76,7 +77,7 @@ namespace MapTeleport
             try
             {
                 string key = args[0];
-                if (!Locations.ContainsKey(key)) { Log($"Could not find key: {key}", LogLevel.Error); return;  }
+                if (!Locations.ContainsKey(key)) { Log($"Could not find key: {key}", LogLevel.Error); return; }
                 int x = Int32.Parse(args[1]);
                 int y = Int32.Parse(args[2]);
 
@@ -88,24 +89,28 @@ namespace MapTeleport
                     Y = y
                 };
                 Log($"{key} updated to ({x}, {y}) in the region \"{Game1.player.currentLocation.Name}\"", debugOnly: true);
+                Game1.showGlobalMessage($"Updated location info for {key}!");
             }
             catch (Exception e)
             {
+                string errorMessage;
                 switch (e)
                 {
                     case NullReferenceException:
-                        Log("One or more of the provided parameters is null. Ensure you pass a valid key, x, and y.", LogLevel.Error);
+                        errorMessage = "One or more of the provided parameters is null. Ensure you pass a valid key, x, and y.";
                         break;
                     case FormatException:
-                        Log($"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}", LogLevel.Error);
+                        errorMessage = $"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}";
                         break;
                     case OverflowException:
-                        Log($"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to Map Teleport For 1.6 on Nexus.\n{e.Message}", LogLevel.Error);
+                        errorMessage = $"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to Map Teleport For 1.6 on Nexus.\n{e.Message}";
                         break;
                     default:
-                        Log($"{e.Message}: {e.StackTrace}", LogLevel.Error);
+                        errorMessage = $"{e.Message}: {e.StackTrace}";
                         break;
                 }
+                Log(errorMessage, LogLevel.Error);
+                Game1.showRedMessage("Map Teleport encountered an error! Check SMAPI log for details.");
                 return;
             }
         }
@@ -120,6 +125,7 @@ namespace MapTeleport
             string json = JsonSerializer.Serialize(loc, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText(MapDataSource, json);
             Log($"Locations have been saved to {MapDataSource}!", LogLevel.Info);
+            Game1.showGlobalMessage("Locations saved successfully!");
         }
         #endregion
         public static bool TryWarp(string loc)
@@ -153,7 +159,8 @@ namespace MapTeleport
                     if (Config.EnableAudio) PlayAudio();
                     return true;
                 }
-                else { 
+                else
+                {
                     Game1.showRedMessage(I18n.WarpFail());
                     Log(I18n.WarpFail_1() + entry.Condition);
                     return false;
@@ -172,7 +179,7 @@ namespace MapTeleport
             }
             else { Log($"No Map Warp for {loc}, sorry!"); }
             return false;
-            
+
         }
         #region auxiliary methods
         public static void CheckFarm(LocationDetails entry)
