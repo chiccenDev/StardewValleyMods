@@ -1,0 +1,11 @@
+{
+    "Name": "[CP] Skateboard",
+    "Author": "chiccen",
+    "Version": "1.0.0",
+    "Description": "skamtebord",
+    "UniqueID": "chiccen.SkateboardCP",
+    "UpdateKeys": [ "Nexus:24074" ],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    }
+}

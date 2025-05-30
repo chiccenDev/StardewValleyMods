@@ -1,0 +1,44 @@
+{
+  "Format": "2.7.0",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Objects",
+      "Entries": {
+        "chiccen.Skateboard": {
+          "Name": "{{ModId}}_Skateboard",
+          "DisplayName": "{{i18n: name}}",
+          "Description": "{{i18n: description}}",
+          "Type": "Crafting",
+          "Category": -8,
+          "Price": 5000,
+          "Texture": "Mods\\{{ModId}}\\Skateboard",
+          "SpriteIndex": 0,
+          "ExcludeFromFishingCollection": true,
+          "ExcludeFromShippingCollection": true,
+          "ExcludeFromRandomSale": true,
+			 "CanBeGivenAsGift": false,
+			 "CanBeTrashed": true,
+          "ContextTags": [
+				"color_green",
+				"wood_item",
+				"not_placeable"
+          ],
+          "CustomFields": null
+        }
+		}
+	 },
+	 {
+		 "Action": "EditData",
+		 "Target": "Data/CraftingRecipes",
+		 "Entries": {
+			 "{{ModId}}_Skateboard": "709 4 337 1 335 1 338 1 92 10/Field/chiccen.Skateboard/false/default"
+		 }
+	 },
+	 {
+		 "Action": "Load",
+		 "Target": "Mods/{{ModId}}/Skateboard",
+		 "FromFile": "assets/{{TargetWithoutPath}}.png"
+	 }
+  ]
+}
