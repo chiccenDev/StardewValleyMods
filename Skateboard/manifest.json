@@ -1,0 +1,16 @@
+{
+  "Name": "Skateboard",
+  "Author": "chiccen",
+  "Version": "0.1.5",
+  "Description": "skamtebord",
+  "UniqueID": "chiccen.Skateboard",
+  "EntryDll": "Skateboard.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": [ "Nexus:24074" ],
+  "Dependencies": [
+    {
+      "UniqueID": "chiccen.SkateboardCP",
+      "IsRequired": true
+    }
+  ]
+}
