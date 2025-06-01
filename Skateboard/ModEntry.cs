@@ -44,7 +44,6 @@ namespace Skateboard
             helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
             helper.Events.Player.Warped += Player_Warped;
             helper.Events.Input.ButtonPressed += Input_ButtonPressed;
-            helper.Events.Content.AssetRequested += Content_AssetRequested;
 
             var harmony = new Harmony(ModManifest.UniqueID);
             harmony.PatchAll();
@@ -122,16 +121,9 @@ namespace Skateboard
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
         {
+            Monitor.Log("Loading skatebaord texture...");
             boardTexture = Game1.content.Load<Texture2D>(textureKey);
-            Monitor.Log("loaded skateboard texture");
-        }
-
-        private void Content_AssetRequested(object sender, AssetRequestedEventArgs e)
-        {
-            if (e.NameWithoutLocale.IsEquivalentTo(textureKey))
-            {
-                e.LoadFromModFile<Texture2D>("assets/Skateboard.png", AssetLoadPriority.Low);
-            }
+            Monitor.Log("loaded skateboard texture!");
         }
 
         private void Input_ButtonPressed(object sender, ButtonPressedEventArgs e)
