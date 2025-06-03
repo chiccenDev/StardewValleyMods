@@ -93,22 +93,13 @@ namespace MapTeleport
             }
             catch (Exception e)
             {
-                string errorMessage;
-                switch (e)
+                string errorMessage = e switch
                 {
-                    case NullReferenceException:
-                        errorMessage = "One or more of the provided parameters is null. Ensure you pass a valid key, x, and y.";
-                        break;
-                    case FormatException:
-                        errorMessage = $"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}";
-                        break;
-                    case OverflowException:
-                        errorMessage = $"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to Map Teleport For 1.6 on Nexus.\n{e.Message}";
-                        break;
-                    default:
-                        errorMessage = $"{e.Message}: {e.StackTrace}";
-                        break;
-                }
+                    NullReferenceException => "One or more of the provided parameters is null. Ensure you pass a valid key, x, and y.",
+                    FormatException => $"Failed to parse the provided x or y coordinate. Please ensure only integers were entered for those values.\n{e.Message}",
+                    OverflowException => $"Provided integer(s) value too high! Double check provided x and y coordinates. If values are correct, then submit a bug report to Map Teleport For 1.6 on Nexus.\n{e.Message}",
+                    _ => $"{e.Message}: {e.StackTrace}",
+                };
                 Log(errorMessage, LogLevel.Error);
                 Game1.showRedMessage("Map Teleport encountered an error! Check SMAPI log for details.");
                 return;
