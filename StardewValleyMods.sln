@@ -20,13 +20,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarbageCanTweaks", "Garbage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoopTimeTweaks", "CoopTimeTweaks\CoopTimeTweaks.csproj", "{DC14A3D4-F988-4454-8980-B5BBF22A581A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skateboard", "Skateboard\Skateboard.csproj", "{C3331204-DE48-4B1F-A1CE-B3AD7B397634}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapTeleport", "MapTeleport\MapTeleport.csproj", "{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoHomeRobin", "GoHomeRobin\GoHomeRobin.csproj", "{9ED29274-731F-4BEE-8997-FD580F3DC4C4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeluxeGrabber", "DeluxeGrabber\DeluxeGrabber.csproj", "{063070A0-0A47-4F3C-8FBA-E6949B695E78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skateboard", "Skateboard\Skateboard\Skateboard.csproj", "{4654332D-091A-5F86-CEAC-B2BBE02043FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,14 +80,6 @@ Global
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|x64.ActiveCfg = Release|Any CPU
 		{DC14A3D4-F988-4454-8980-B5BBF22A581A}.Release|x64.Build.0 = Release|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Debug|x64.Build.0 = Debug|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.ActiveCfg = Release|Any CPU
-		{C3331204-DE48-4B1F-A1CE-B3AD7B397634}.Release|x64.Build.0 = Release|Any CPU
 		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{734697A9-1B0C-4A1D-944A-DAB1BBB0BFB6}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -112,6 +104,14 @@ Global
 		{063070A0-0A47-4F3C-8FBA-E6949B695E78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{063070A0-0A47-4F3C-8FBA-E6949B695E78}.Release|x64.ActiveCfg = Release|Any CPU
 		{063070A0-0A47-4F3C-8FBA-E6949B695E78}.Release|x64.Build.0 = Release|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Debug|x64.Build.0 = Debug|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Release|x64.ActiveCfg = Release|Any CPU
+		{4654332D-091A-5F86-CEAC-B2BBE02043FB}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.3.6" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" />
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
-    <PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.2.1" />
-    <PackageReference Include="System.Collections.Immutable" Version="9.0.5" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.3.6" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" />
+		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+		<PackageReference Include="Pathoschild.Stardew.ModTranslationClassBuilder" Version="2.2.1" />
+		<PackageReference Include="System.Collections.Immutable" Version="9.0.5" />
+	</ItemGroup>
+	
 </Project>
