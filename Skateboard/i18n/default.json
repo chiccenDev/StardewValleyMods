@@ -1,11 +1,11 @@
 ﻿{
-  "EnableMod": "Enable Mod",
-  "RideButton": "Ride Button",
-  "RideButton.1": "The key you would like to press to get on or off of the skateboard.",
-  "MaxSpeed": "Max Speed",
-  "MaxSpeed.1": "The maximum speed the board can travel.",
-  "AccelRate": "Acceleration Rate",
-  "AccelRate.1": "How fast you accelerate and increase velocity.",
-  "DeaccelRate": "Deacceleration Rate",
-  "DeaccelRate.1": "The rate at which you slow down after releasing movement keys."
+	"EnableMod": "Enable Mod",
+	"RideButton": "Ride Button",
+	"RideButton.1": "The key you would like to press to get on or off of the skateboard.",
+	"MaxSpeed": "Max Speed",
+	"MaxSpeed.1": "The maximum speed the board can travel.",
+	"AccelRate": "Acceleration Rate",
+	"AccelRate.1": "How fast you accelerate and increase velocity.",
+	"DeaccelRate": "Deacceleration Rate",
+	"DeaccelRate.1": "The rate at which you slow down after releasing movement keys."
 }
