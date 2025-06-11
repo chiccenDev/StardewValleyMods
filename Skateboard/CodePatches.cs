@@ -17,6 +17,15 @@ namespace Skateboard
         public static Vector2 lastSpeed;
         public static Vector2 speed;
 
+        [HarmonyPatch(typeof(CraftingRecipe), nameof(CraftingRecipe.createItem))]
+        public class CraftingRecipe_createItem_Patch
+        {
+            public static void Postfix(CraftingRecipe __instance, ref Item __result)
+            {
+                if (__result.ItemId == boardIndex && Config.ModEnabled) __result.modData.Add(boardKey, "true");
+            }
+        }
+
         #region Farmer Patches
         [HarmonyPatch(typeof(Farmer), nameof(Farmer.nextPosition))]
         public class Farmer_nextPosition_Patch
