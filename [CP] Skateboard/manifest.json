@@ -1,7 +1,7 @@
 {
     "Name": "[CP] Skateboard",
     "Author": "chiccen",
-    "Version": "0.1.7",
+    "Version": "0.1.8",
     "Description": "skamtebord",
     "UniqueID": "chiccen.SkateboardCP",
     "UpdateKeys": [ "Nexus:24074" ],
