@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using StardewValley.ItemTypeDefinitions;
+using StardewModdingAPI;
 
 namespace FruitTreeTweaks
 {
@@ -70,27 +71,34 @@ namespace FruitTreeTweaks
         }
         #endregion
         #region Strawman Methods
+        /// <summary>
+        /// Strawman replacement for base Object.CanItemBePlacedHere check for modified placement logic.
+        /// </summary>
+        /// <param name="location"><see cref="GameLocation"/> of the desired object placement."/></param>
+        /// <param name="tile"><see cref="Vector2"/> tile to be checked for placement conditions.</param>
+        /// <param name="deniedMessage">Message provided should the placement check fail e.g. tile is occupied, attempting to plant outside the farm when <see cref="ModConfig.CanPlantAnywhere"/> isn't true.</param>
+        /// <returns></returns>
         private static bool CanItemBePlacedHere(GameLocation location, Vector2 tile, out string deniedMessage)
         {
             if (location is null)
             {
-                // potential error handling i may not need anymore
+                Log("Encountered null location error in Methods.CanItemBePlacedHere. If you encounter this frequently or experience bugs as a result of this error, please submit a bug report to chiccenSDV on NexusMods and please let him know if you are using any custom location mods.", LogLevel.Error);
             }
 
             deniedMessage = string.Empty;
-            if (location is not Farm && !location.isGreenhouse.Value && !CanPlantAnywhere())
+            if (location is not Farm && !location.isGreenhouse.Value && !CanPlantAnywhere()) // check if planting outside the farm and if so, if CanPlantAnywhere is enabled.
                 deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm or greenhouse!";
-            if (location.getBuildingAt(tile) is not null)
+            if (location.getBuildingAt(tile) is not null) // check if a building object is occupying the desired tile.
                 deniedMessage = "Tile is occupied by a building.";
             if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
                 deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
-            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers))
+            if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers)) // check if tile is already occupied by an unpassable object, save for the player themselves.
                 deniedMessage = "Tile is occupied.";
-            if (terrainFeature is not null)
+            if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
                 deniedMessage = "Tile is blocked by terrain!";
             if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
                 deniedMessage = "Tile is not placeable.";
-            if (location.objects.ContainsKey(tile))
+            if (location.objects.ContainsKey(tile)) // see if any other objects are occupying the tile.
                 deniedMessage = "Tile is occupied by an object.";
             if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
                 deniedMessage = "Cannot place indoors.";
@@ -105,8 +113,10 @@ namespace FruitTreeTweaks
             }
             catch (Exception e)
             {
-                deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for details.";
-                Log("Greenhouse 'wood' tile property check error. If you are seeing this message but no other issues, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", debugOnly: true);
+                deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for instructions.";
+                LogOnce($"{e.Message}", LogLevel.Error);
+                LogOnce($"{e.StackTrace}", LogLevel.Error);
+                Log("If you are seeing this message but no other issues, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", debugOnly: true);
             }
 
             return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
