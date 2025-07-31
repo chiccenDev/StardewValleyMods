@@ -108,15 +108,19 @@ namespace FruitTreeTweaks
                 deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
             try
             {
-                if (location.IsGreenhouse && (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere()))
-                    deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
+                if (location.IsGreenhouse && location.getTileIndexAt((int)tile.X, (int)tile.Y, "Back") != -1)
+                {
+                    if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere())
+                        deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
+                }
+                    
             }
             catch (Exception e)
             {
                 deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for instructions.";
-                LogOnce($"{e.Message}", LogLevel.Error);
-                LogOnce($"{e.StackTrace}", LogLevel.Error);
-                Log("If you are seeing this message but no other issues, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", debugOnly: true);
+                LogOnce($"{e.Message}", LogLevel.Error, true);
+                LogOnce($"{e.StackTrace}", LogLevel.Error, true);
+                Log("If you are seeing this message but have not encountered any bugs, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", LogLevel.Alert, true);
             }
 
             return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
