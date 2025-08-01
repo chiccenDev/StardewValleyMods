@@ -188,7 +188,7 @@ namespace FruitTreeTweaks
 
         private static void ReloadFruit(GameLocation location, Vector2 tile, int max)
         {
-            
+            Log($"Resetting {max} fruits.", debugOnly: true);
             // init fruit data
             if (!fruitData.ContainsKey(location))
                 fruitData.Add(location, new Dictionary<Vector2, (List<Color>, List<float>, List<Vector2>)>());
@@ -239,12 +239,12 @@ namespace FruitTreeTweaks
                     Vector2 offset;
                     while (!gotSpot)
                     {
-                        double distance = 24;
-                        for (int j = 0; j < 100; j++)
+                        double distance = 16; // aim to keep fruits at least 24 pixels apart
+                        for (int j = 0; j < 50; j++)
                         {
-                            gotSpot = true;
-                            offset = new Vector2(Config.FruitSpawnBufferX + Game1.random.Next(34 * 4 - Config.FruitSpawnBufferX), Config.FruitSpawnBufferY + Game1.random.Next(58 * 4 - Config.FruitSpawnBufferY));
-                            for (int k = 0; k < data.offsets.Count; k++)
+                            gotSpot = true; // suitable offset found
+                            offset = new Vector2(Config.FruitSpawnBufferX + Game1.random.Next(34 * 4 - Config.FruitSpawnBufferX), Config.FruitSpawnBufferY + Game1.random.Next(58 * 4 - Config.FruitSpawnBufferY)); // random offset
+                            for (int k = 0; k < data.offsets.Count; k++) // cross-check with other fruit offsets
                             {
                                 if (Vector2.Distance(data.offsets[k], offset) < distance)
                                 {
