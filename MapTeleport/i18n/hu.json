@@ -1,0 +1,14 @@
+{
+  "EnableMod": "Mod engedélyezése",
+  "EnableMod.1": "Kapcsolja be/ki a térkép teleportálását",
+  "AllowUnknown": "Ismeretlen helyek engedélyezése",
+  "AllowUnknown.1": "Lehetővé teszi, hogy olyan helyekre teleportálj, amelyeket még nem oldottál fel vagy nem látogattál meg.",
+  "EnableAudio": "Hangjelzés engedélyezése",
+  "EnableAudio.1": "Ha engedélyezve van, hangjelzés hallatszik a teleportáláskor.",
+  "Debug": "Hibakereső mód",
+  "Debug.1": "Engedélyezze a részletes SMAPI naplózást hibakereséshez vagy hibajelentéshez. FIGYELEM: ez sok üzenetet fog generálni a modban!",
+  "Simulate": "Teleport szimulálása (DEBUG)",
+  "Simulate.1": "Hibakeresés céljából, szimulálja a teleportálást, de az üzenetet a SMAPI naplóba küldi a tényleges teleportálás helyett.",
+  "WarpFail": "Előbb fel kell oldanod ezt a helyszínt, mielőtt teleportálhatnál!",
+  "WarpFail.1": "Mindenképp teleportálhatsz azáltal, hogy a konfigurációban engedélyezed az „Ismeretlen helyek engedélyezése” opciót, vagy teljesíted a Játékállapot feltételeit: "
+}

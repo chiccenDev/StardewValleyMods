@@ -21,7 +21,7 @@ Message @chiccen on Discord for details on how you would like to be credited!
 Chinese    | [✓](./i18n/zh.json) (Courtesy of @BlackRosePetals on Github)
 French     | [✓](./i18n/fr.json) (Courtesy of @CaranudLapin on Github)
 German     | [✓](./i18n/de.json) (Courtesy of @UnstabilerKeks on Github)
-Hungarian  | [❑](./i18n)
+Hungarian  | [✓](./i18n/hu.json) (Courtesy of @manumongin on Github)
 Italian    | [✓](./i18n/it.json) (Courtesy of @Christian1904 on Github)
 Japanese   | [✓](./i18n/ja.json) (Courtesy of @Miruiro on Github)
 Korean     | [✓](./i18n/ko.json) (Courtesy of @Tofu-Berry on Github)
