@@ -140,7 +140,7 @@ namespace MapTeleport
 
         private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            if (Config.EnableMod) CheckFarm(Locations["Farm/Default"]);
+            if (Config.EnableMod && Locations.ContainsKey("Farm/Default")) CheckFarm(Locations["Farm/Default"]);
         }
 
     }
