@@ -34,7 +34,8 @@ Turkish    | [✓](./i18n/tr.json) (Courtesy of @evelynope on Github)
 
 Version    | Date				| Release Notes
 :--------- | :----------------  | :------------------
-1.1.0      | 28 May 2025		| ·Support for Ridgeside Village<br>Korean localization
+1.1.1      | 13 September 2025	| ·Fixed Ridgeside Cablecar<br>·Japanese localization<br>·Hungarian localization
+1.1.0      | 28 May 2025		| ·Support for Ridgeside Village<br>·Korean localization
 1.0.8      | 14 May 2025		| ·Added more logs to EditLocations method for transparency<br>·Added Sunberry Village locations
 1.0.7      | 30 April 2025      | ·Cmd `mtp_edit (key, x, y)` to edit location data in debug mode<br>·Re-check Farmhouse door when Farmhouse is moved at Robin's<br>·Russian localization<br>·Portuguese localization<br>·Turkish localization<br>·German localization
 1.0.6      | 06 February 2025   | ·Support for Law and Order jail<br>·Juliet and Jessie's house in the clearing<br>·Beautify serialized JSON location data<br>·Cleaned error checking to prevent spam
