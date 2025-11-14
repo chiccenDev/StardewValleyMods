@@ -3,7 +3,7 @@
   "EnableMod.1": "Toggle Map Teleport On/Off",
   "AllowUnknown": "Allow Unknown Locations",
   "AllowUnknown.1": "Allowing warping to locations you haven't unlocked or visited yet.",
-  "AutoFarmDoor": "Automatically Update Farm Teleport",
+  "AutoFarmDoor": "Auto-Update Farm Teleport",
   "AutoFarmDoor.1": "WARNING: Only disable this option if you would are using a custom location for your farm teleport.",
   "EnableAudio": "Enable Audio Cue",
   "EnableAudio.1": "When enabled, an audio cue will play when teleporting.",
