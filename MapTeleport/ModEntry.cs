@@ -110,6 +110,13 @@ namespace MapTeleport
             );
             configMenu.AddBoolOption(
                 mod: ModManifest,
+                name: () => I18n.AutoFarmDoor(),
+                tooltip: () => I18n.AutoFarmDoor_1(),
+                getValue: () => Config.AutoFarmDoor,
+                setValue: value => Config.AutoFarmDoor = value
+            );
+            configMenu.AddBoolOption(
+                mod: ModManifest,
                 name: () => I18n.EnableAudio(),
                 tooltip: () => I18n.EnableAudio_1(),
                 getValue: () => Config.EnableAudio,

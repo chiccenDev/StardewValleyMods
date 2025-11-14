@@ -175,7 +175,7 @@ namespace MapTeleport
         #region auxiliary methods
         public static void CheckFarm(LocationDetails entry)
         {
-            if (!Config.EnableMod) return;
+            if (!Config.EnableMod || Config.AutoFarmDoor) return;
 
             Log("Patching warp info for Farm");
             Point door = Farm.getFrontDoorPositionForFarmer(Game1.player);
