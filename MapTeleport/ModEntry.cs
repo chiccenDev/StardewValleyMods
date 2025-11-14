@@ -122,6 +122,13 @@ namespace MapTeleport
                 getValue: () => Config.EnableAudio,
                 setValue: value => Config.EnableAudio = value
             );
+            configMenu.AddKeybind(
+                mod: ModManifest,
+                name: () => I18n.SaveHotkey(),
+                tooltip: () => I18n.SaveHotkey_1(),
+                getValue: () => Config.SaveHotkey,
+                setValue: value => Config.SaveHotkey = value
+            );
             configMenu.AddBoolOption(
                 mod: ModManifest,
                 name: () => I18n.Debug(),
@@ -141,7 +148,7 @@ namespace MapTeleport
 
         private void Input_ButtonPressed(object sender, ButtonPressedEventArgs e)
         {
-            if (!Config.Debug || !Config.EnableMod || (e.Button != SButton.F2)) return;
+            if (!Config.Debug || !Config.EnableMod || (e.Button != Config.SaveHotkey)) return;
             SaveLocations(Locations);
         }
 

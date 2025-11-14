@@ -12,5 +12,7 @@
   "Simulate": "Simulate Warps (DEBUG)",
   "Simulate.1": "For debugging purposes, simulate warping except push a message to SMAPI log instead of actually performing warp.",
   "WarpFail": "You must unlock this location before you can warp!",
-  "WarpFail.1": "You can warp anyway by enabling \"Allow Unknown Locations\" in the config, or by meeting the Game State criteria: "
+  "WarpFail.1": "You can warp anyway by enabling \"Allow Unknown Locations\" in the config, or by meeting the Game State criteria: ",
+  "SaveHotkey": "Save Locations Hotkey",
+  "SaveHotkey.1": "Hotkey to save any edited locations. Default: F2"
 }
