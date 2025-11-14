@@ -18,22 +18,23 @@ Message @chiccen on Discord for details on how you would like to be credited!
 
 &nbsp;     | Map Teleport
 :--------- | :----------------
-Chinese    | [✓](./i18n/zh.json) (Courtesy of @BlackRosePetals on Github)
-French     | [✓](./i18n/fr.json) (Courtesy of @CaranudLapin on Github)
-German     | [✓](./i18n/de.json) (Courtesy of @UnstabilerKeks on Github)
-Hungarian  | [✓](./i18n/hu.json) (Courtesy of @manumongin on Github)
-Italian    | [✓](./i18n/it.json) (Courtesy of @Christian1904 on Github)
-Japanese   | [✓](./i18n/ja.json) (Courtesy of @Miruiro on Github)
-Korean     | [✓](./i18n/ko.json) (Courtesy of @Tofu-Berry on Github)
-Portuguese | [✓](./i18n/pt.json) (Courtesy of @DearSloth1812 on Github)
-Russian    | [✓](./i18n/ru.json) (Courtesy of @Ognejar on Github)
-Spanish    | [✓](./i18n/es.json) (Courtesy of @Jossegenbu on Github)
-Turkish    | [✓](./i18n/tr.json) (Courtesy of @evelynope on Github)
+Chinese    | [↻](./i18n/zh.json) (Courtesy of @BlackRosePetals on Github)
+French     | [↻](./i18n/fr.json) (Courtesy of @CaranudLapin on Github)
+German     | [↻](./i18n/de.json) (Courtesy of @UnstabilerKeks on Github)
+Hungarian  | [↻](./i18n/hu.json) (Courtesy of @manumongin on Github)
+Italian    | [↻](./i18n/it.json) (Courtesy of @Christian1904 on Github)
+Japanese   | [↻](./i18n/ja.json) (Courtesy of @Miruiro on Github)
+Korean     | [↻](./i18n/ko.json) (Courtesy of @Tofu-Berry on Github)
+Portuguese | [↻](./i18n/pt.json) (Courtesy of @DearSloth1812 on Github)
+Russian    | [↻](./i18n/ru.json) (Courtesy of @Ognejar on Github)
+Spanish    | [↻](./i18n/es.json) (Courtesy of @Jossegenbu on Github)
+Turkish    | [↻](./i18n/tr.json) (Courtesy of @evelynope on Github)
 
 ## Changelog
 
 Version    | Date				| Release Notes
 :--------- | :----------------  | :------------------
+1.1.2      | 14 November 2025	| ·Added option to disable auto farm door locating for custom farm tp<br>·Added rebind option for Save Locations hotkey (default F2)
 1.1.1      | 13 September 2025	| ·Fixed Ridgeside Cablecar<br>·Japanese localization<br>·Hungarian localization
 1.1.0      | 28 May 2025		| ·Support for Ridgeside Village<br>·Korean localization
 1.0.8      | 14 May 2025		| ·Added more logs to EditLocations method for transparency<br>·Added Sunberry Village locations

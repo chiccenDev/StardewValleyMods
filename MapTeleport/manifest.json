@@ -1,22 +1,10 @@
 {
   "Name": "Map Teleport",
   "Author": "chiccen",
-  "Version": "1.1.1",
+  "Version": "1.1.2",
   "Description": "Teleport by clicking on locations in the in-game map.",
   "UniqueID": "chiccen.MapTeleport",
   "EntryDll": "MapTeleport.dll",
   "MinimumApiVersion": "3.15.0",
-  "ModUpdater": {
-    "Repository": "StardewValleyMods",
-    "User": "chiccen",
-    "Directory": "_releases",
-    "ModFolder": "MapTeleport" // remove this line for most cases, only needed if repository is overarching "Stardew Valley Mods" repo or otherwise not its own repo
-  },
-  "UpdateKeys": [ "Nexus:30611" ],
-  "Dependencies": [
-    {
-      "UniqueID": "Platonymous.ModUpdater",
-      "IsRequired": false
-    }
-  ]
+  "UpdateKeys": [ "Nexus:30611" ]
 }
