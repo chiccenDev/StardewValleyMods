@@ -358,7 +358,7 @@ namespace FruitTreeTweaks
 
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -386,7 +386,7 @@ namespace FruitTreeTweaks
 
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -413,7 +413,7 @@ namespace FruitTreeTweaks
 
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
@@ -439,7 +439,7 @@ namespace FruitTreeTweaks
 
                     if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
                     {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere denied: {deniedMessage}", debugOnly: true);
+                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
                         return true;
                     }
 
