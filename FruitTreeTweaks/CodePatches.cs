@@ -341,10 +341,8 @@ namespace FruitTreeTweaks
         [HarmonyPatch(typeof(Object), nameof(Object.canBePlacedHere))] // chiccen
         public class Object_canBePlacedHere_Patch
         {
-
-            public static bool Prefix(GameLocation l, Vector2 tile, ref bool __result)
+            public static bool Prefix(GameLocation l, Vector2 tile, CollisionMask collisionMask, bool showError, ref bool __result)
             {
-                //CollisionMask mask = CollisionMask.All;
                 Farmer who = Game1.player;
                 Object tree = who?.ActiveObject ?? null;
 
@@ -369,86 +367,22 @@ namespace FruitTreeTweaks
                 return true;
             }
 
+            #region canBePlacedHere_CatchAll
+            public static bool Prefix(GameLocation l, Vector2 tile, ref bool __result)
+            {
+                return Prefix(l, tile, CollisionMask.All, true, ref __result);
+            }
+
             public static bool Prefix(GameLocation l, Vector2 tile, bool showError, ref bool __result)
             {
-                //CollisionMask mask = CollisionMask.All;
-                Farmer who = Game1.player;
-                Object tree = who?.ActiveObject ?? null;
-
-                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
-
-                if (tree.IsFruitTreeSapling())
-                {
-                    LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
-
-                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
-                    {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
-                        return true;
-                    }
-
-                    __result = true;
-                    return false;
-                }
-                LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
-                return true;
+                return Prefix(l, tile, CollisionMask.All, showError, ref __result);
             }
 
             public static bool Prefix(GameLocation l, Vector2 tile, CollisionMask collisionMask, ref bool __result)
             {
-                Farmer who = Game1.player;
-                Object tree = who?.ActiveObject ?? null;
-
-                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
-
-                if (tree.IsFruitTreeSapling())
-                {
-                    LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
-
-                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
-                    {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
-                        return true;
-                    }
-
-                    __result = true;
-                    return false;
-                }
-                LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
-                return true;
+                return Prefix(l, tile, collisionMask, true, ref __result);
             }
-
-            public static bool Prefix(GameLocation l, Vector2 tile, CollisionMask collisionMask, bool showError, ref bool __result)
-            {
-                Farmer who = Game1.player;
-                Object tree = who?.ActiveObject ?? null;
-
-                if (tree is null || !Config.EnableMod || (l is not Farm && !l.IsGreenhouse && !Config.PlantAnywhere)) return true;
-
-                if (tree.IsFruitTreeSapling())
-                {
-                    LogOnce($"{tree.DisplayName} too close: {FruitTree.IsTooCloseToAnotherTree(tile, l, false)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} growth blocked: {FruitTree.IsGrowthBlocked(tile, l)}", debugOnly: true);
-                    LogOnce($"{tree.DisplayName} CantPlantTreesHere: {l.CanPlantTreesHere(tree.ItemId, (int)tile.X, (int)tile.Y, out _)}", debugOnly: true);
-
-                    if (!CanItemBePlacedHere(l, tile, out var deniedMessage))
-                    {
-                        LogOnce($"canBePlacedHere.CanItemBePlacedHere passing to original method: {deniedMessage}", debugOnly: true);
-                        return true;
-                    }
-
-                    __result = true;
-                    return false;
-                }
-                LogOnce($"canBePlacedHere handling for {tree?.DisplayName} passed to original method.", debugOnly: true);
-                return true;
-            }
+            #endregion
         }
         #endregion
     }
