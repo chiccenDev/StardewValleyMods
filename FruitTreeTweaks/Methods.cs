@@ -87,40 +87,62 @@ namespace FruitTreeTweaks
 
             deniedMessage = string.Empty;
             if (location is not Farm && !location.isGreenhouse.Value && !CanPlantAnywhere()) // check if planting outside the farm and if so, if CanPlantAnywhere is enabled.
+            {
                 deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm or greenhouse!";
+                LogOnce(deniedMessage);
+            }
             if (location.getBuildingAt(tile) is not null) // check if a building object is occupying the desired tile.
+            {
                 deniedMessage = "Tile is occupied by a building.";
+                LogOnce(deniedMessage);
+            }
             if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
+            {
                 deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
+                LogOnce($"{terrainFeature.Tile.ToString()}");
+            }
             if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers)) // check if tile is already occupied by an unpassable object, save for the player themselves.
+            {
                 deniedMessage = "Tile is occupied.";
-            if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
+                LogOnce(deniedMessage);
+            }
+            /*if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
+            {
                 deniedMessage = "Tile is blocked by terrain!";
+            }*/
             if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
+            {
                 deniedMessage = "Tile is not placeable.";
+            }
             if (location.objects.ContainsKey(tile)) // see if any other objects are occupying the tile.
+            {
                 deniedMessage = "Tile is occupied by an object.";
+            }
             if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
+            {
                 deniedMessage = "Cannot place indoors.";
+            }
             if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
+            {
                 deniedMessage = "Cannot plant in water";
+            }
             if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
                 deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
             try
             {
                 if (location.IsGreenhouse && location.getTileIndexAt((int)tile.X, (int)tile.Y, "Back") != -1)
                 {
-                    if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere())
+                    if (location.doesTileHavePropertyNoNull((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere())
                         deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
                 }
                     
             }
             catch (Exception e)
             {
-                deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for instructions.";
+                //deniedMessage = "Fruit Tree Tweaks encountered an error. See SMAPI log for instructions.";
                 LogOnce($"{e.Message}", LogLevel.Error, true);
                 LogOnce($"{e.StackTrace}", LogLevel.Error, true);
-                Log("If you are seeing this message but have not encountered any bugs, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", LogLevel.Alert, true);
+                LogOnce("If you are seeing this message but have not encountered any bugs, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", LogLevel.Alert, true);
             }
 
             return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
