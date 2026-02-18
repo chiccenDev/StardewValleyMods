@@ -106,10 +106,10 @@ namespace FruitTreeTweaks
                 deniedMessage = "Tile is occupied.";
                 LogOnce(deniedMessage);
             }
-            /*if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
+            if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
             {
                 deniedMessage = "Tile is blocked by terrain!";
-            }*/
+            }
             if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
             {
                 deniedMessage = "Tile is not placeable.";
@@ -145,7 +145,7 @@ namespace FruitTreeTweaks
                 LogOnce("If you are seeing this message but have not encountered any bugs, feel free to ignore. Otherwise, send SMAPI log to chiccenSDV in a bug report.", LogLevel.Alert, true);
             }
 
-            return (!string.IsNullOrEmpty(deniedMessage) ? false : true);
+            return (string.IsNullOrEmpty(deniedMessage));
         }
         #endregion
         #region Draw Methods
