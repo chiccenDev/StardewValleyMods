@@ -327,7 +327,7 @@
     "Region": "IslandSouthEast",
     "X": 19,
     "Y": 24,
-    "Condition": "PLAYER_HAS_VISITED Current IslandSouthEast"
+    "Condition": "PLAYER_VISITED_LOCATION Current IslandSouthEast"
   },
   "East/JungleHut": {
     "Region": "IslandEast",
@@ -582,9 +582,9 @@
     "Condition": null
   },
   "sdvhead.LawAndOrderSV_Jail/sdvhead.LawAndOrderSV_Jail": {
-    "Region": null,
-    "X": 0,
-    "Y": 0,
+    "Region": "Town",
+    "X": 75,
+    "Y": 8,
     "Condition": null
   },
   "SunberryForest/ReiHouse": {
