@@ -3,7 +3,6 @@ using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
-using StardewValley.ItemTypeDefinitions;
 using StardewValley.TerrainFeatures;
 using System;
 using System.Collections.Generic;
@@ -385,5 +384,14 @@ namespace FruitTreeTweaks
             #endregion
         }
         #endregion
+
+        [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.IsTooCloseToAnotherTree))]
+        public class FruitTree_IsTooCloseToAnotherTree_Patch // this feels dumb but without this, you cant plant trees next to each other in the greenhouse
+        {
+            public static bool Prefix(Vector2 tileLocation, GameLocation environment, bool fruitTreesOnly = false)
+            {
+                return !Config.EnableMod;
+            }
+        }
     }
 }
