@@ -152,9 +152,13 @@ namespace MapTeleport
                 }
                 else
                 {
-                    Game1.showRedMessage(I18n.WarpFail());
-                    Log(I18n.WarpFail_1() + entry.Condition);
-                    return false;
+                    if (entry.Condition is not null)
+                    {
+                        Game1.showRedMessage(I18n.WarpFail());
+                        Log(I18n.WarpFail_1() + entry.Condition);
+                    }
+                    else { Log($"Possible region failure! Please check your log. If this location was just added to the list, the region is likely still \"null\" and needs to be updated!", LogLevel.Error); }
+                        return false;
                 }
             }
             else if (Config.Debug)
