@@ -298,45 +298,6 @@ namespace FruitTreeTweaks
         #endregion
 
         #region Placement Logic
-        [HarmonyPatch(typeof(Object), nameof(Object.placementAction))] // chiccen
-        public class Object_placementAction_Patch
-        {
-            public static bool Prefix(Object __instance, GameLocation location, int x, int y, ref bool __result, Farmer who = null)
-            {
-                if (location is not Farm && !Config.PlantAnywhere) return true;
-
-                if (!__instance.TypeDefinitionId.Equals("(O)")) return true;
-
-                Object obj = __instance as Object ?? null;
-                if (Config.EnableMod && obj.IsFruitTreeSapling())
-                {
-                    Vector2 placementTile = new Vector2(x / 64, y / 64);
-                    string deniedMessage = string.Empty;
-                    if (CanItemBePlacedHere(location, placementTile, out deniedMessage))
-                    {
-                        location.playSound("dirtyHit");
-                        DelayedAction.playSoundAfterDelay("coin", 100);
-                        FruitTree fruitTree = new FruitTree(obj.ItemId)
-                        {
-                            GreenHouseTileTree = (location.IsGreenhouse)
-                        };
-                        location.terrainFeatures.Remove(placementTile);
-                        location.terrainFeatures.Add(placementTile, fruitTree);
-                        __result = true;
-                        LogOnce($"{obj?.DisplayName} passed all checks and should be placed!", debugOnly: true);
-                        return false;
-                    }
-                    else
-                    {
-                        //Game1.showRedMessage(deniedMessage); need to translate first
-                        Log($"{deniedMessage}", LogLevel.Warn); // placeholder until we can translate
-                    }
-                }
-                LogOnce($"placementAction for {obj?.DisplayName} passed to vanilla method.", debugOnly: true);
-                return true;
-            }
-        }
-
         [HarmonyPatch(typeof(Object), nameof(Object.canBePlacedHere))] // chiccen
         public class Object_canBePlacedHere_Patch
         {
@@ -383,7 +344,6 @@ namespace FruitTreeTweaks
             }
             #endregion
         }
-        #endregion
 
         [HarmonyPatch(typeof(FruitTree), nameof(FruitTree.IsTooCloseToAnotherTree))]
         public class FruitTree_IsTooCloseToAnotherTree_Patch // this feels dumb but without this, you cant plant trees next to each other in the greenhouse
@@ -393,5 +353,6 @@ namespace FruitTreeTweaks
                 return !Config.EnableMod;
             }
         }
+        #endregion
     }
 }
