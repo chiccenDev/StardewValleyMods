@@ -16,10 +16,6 @@ namespace FruitTreeTweaks
         private static Dictionary<string, (Texture2D texture, Rectangle sourceRect)> textures = new();
         private static int fruitToday;
         #region Internal Methods
-        private static bool CanPlantAnywhere()
-        {
-            return Config.PlantAnywhere; // a bit redundant but I've used it a few times so I'll keep it, whatever
-        }
         private static int GetMaxFruit()
         {
             return !Config.EnableMod ? 3 : Math.Max(1, Config.MaxFruitPerTree);
@@ -81,58 +77,34 @@ namespace FruitTreeTweaks
         private static bool CanItemBePlacedHere(GameLocation location, Vector2 tile, out string deniedMessage)
         {
             if (location is null)
-            {
                 Log("Encountered null location error in Methods.CanItemBePlacedHere. If you encounter this frequently or experience bugs as a result of this error, please submit a bug report to chiccenSDV on NexusMods and please let him know if you are using any custom location mods.", LogLevel.Error);
-            }
 
             deniedMessage = string.Empty;
-            if (location is not Farm && !location.isGreenhouse.Value && !CanPlantAnywhere()) // check if planting outside the farm and if so, if CanPlantAnywhere is enabled.
-            {
+            if (location is not Farm && !location.isGreenhouse.Value && Config.PlantAnywhere) // check if planting outside the farm and if so, if CanPlantAnywhere is enabled.
                 deniedMessage = "You must enable \"plant anywhere\" to plant trees outside the farm or greenhouse!";
-                LogOnce(deniedMessage);
-            }
             if (location.getBuildingAt(tile) is not null) // check if a building object is occupying the desired tile.
-            {
                 deniedMessage = "Tile is occupied by a building.";
-                LogOnce(deniedMessage);
-            }
             if (location.terrainFeatures.TryGetValue(tile, out var terrainFeature) && !(terrainFeature is HoeDirt { crop: null })) // check if rock or strump or smth is blocking
-            {
                 deniedMessage = $"Tile is occupied by {terrainFeature.GetType()}.";
-                LogOnce($"{terrainFeature.Tile.ToString()}");
-            }
             if (location.IsTileOccupiedBy(tile, ignorePassables: CollisionMask.Farmers)) // check if tile is already occupied by an unpassable object, save for the player themselves.
-            {
                 deniedMessage = "Tile is occupied.";
-                LogOnce(deniedMessage);
-            }
             if (terrainFeature is not null) // check if a terrainFeature such as a rock, grass, or another tree is occupying the tile.
-            {
                 deniedMessage = "Tile is blocked by terrain!";
-            }
             if (!location.isTilePlaceable(tile, true)) // check if it is a placeable tile
-            {
                 deniedMessage = "Tile is not placeable.";
-            }
             if (location.objects.ContainsKey(tile)) // see if any other objects are occupying the tile.
-            {
                 deniedMessage = "Tile is occupied by an object.";
-            }
-            if (!location.IsOutdoors && !CanPlantAnywhere() && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
-            {
+            if (!location.IsOutdoors && !Config.PlantAnywhere && (!location.treatAsOutdoors.Value && !location.IsGreenhouse)) // check if it is indoors or canplant anywhere or is greenhouse
                 deniedMessage = "Cannot place indoors.";
-            }
             if (location.doesTileHaveProperty((int)tile.X, (int)tile.Y, "Water", "Back") is not null) // from wildtreetweaks, to plug up any water
-            {
                 deniedMessage = "Cannot plant in water";
-            }
             if (location.getTileIndexAt((int)tile.X, (int)tile.Y, "Buildings") != -1)
                 deniedMessage = "Invalid plant location."; // some small structures like warp locations have "Buildings" tag, so check for those
             try
             {
                 if (location.IsGreenhouse && location.getTileIndexAt((int)tile.X, (int)tile.Y, "Back") != -1)
                 {
-                    if (location.doesTileHavePropertyNoNull((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !CanPlantAnywhere())
+                    if (location.doesTileHavePropertyNoNull((int)tile.X, (int)tile.Y, "Type", "Back").Equals("Wood") && !Config.PlantAnywhere)
                         deniedMessage = "Invalid plant location."; // prevent planting on the greenhouse wood border tiles
                 }
                     
