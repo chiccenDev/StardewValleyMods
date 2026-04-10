@@ -1,5 +1,5 @@
 {
-  "Format": "2.0.0",
+  "Format": "2.9.0",
   "Changes": [
 	{
 	"Action": "EditImage",
@@ -28,7 +28,6 @@
 
 	{
 	"Action": "EditImage",
-	"PatchMode": "Overlay",
 	"Target": "LooseSprites/Cursors, LooseSprites/Cursors.de-DE, LooseSprites/Cursors.es-ES, LooseSprites/Cursors.fr-FR, LooseSprites/Cursors.hu-HU, LooseSprites/Cursors.it-IT, LooseSprites/Cursors.ja-JP, LooseSprites/Cursors.ko-KR, LooseSprites/Cursors.pt-BR, LooseSprites/Cursors.ru-RU, LooseSprites/Cursors.tr-TR, LooseSprites/Cursors.zh-CN",
 	"FromFile": "assets/Lid.png",
 	"ToArea": { "X": 134, "Y": 226, "Width": 390, "Height": 25 }
@@ -36,7 +35,6 @@
 	
 	{
 	"Action": "EditImage",
-	"PatchMode": "Overlay",
 	"Target": "LooseSprites/Cursors, LooseSprites/Cursors.de-DE, LooseSprites/Cursors.es-ES, LooseSprites/Cursors.fr-FR, LooseSprites/Cursors.hu-HU, LooseSprites/Cursors.it-IT, LooseSprites/Cursors.ja-JP, LooseSprites/Cursors.ko-KR, LooseSprites/Cursors.pt-BR, LooseSprites/Cursors.ru-RU, LooseSprites/Cursors.tr-TR, LooseSprites/Cursors.zh-CN",
 	"FromFile": "assets/open_bin.png",
 	"ToArea": { "X": 526, "Y": 218, "Width": 100, "Height": 22 }

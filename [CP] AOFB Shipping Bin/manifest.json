@@ -1,12 +1,18 @@
 {
    "Name": "AOFB Shipping Bin",
    "Author": "chiccen",
-   "Version": "1.0.3",
+   "Version": "1.0.4",
    "Description": "Recolors the shipping bin to match Ali's Overgrown Fairy Buildings.",
    "UniqueID": "chiccen.AOFBShipping",
-   "MinimumApiVersion": "3.0.0",
+   "MinimumApiVersion": "4.0.0",
    "UpdateKeys": ["Nexus:21374"],
    "ContentPackFor": {
 		"UniqueID": "Pathoschild.ContentPatcher"
-   }
+   },
+   "Dependencies": [
+      {
+         "UniqueID": "Haneulbaragi.Buildings",
+         "IsRequired": "false"
+      }
+   ]
 }
