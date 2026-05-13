@@ -11,6 +11,8 @@ using StardewValley.Constants;
 using StardewValley.Enchantments;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
 using xTile.Tiles;
+using StardewModdingAPI;
+using System.Reflection.Emit;
 
 namespace WildTreeTweaks
 {
@@ -142,7 +144,7 @@ namespace WildTreeTweaks
                 if (!Config.EnableMod || id is null)
                 {
                     Log("TryGetData: mod disabled or id is null.", debugOnly: true);
-                    data = null;
+                    data = new WildTreeData();
                     return true;
                 }
 
@@ -167,134 +169,25 @@ namespace WildTreeTweaks
         [HarmonyPatch(typeof(Tree), nameof(Tree.performToolAction))]
         public class Tree_performToolAction_Patch
         {
-            public static bool Prefix(Tree __instance, Tool t, int explosion, Vector2 tileLocation, ref bool __result)
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                if (!Config.EnableMod || (!__instance.Location.IsFarm && Config.OnlyOnFarm) || __instance.growthStage.Value < 5 || (Config.BookChance == 0.0005f || !Config.BookChanceBool || Config.MysteryBoxChance == 0.005f)) return true;
+                if (!Config.EnableMod || Config.MysteryBoxChance == 0.005f) return instructions;
+                Log($"Transpiling Tree.performToolAction", LogLevel.Alert);
+                int found = 0;
 
-                GameLocation location = __instance.Location ?? Game1.currentLocation;
-                if ((int)__instance.growthStage.Value >= 5)
+                var codes = new List<CodeInstruction>(instructions);
+                for (int i = 0; i < codes.Count - 4; i++)
                 {
-                    if ((bool)__instance.hasMoss.Value)
+                    if (codes[i].opcode == OpCodes.Ldc_R8 && (float)codes[i].operand == 0.005f && codes[i + 1].opcode == OpCodes.Ldnull)
                     {
-                        Item moss = Tree.CreateMossItem();
-                        if (t.getLastFarmerToUse() != null)
-                        {
-                            t.getLastFarmerToUse().gainExperience(2, moss.Stack);
-                        }
-                        __instance.hasMoss.Value = false;
-                        Game1.createMultipleItemDebris(moss, new Vector2(tileLocation.X, tileLocation.Y - 1f) * 64f, -1, location, Game1.player.StandingPixel.Y - 32);
-                        Game1.stats.Increment("mossHarvested");
-                        __instance.shake(tileLocation, doEvenIfStillShaking: true);
-                        __instance.growthStage.Value = 12 - moss.Stack;
-                        Game1.playSound("moss_cut");
-                        for (int i = 0; i < 6; i++)
-                        {
-                            location.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\debris", new Microsoft.Xna.Framework.Rectangle(Game1.random.Choose(16, 0), 96, 16, 16), new Vector2(tileLocation.X + (float)Game1.random.NextDouble() - 0.15f, tileLocation.Y - 1f + (float)Game1.random.NextDouble()) * 64f, flipped: false, 0.025f, Color.Green)
-                            {
-                                drawAboveAlwaysFront = true,
-                                motion = new Vector2((float)Game1.random.Next(-10, 11) / 10f, -4f),
-                                acceleration = new Vector2(0f, 0.3f + (float)Game1.random.Next(-10, 11) / 200f),
-                                animationLength = 1,
-                                interval = 1000f,
-                                sourceRectStartingPos = new Vector2(0f, 96f),
-                                alpha = 1f,
-                                layerDepth = 1f,
-                                scale = 4f
-                            });
-                        }
+                        codes[i] = new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ModConfig), nameof(ModConfig.MysteryBoxChance)));
+                        Log("Patched MysteryBoxChance!", debugOnly: true);
+                        found += 1;
                     }
-                    if ((bool)__instance.tapped.Value)
-                    {
-                        __result = false;
-                        return false;
-                    }
-                    if (t is Axe)
-                    {
-                        location.playSound("axchop", tileLocation);
-                        __instance.lastPlayerToHit.Value = t.getLastFarmerToUse().UniqueMultiplayerID;
-                        location.debris.Add(new Debris(12, Game1.random.Next(1, 3), t.getLastFarmerToUse().GetToolLocation() + new Vector2(16f, 0f), t.getLastFarmerToUse().Position, 0, __instance.GetChopDebrisColor()));
-                        if (location is Town && tileLocation.X < 100f && !__instance.isTemporaryGreenRainTree.Value)
-                        {
-                            int pathsIndex = location.getTileIndexAt((int)tileLocation.X, (int)tileLocation.Y, "Paths");
-                            if (pathsIndex >= 9 || pathsIndex <= 11)
-                            {
-                                __instance.shake(tileLocation, doEvenIfStillShaking: true);
-                                Game1.drawObjectDialogue(Game1.content.LoadString("Strings\\1_6_Strings:TownTreeWarning"));
-                                __result = false;
-                                return false;
-                            }
-                        }
-                        if (!__instance.stump.Value)
-                        {
-                            if (t.getLastFarmerToUse() != null && location.HasUnlockedAreaSecretNotes(t.getLastFarmerToUse()) && Game1.random.NextDouble() < 0.005)
-                            {
-                                Object o = location.tryToCreateUnseenSecretNote(t.getLastFarmerToUse());
-                                if (o is not null)
-                                {
-                                    Game1.createItemDebris(o, new Vector2(tileLocation.X, tileLocation.Y - 3f) * 64f, -1, location, Game1.player.StandingPixel.Y - 32);
-                                }
-                            }
-                            else if (t.getLastFarmerToUse() != null && Utility.tryRollMysteryBox((double)Config.MysteryBoxChance))
-                            {
-                                Game1.createItemDebris(ItemRegistry.Create((t.getLastFarmerToUse().stats.Get(StatKeys.Mastery(2)) != 0) ? "(O)GoldenMysteryBox" : "(O)MysteryBox"), new Vector2(tileLocation.X, tileLocation.Y - 3f) * 64f, -1, location, Game1.player.StandingPixel.Y - 32);
-                            }
-                            else if (t.getLastFarmerToUse() != null && t.getLastFarmerToUse().stats.Get("TreesChopped") > 20)
-                            {
-                                if (Config.BookChanceBool && Game1.random.NextDouble() < (double)Config.BookChance)
-                                {
-                                    Game1.createItemDebris(ItemRegistry.Create("(O)Book_Woodcutting"), new Vector2(tileLocation.X, tileLocation.Y - 3f) * 64f, -1, location, Game1.player.StandingPixel.Y - 32);
-                                    t.getLastFarmerToUse().mailReceived.Add("GotWoodcuttingBook");
-                                }
-                                else if (Game1.random.NextDouble() < 0.0003 + (t.getLastFarmerToUse().mailReceived.Contains("GotWoodcuttingBook") ? 0.0007 : ((double)t.getLastFarmerToUse().stats.Get("TreesChopped") * 1E-05)))
-                                {
-                                    Game1.createItemDebris(ItemRegistry.Create("(O)Book_Woodcutting"), new Vector2(tileLocation.X, tileLocation.Y - 3f) * 64f, -1, location, Game1.player.StandingPixel.Y - 32);
-                                    t.getLastFarmerToUse().mailReceived.Add("GotWoodcuttingBook");
-                                }
-                            }
-                            Utility.trySpawnRareObject(Game1.player, new Vector2(tileLocation.X, tileLocation.Y - 3f) * 64f, location, 0.33, 1.0, Game1.player.StandingPixel.Y - 32);
-                        }
-                    }
-                    else if (explosion <= 0)
-                    {
-                        __result = false;
-                        return false;
-                    }
-                    __instance.shake(tileLocation, doEvenIfStillShaking: true);
-                    float damage;
-                    if (explosion > 0) return true;
-                    else
-                    {
-                        if (t is null)
-                        {
-                            __result = false;
-                            return false;
-                        }
-                        damage = t.UpgradeLevel switch
-                        {
-                            0 => 1f,
-                            1 => 1.25f,
-                            2 => 1.67f,
-                            3 => 2.5f,
-                            4 => 5f,
-                            _ => (int)t.UpgradeLevel + 1,
-                        };
-                    }
-                    if (t is Axe && t.hasEnchantmentOfType<ShavingEnchantment>() && Game1.random.NextDouble() <= (double)(damage / 5f))
-                    {
-                        Debris d = ((__instance.treeType.Value == "12") ? new Debris("(O)259", new Vector2(tileLocation.X * 64f + 32f, (tileLocation.Y - 0.5f) * 64f + 32f), Game1.player.getStandingPosition()) : ((__instance.treeType.Value == "7") ? new Debris("(O)420", new Vector2(tileLocation.X * 64f + 32f, (tileLocation.Y - 0.5f) * 64f + 32f), Game1.player.getStandingPosition()) : ((!(__instance.treeType.Value == "8")) ? new Debris("388", new Vector2(tileLocation.X * 64f + 32f, (tileLocation.Y - 0.5f) * 64f + 32f), Game1.player.getStandingPosition()) : new Debris("(O)709", new Vector2(tileLocation.X * 64f + 32f, (tileLocation.Y - 0.5f) * 64f + 32f), Game1.player.getStandingPosition()))));
-                        d.Chunks[0].xVelocity.Value += (float)Game1.random.Next(-10, 11) / 10f;
-                        d.chunkFinalYLevel = (int)(tileLocation.Y * 64f + 64f);
-                        location.debris.Add(d);
-                    }
-                    //__instance.health.Value -= damage;
-                    if (__instance.health.Value <= 0f && performTreeFall(__instance, t, explosion, tileLocation)) 
-                    {
-                        __result = true;
-                        return false;
-                    }
-                }
+                } // I should really make the book chance a transpiler as well but I am feeling sooooo lazy... I'll give it a day. If I am still lazy, I'll just make it a post-fix lol
 
-                return true;
+                if (found < 3) Log($"Failed to find {3 - found} performToolAction targets! Please report this on NexusMods and be aware that some mod functions may not work as intended!", LogLevel.Error);
+                return codes.AsEnumerable();
             }
         }
 
@@ -312,7 +205,7 @@ namespace WildTreeTweaks
                 if (!leaves.ContainsKey(__instance.Location))
                     leaves.Add(__instance.Location, new Dictionary<Vector2, List<Leaf>>() { { __instance.Tile, new List<Leaf>() } });
                 if (!leaves.TryGetValue(__instance.Location, out var dict) || !dict.TryGetValue(__instance.Tile, out var list))
-                    dict.Add(__instance.Tile, new List<Leaf>());
+                    dict?.Add(__instance.Tile, new List<Leaf>());
 
                 leaves.TryGetValue(__instance.Location, out Dictionary<Vector2, List<Leaf>> trees);
                 trees.TryGetValue(__instance.Tile, out List<Leaf> leafs);
@@ -338,7 +231,7 @@ namespace WildTreeTweaks
                                 int leavesToAdd = Game1.random.Next(90, 120);
                                 for (int j = 0; j < leavesToAdd; j++)
                                 {
-                                    leafs.Add(new Leaf(new Vector2(Game1.random.Next((int)(tileLocation.X * 64f), (int)(tileLocation.X * 64f + 192f)) + (__instance.shakeLeft.Value ? (-320) : 256), tileLocation.Y * 64f - 64f), (float)Game1.random.Next(-10, 10) / 100f, Game1.random.Next(4), (float)Game1.random.Next(10, 40) / 10f));
+                                    leafs?.Add(new Leaf(new Vector2(Game1.random.Next((int)(tileLocation.X * 64f), (int)(tileLocation.X * 64f + 192f)) + (__instance.shakeLeft.Value ? (-320) : 256), tileLocation.Y * 64f - 64f), (float)Game1.random.Next(-10, 10) / 100f, Game1.random.Next(4), (float)Game1.random.Next(10, 40) / 10f));
                                 }
                             }
                             Random r;
