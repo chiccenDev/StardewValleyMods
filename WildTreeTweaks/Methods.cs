@@ -160,7 +160,7 @@ namespace WildTreeTweaks
                     {
                         tree.shakeLeft.Value = (float)t.getLastFarmerToUse().StandingPixel.X > (tileLocation.X + 0.5f) * 64f;
                     }
-                    t.getLastFarmerToUse().stats.Increment("TreesChopped", 1);
+                    t?.getLastFarmerToUse().stats.Increment("TreesChopped", 1);
                 }
             }
             else
@@ -201,12 +201,12 @@ namespace WildTreeTweaks
                     {
                         if (data.DropWoodOnChop)
                         {
-                            Game1.createRadialDebris(location, 12, (int)tileLocation.X, (int)tileLocation.Y, (int)((Game1.getFarmer(tree.lastPlayerToHit.Value).professions.Contains(12) ? 1.25 : 1.0) * 4.0), resource: true);
+                            Game1.createRadialDebris(location, 12, (int)tileLocation.X, (int)tileLocation.Y, (int)(((Game1.GetPlayer(tree.lastPlayerToHit.Value) ?? Game1.MasterPlayer).professions.Contains(12) ? 1.25 : 1.0) * 4.0), resource: true);
                         }
                         List<WildTreeChopItemData> chopItems = data.ChopItems;
                         if (chopItems != null && chopItems.Count > 0)
                         {
-                            Farmer targetFarmer2 = Game1.getFarmer(tree.lastPlayerToHit.Value);
+                            Farmer targetFarmer2 = Game1.GetPlayer(tree.lastPlayerToHit.Value) ?? Game1.MasterPlayer;
                             foreach (WildTreeChopItemData drop in data.ChopItems)
                             {
                                 Item item = TryGetDrop(tree , drop, r, targetFarmer2, "ChopItems");
@@ -225,12 +225,12 @@ namespace WildTreeTweaks
                     {
                         if (data.DropWoodOnChop)
                         {
-                            Game1.createRadialDebris(location, 12, (int)tileLocation.X, (int)tileLocation.Y, (int)((Game1.getFarmer(tree.lastPlayerToHit.Value).professions.Contains(12) ? 1.25 : 1.0) * (double)(5 + extraWoodCalculator(tileLocation))), resource: true);
+                            Game1.createRadialDebris(location, 12, (int)tileLocation.X, (int)tileLocation.Y, (int)(((Game1.GetPlayer(tree.lastPlayerToHit.Value) ?? Game1.MasterPlayer).professions.Contains(12) ? 1.25 : 1.0) * (double)(5 + extraWoodCalculator(tileLocation))), resource: true);
                         }
                         List<WildTreeChopItemData> chopItems2 = data.ChopItems;
                         if (chopItems2 != null && chopItems2.Count > 0)
                         {
-                            Farmer targetFarmer = Game1.getFarmer(tree.lastPlayerToHit.Value);
+                            Farmer targetFarmer = Game1.GetPlayer(tree.lastPlayerToHit.Value) ?? Game1.MasterPlayer;
                             foreach (WildTreeChopItemData drop2 in data.ChopItems)
                             {
                                 Item item2 = TryGetDrop(tree, drop2, r, targetFarmer, "ChopItems");
